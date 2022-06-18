@@ -1,0 +1,10 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false //防止rollup之前强制转为cjs
+      }
+    ]
+  ]
+}
