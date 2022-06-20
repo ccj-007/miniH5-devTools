@@ -1,5 +1,14 @@
 import h5Tools from '@/envDevTools.js'
-import '@/touch.js'
+import { watchGestureZ } from '@/touch.js'
 
-h5Tools.startdevTools()
-// export default h5Tools
+function startTools (element, endTime = 10000) {
+  //开启手势控制
+  watchGestureZ(element = document.documentElement, h5Tools.startdevTools, endTime)
+}
+
+if (window) {
+  window.startTools = startTools
+}
+
+
+export default startTools

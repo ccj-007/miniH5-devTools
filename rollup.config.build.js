@@ -26,7 +26,7 @@ export default {
     postcss(),
     alias({
       entries: [{
-        find: '@', replacement: resolveDir('src')
+        find: '@', replacement: resolveDir('src/modules')
       }]
     }),
     terser()

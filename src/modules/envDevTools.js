@@ -68,16 +68,15 @@ const startdevTools = (options = newOptions) => {
   newOptions.watchRoutes && preWatchRoutes()
 
   let { needSleep, wait } = newOptions
-  window.onload = () => {
-    //如果需要延迟加载
-    if (needSleep) {
-      setTimeout(() => {
-        createEnvDevTools(newOptions)
-      }, wait)
-      return
-    }
-    createEnvDevTools(newOptions)
+
+  //如果需要延迟加载
+  if (needSleep) {
+    setTimeout(() => {
+      createEnvDevTools(newOptions)
+    }, wait)
+    return
   }
+  createEnvDevTools(newOptions)
 }
 
 /**
@@ -176,6 +175,7 @@ const handleError = (msg) => {
 const createEnvDevTools = (options) => {
   let { envBoxIdName, envBoxExpandIdName, insertDOM, watchPerformance, watchError, watchRoutes } = options
   const envBox = document.createElement('div')
+
   envBox.id = envBoxIdName
   insertDOM.appendChild(envBox)
   envBox.addEventListener('click', (e) => {
