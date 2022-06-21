@@ -1,13 +1,13 @@
 {
-  "name": "envtools",
-  "version": "1.0.0",
+  "name": "mini-h5-tools",
+  "version": "1.0.4",
   "description": "h5 devTools",
   "main": "./dist/bundle.build.js",
   "scripts": {
     "build": "rollup --config rollup.config.build.js",
     "dev": "rollup --config rollup.config.dev.js -w"
   },
-  "filter": [
+  "flies": [
     "dist"
   ],
   "keywords": [
