@@ -3,6 +3,7 @@
  */
 
 import './env.css'
+import { enableGesture } from "./touch.js";
 
 const curEnv = window.localStorage.getItem('global_env') || 'dev'  //当前环境
 let expandUI = false  //是否已经展示按钮
@@ -20,6 +21,8 @@ const newOptions = {
   watchError: true, //是否监听性能
   watchRoutes: true, //是否监听性能
   watchActions: true, //是否监听行为
+  watchStorage: true, //是否监听storage，需要自定义分发事件
+  isNewStorage: true, //默认展示前5个更新的storage，false将展示所有
   watchActionDOMList: [{ eventType: 'click', domId: '.test1' }], //监听数组内的DOM
   sendOptions: {
     commonInfo: {
@@ -33,6 +36,7 @@ const newOptions = {
   },
   maxLimit: 5,  //最大缓存限制
   asyncTime: 5000, //默认延迟时间
+  endTime: 10000, //监听手势结束时间
 }
 //异常数据采集
 const errorData = {
@@ -54,11 +58,28 @@ const routesData = {
   routesList: [] // 采集pv数据的列表
 }
 
+//最新缓存的采集
+const storageData = {
+  newStorageList: [],
+  maxLen: 5
+}
+
+//手势数据
+const touchData = {
+  envBoxInfo: {
+    ew: 0,
+    eh: 0,
+    el: 0,
+    et: 0
+  }
+}
+
 /**
  * envTools开始入口
  * @param {Object} options 配置项
  */
 const startdevTools = (options = newOptions) => {
+
   Object.assign(newOptions, options)  //覆盖配置
   checkOptions(newOptions)  //校验options
 
@@ -66,6 +87,7 @@ const startdevTools = (options = newOptions) => {
   newOptions.watchError && preWatchError()
   newOptions.watchActions && preWatchActions()
   newOptions.watchRoutes && preWatchRoutes()
+  newOptions.watchStorage && preWatchStorage()
 
   let { needSleep, wait } = newOptions
 
@@ -77,6 +99,72 @@ const startdevTools = (options = newOptions) => {
     return
   }
   createEnvDevTools(newOptions)
+}
+
+/**
+ * 创建env环境切换工具
+ * @param  {Object} options 
+ */
+const createEnvDevTools = (options) => {
+  let { envBoxIdName, envBoxExpandIdName, insertDOM, watchPerformance, watchError, watchRoutes, watchStorage } = options
+  const envBox = document.createElement('div')
+
+  envBox.id = envBoxIdName
+  envBox.draggable = "true"
+  insertDOM.appendChild(envBox)
+
+  handleDrag(envBox) //处理手势
+
+  envBox.addEventListener('click', (e) => {
+    envBox.id = envBoxExpandIdName
+    expandUI = true
+    handleUI(envBox)
+    watchPerformance && loadPerformanceModule(envBox)
+    watchError && loadErrorModule(envBox)
+    watchRoutes && loadRoutesModule(envBox)
+    watchStorage && loadStorageModule(envBox)
+
+  }, false)
+  document.addEventListener('click', (e) => {
+    if (e.target.id === envBox.id) return
+    if (expandUI) {
+      envBox.id = envBoxIdName
+      envBox.innerHTML = ''
+      expandUI = false
+    }
+  }, false)
+}
+
+/**
+ * 处理拖拽
+ */
+const handleDrag = (envBox) => {
+  enableGesture()  //监听手势
+  let ew = envBox.offsetWidth
+  let eh = envBox.offsetHeight
+  let el = envBox.offsetLeft
+  let et = envBox.offsetTop
+  let isDrag = false
+  document.documentElement.addEventListener('panstart', (e) => {
+    console.log(el);
+    console.log(e.clientX);
+    console.log(el + ew);
+
+    if ((el - 10 < e.clientX && e.clientX < (el + ew + 10)) && (et - 10 < e.clientY && e.clientY < (et + eh + 10))) {
+      console.log('darg');
+      isDrag = true
+      //此时移动
+      // envBox.style.top = e.clientY + 'px'
+    } else {
+      isDrag = false
+    }
+  })
+  document.documentElement.addEventListener('panend', (e) => {
+    if (isDrag) {
+      envBox.style.top = e.clientY + 'px'
+      et = e.clientY
+    }
+  })
 }
 
 /**
@@ -134,8 +222,38 @@ const preWatchRoutes = () => {
 
   console.log(routesData);
   window.addEventListener('popstate', function (event) {
-    console.log('路由变化', event);
+    console.log('routes change', event);
   })
+}
+
+/**
+ * 前置监听Storage事件
+ */
+const preWatchStorage = () => {
+  const { isNewStorage } = newOptions
+  const { maxLen } = storageData
+
+  let originSetItem = localStorage.setItem
+  //自定义分发事件
+  localStorage.setItem = function (key, val) {
+    val = JSON.parse(JSON.stringify(val))
+    console.log(val);
+
+    let event = new Event("setItem", { key: val });
+    event.key = key
+    event.val = val
+    let index = storageData.newStorageList.findIndex(item => item[0] === key)
+    if (index > -1) {
+      //如果已经存在置于顶部
+      storageData.newStorageList.splice(index, 1)
+      storageData.newStorageList.unshift([key, val])
+    } else {
+      storageData.newStorageList.push([key, val]) //挂载到Storage对象上
+    }
+
+    window.dispatchEvent(event);
+    originSetItem.apply(this, arguments);
+  }
 }
 
 /**
@@ -168,33 +286,7 @@ const handleError = (msg) => {
   }
 }
 
-/**
- * 创建env环境切换工具
- * @param  {Object} options 
- */
-const createEnvDevTools = (options) => {
-  let { envBoxIdName, envBoxExpandIdName, insertDOM, watchPerformance, watchError, watchRoutes } = options
-  const envBox = document.createElement('div')
 
-  envBox.id = envBoxIdName
-  insertDOM.appendChild(envBox)
-  envBox.addEventListener('click', (e) => {
-    envBox.id = envBoxExpandIdName
-    expandUI = true
-    handleUI(envBox)
-    watchPerformance && loadPerformanceModule(envBox)
-    watchError && loadErrorModule(envBox)
-    watchRoutes && loadRoutesModule(envBox)
-  }, false)
-  document.addEventListener('click', (e) => {
-    if (e.target.id === envBox.id) return
-    if (expandUI) {
-      envBox.id = envBoxIdName
-      envBox.innerHTML = ''
-      expandUI = false
-    }
-  }, false)
-}
 
 /**
  * 处理ui界面
@@ -253,7 +345,6 @@ const loadErrorModule = (envBox) => {
   errorBtn.innerText = 'error'
 
   errorBtn.onclick = () => {
-
     alert(errorSum)
   }
 }
@@ -279,12 +370,43 @@ const loadRoutesModule = (envBox) => {
 }
 
 /**
+ * Storage模块
+ * @param {DOM} envBox
+ */
+const loadStorageModule = (envBox) => {
+  const { isNewStorage } = newOptions
+  const { maxLen, newStorageList } = storageData
+  let storageBtn = document.createElement('button')
+  envBox.appendChild(storageBtn)
+  storageBtn.innerText = 'storage'
+
+  storageBtn.onclick = () => {
+    let storageInfoStr = ''
+
+    //展示前几
+    let len = storageData.newStorageList?.length
+    if (isNewStorage && maxLen < len) {
+      storageData.newStorageList.splice(maxLen, len)
+    }
+
+    storageData.newStorageList.forEach(storage => {
+      let k = storage[0]
+      let v = JSON.stringify(storage[1])
+      let type = checkType(storage[1])
+      let str = 'key: ' + k + '   ' + 'val: ' + v + '   ' + 'type: ' + type + '\n'
+      storageInfoStr += str
+    })
+    alert(storageInfoStr)
+  }
+}
+
+/**
  * 数据上报
  * @param {Object} obj 上报的对象
  * @param {'err' | 'pv'} type 上传类型
- * @param {'beacon' | 'gif'} myMthods 自定义方法 
+ * @param {'beacon' | 'gif'} myMethods 自定义方法 
  */
-const sendMsg = (obj, type, myMthods) => {
+const sendMsg = (obj, type, myMethods) => {
   //校验
   if (checkType(obj) !== 'object' && !type) {
     throw new Error('do not input object or type')
@@ -295,12 +417,12 @@ const sendMsg = (obj, type, myMthods) => {
   let queryStr = Object.entries(submitObj).map(([key, val]) => `${key}=${val}`).join('&')
 
   //gif图片发送方式
-  if (myMthods === 'gif' || method === 'gif') {
+  if (myMethods === 'gif' || method === 'gif') {
     let img = new Image();
     img.src = `${baseURL}?` + encodeURIComponent(queryStr)
     console.log("上传信息", decodeURIComponent(img.src));
   }
-  if (myMthods === 'beacon' || method === 'beacon') {
+  if (myMethods === 'beacon' || method === 'beacon') {
     navigator.sendBeacon(baseURL, submitObj)
   }
 }

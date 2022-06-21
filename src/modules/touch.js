@@ -1,3 +1,4 @@
+import h5Tools from "./envDevTools";
 
 /**
  * 监听器
@@ -66,7 +67,10 @@ export class Recognizer {
       context.isPan = false;
       context.isTap = false;
       context.isPress = true;
-      this.dispatcher.dispatch('press');
+      this.dispatcher.dispatch('press', {
+        clientX: point.clientX,
+        clientY: point.clientY,
+      });
       context.handler = null;  //保护不会在press-start时再次触发
     }, 500);
   };
@@ -145,10 +149,13 @@ export class Recognizer {
 
       if (v > 1.5) {
         context.isFlick = true;
-        this.dispatcher.ispatch('flick', {});  //发布flick事件
+        this.dispatcher.dispatch('flick', {});  //发布flick事件
       } else {
         context.isFlick = false;
-        this.dispatcher.dispatch('panend', {}); //发布pan-end 事件 
+        this.dispatcher.dispatch('panend', {
+          clientX: point.clientX,
+          clientY: point.clientY,
+        }); //发布pan-end 事件 
       }
     }
     if (context.isPress) {
@@ -194,7 +201,7 @@ export class Dispatcher {
  * @param {DOM} element
  */
 export function enableGesture (element) {
-  new Listener(element, new Recognizer(new Dispatcher(element)));
+  new Listener(element = document.documentElement, new Recognizer(new Dispatcher(element)));
 }
 
 /**
@@ -205,7 +212,7 @@ export function enableGesture (element) {
  * @param {Funtion} createToolsFn
  * @param {number} endTime  默认10s后停止
  */
-export function watchGestureZ (element, createToolsFn, endTime = 10000) {
+function watchGestureZ (element, options) {
   enableGesture(element)
 
   let dx = 0, dy = 0, startX = 0, clientX = 0
@@ -214,13 +221,13 @@ export function watchGestureZ (element, createToolsFn, endTime = 10000) {
   let isRight_two = false
   let timer = null
 
-  if (endTime) {
+  if (options.endTime) {
     setTimeout(() => {
       if (timer) {
         clearInterval(timer)
         timer = null
       }
-    }, endTime);
+    }, options.endTime);
   }
   if (!document || !document.documentElement) return
   document.documentElement.addEventListener('pan', (e) => {
@@ -230,7 +237,6 @@ export function watchGestureZ (element, createToolsFn, endTime = 10000) {
     clientX = e.clientX
     if (timer) return  //防止多次執行
     timer = setInterval(() => {
-      console.log("1111111");
       //向右平移
       if (dx > 200 && !isRight) {
         isRight = true
@@ -243,10 +249,10 @@ export function watchGestureZ (element, createToolsFn, endTime = 10000) {
       }
       //再次右移
       if (isRight && isLeftBias && !isRight_two && dx - isLeftBias_old_dx > 100) {
-        alert('isRight_two')
+        alert('success unlock')
         isRight_two = true
         //此时打开devTools
-        createToolsFn()
+        h5Tools.startdevTools()
         clearInterval(timer)
         timer = null
 
@@ -254,4 +260,18 @@ export function watchGestureZ (element, createToolsFn, endTime = 10000) {
       }
     }, 50)
   });
+}
+
+/**
+ * 开启手势监控
+ *
+ * @param {DOM} element 
+ * @param {string} thumb 手势方向  'z'
+ * @param {Obejct} options 配置项
+ */
+export function startGesture (element, thumb = 'z', options = {}) {
+  //开启手势控制
+  if (thumb === 'z') {
+    watchGestureZ(element = document.documentElement, options)
+  }
 }

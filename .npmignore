@@ -6,3 +6,4 @@ package.json
 package-lock.json
 rollup.config.build.js
 rollup.config.dev.js
+bundle.dev.js

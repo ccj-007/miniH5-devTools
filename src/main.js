@@ -1,14 +1,14 @@
 import h5Tools from '@/envDevTools.js'
-import { watchGestureZ } from '@/touch.js'
+import { startGesture } from '@/touch.js'
+import { isMobileFn } from '@/utils.js'
 
-function startTools (element, endTime = 10000) {
-  //开启手势控制
-  watchGestureZ(element = document.documentElement, h5Tools.startdevTools, endTime)
+let isMobile = isMobileFn()
+
+if (!window) throw new Error('it is must be brower environment')
+if (!isMobile) throw new Error('it is must be mobile H5 environment')
+
+Object.prototype.h5tools = {
+  gesture: startGesture,
+  start: h5Tools.startdevTools,
+  send: h5Tools.sendMsg
 }
-
-if (window) {
-  window.startTools = startTools
-}
-
-
-export default startTools
