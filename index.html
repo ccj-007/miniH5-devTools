@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./src/modules/env.css">
+
+  <style></style>
 </head>
 
 <body>
   <div id="app">
   </div>
-  <script src="./dist/bundle.build.js">
+  <script src="./dist/bundle.dev.js">
   </script>
   <script>
     // let originSetItem = localStorage.setItem
@@ -48,9 +49,9 @@
     // window.localStorage.setItem('SA', { b: 'bbb' })
     // window.localStorage.setItem('ASD', { a: 'bbb' })
 
-    // setTimeout(() => {
-    //   throw new Error("111111")
-    // }, 8000);
+    setTimeout(() => {
+      throw new Error("111111")
+    }, 8000);
     // setTimeout(() => {
     //   throw new Error("2222")
     // }, 1000);

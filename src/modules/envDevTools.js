@@ -4,8 +4,10 @@
 
 import './env.css'
 import { enableGesture } from "./touch.js";
+import { createDialog, updateDialog } from './components/dialog'
+import { createToast } from './components/toast'
+import { Storage, checkType } from "@/utils";
 
-const curEnv = window.localStorage.getItem('global_env') || 'dev'  //当前环境
 let expandUI = false  //是否已经展示按钮
 const insertDOM = document.querySelector('#app')
 
@@ -17,13 +19,15 @@ const newOptions = {
   envBoxIdName: 'envBox',
   envBoxExpandIdName: 'envBox-expand',
   envList: ['test', 'dev', 'prebrand'],  //环境列表
+  watchEnv: true, //是否监听环境
   watchPerformance: true, //是否监听性能
   watchError: true, //是否监听性能
   watchRoutes: true, //是否监听性能
   watchActions: true, //是否监听行为
-  watchStorage: true, //是否监听storage，需要自定义分发事件
+  watchStorage: true, //是否监听storage
+  watchSystem: true, //是否监听手机系统数据
   isNewStorage: true, //默认展示前5个更新的storage，false将展示所有
-  watchActionDOMList: [{ eventType: 'click', domId: '.test1' }], //监听数组内的DOM
+  watchActionDOMList: [{ eventType: 'click', domId: '.test1', eventId: '001' }], //监听数组内的DOM
   sendOptions: {
     commonInfo: {
       pid: '', //项目id
@@ -75,11 +79,17 @@ const touchData = {
 }
 
 /**
+ * 初始化
+ */
+const init = () => {
+  Storage.set('global_forbid', false)
+}
+/**
  * envTools开始入口
  * @param {Object} options 配置项
  */
 const startdevTools = (options = newOptions) => {
-
+  init()
   Object.assign(newOptions, options)  //覆盖配置
   checkOptions(newOptions)  //校验options
 
@@ -88,6 +98,8 @@ const startdevTools = (options = newOptions) => {
   newOptions.watchActions && preWatchActions()
   newOptions.watchRoutes && preWatchRoutes()
   newOptions.watchStorage && preWatchStorage()
+  newOptions.watchSystem && preWatchSystem()
+
 
   let { needSleep, wait } = newOptions
 
@@ -106,24 +118,37 @@ const startdevTools = (options = newOptions) => {
  * @param  {Object} options 
  */
 const createEnvDevTools = (options) => {
-  let { envBoxIdName, envBoxExpandIdName, insertDOM, watchPerformance, watchError, watchRoutes, watchStorage } = options
+  let { envBoxIdName, envBoxExpandIdName, insertDOM, watchSystem, watchEnv, watchPerformance, watchError, watchRoutes, watchStorage } = options
   const envBox = document.createElement('div')
 
   envBox.id = envBoxIdName
-  envBox.draggable = "true"
   insertDOM.appendChild(envBox)
 
   handleDrag(envBox) //处理手势
 
   envBox.addEventListener('click', (e) => {
+    if (Storage.get('global_forbid') === true) return
     envBox.id = envBoxExpandIdName
     expandUI = true
-    handleUI(envBox)
+    watchEnv && loadEnvModule(envBox)
     watchPerformance && loadPerformanceModule(envBox)
     watchError && loadErrorModule(envBox)
     watchRoutes && loadRoutesModule(envBox)
     watchStorage && loadStorageModule(envBox)
+    watchSystem && loadSystemModule()
 
+
+    //处理通用样式
+    const envBoxBtnList = document.querySelectorAll('#envBox-expand button')
+    console.log(envBoxBtnList);
+    envBoxBtnList.forEach(btn => {
+      btn.ontouchstart = () => {
+        btn.style.background = '#40a9ff'
+      }
+      btn.ontouchend = () => {
+        btn.style.background = '#0987ee'
+      }
+    })
   }, false)
   document.addEventListener('click', (e) => {
     if (e.target.id === envBox.id) return
@@ -146,15 +171,9 @@ const handleDrag = (envBox) => {
   let et = envBox.offsetTop
   let isDrag = false
   document.documentElement.addEventListener('panstart', (e) => {
-    console.log(el);
-    console.log(e.clientX);
-    console.log(el + ew);
-
     if ((el - 10 < e.clientX && e.clientX < (el + ew + 10)) && (et - 10 < e.clientY && e.clientY < (et + eh + 10))) {
       console.log('darg');
       isDrag = true
-      //此时移动
-      // envBox.style.top = e.clientY + 'px'
     } else {
       isDrag = false
     }
@@ -189,12 +208,13 @@ const checkOptions = (options) => {
 const preWatchError = () => {
   window.addEventListener('error', (e) => {
     handleError("global error" + e.message)
+    updateDialog(`<div>${errorData.errorSum}</div>`)
   })
   window.addEventListener('unhandledrejection', (e) => {
     handleError("promise error" + e.reason)
+    updateDialog(`<div>${errorData.errorSum}</div>`)
   })
 }
-
 
 /**
  * 前置监听处理actions
@@ -236,8 +256,7 @@ const preWatchStorage = () => {
   let originSetItem = localStorage.setItem
   //自定义分发事件
   localStorage.setItem = function (key, val) {
-    val = JSON.parse(JSON.stringify(val))
-    console.log(val);
+    val = JSON.parse(val)
 
     let event = new Event("setItem", { key: val });
     event.key = key
@@ -257,6 +276,22 @@ const preWatchStorage = () => {
 }
 
 /**
+ * 系统数据
+ */
+const preWatchSystem = () => {
+  console.log(window.plus);
+
+  document.addEventListener("plusready", (e) => {
+    console.log('getDeviceInfo success: ' + JSON.stringify(e));
+  }, false)
+  // plus.device.getInfo({
+  //   success (e) {
+  //     console.log('getDeviceInfo success: ' + JSON.stringify(e));
+  //   }
+  // })
+}
+
+/**
  *处理错误
  */
 const handleError = (msg) => {
@@ -267,7 +302,7 @@ const handleError = (msg) => {
   errorList.push(msg)
   errorData.errorCount += 1
   if (checkType(errorList) === 'array') {
-    errorData.errorSum += `${errorData.errorCount}: ` + msg + '\n'
+    errorData.errorSum += `${errorData.errorCount}: ` + msg + '<br>'
     let errorObj = { errorSum: errorData.errorSum }
     //如果超过阈值上报错误数据
     if (errorData.errorCount >= newOptions.maxLimit) {
@@ -286,31 +321,41 @@ const handleError = (msg) => {
   }
 }
 
-
-
 /**
- * 处理ui界面
+ * 环境模块
  * @param {DOM} envBox  devTools DOM
  */
-const handleUI = (envBox) => {
-  let envList = ['test', 'dev', 'prebrand']
-  let content = `<span>now: ${curEnv}</span>`
-  envList.forEach(item => {
-    content += `<button>${item}</button>`
-  })
-  envBox.innerHTML = content
-  //此时按钮已渲染
-  const buttonList = document.querySelectorAll('#envBox, button')
-  buttonList.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      expandUI = false
-      let env = e.target.textContent
-      window.localStorage.setItem('global_env', env)
-      btn.innerText = env
-      window.localStorage.setItem('global_url', `https://${env}.zzss.com`)
-      alert('已成功修改' + env + '环境')
-    }, false)
-  })
+const loadEnvModule = (envBox) => {
+  let { envList } = newOptions
+
+  let envBtnDOM = document.createElement('button')
+  envBtnDOM.innerText = Storage.get('global_env') || 'env'
+  envBtnDOM.className = 'envBtn'
+  envBox.appendChild(envBtnDOM)
+
+  envBtnDOM.addEventListener('click', () => {
+    let contentStr = `<div class='dialog-detail'>当前环境: ${Storage.get('global_env') || 'env'}</div>`
+    envList.forEach(item => {
+      contentStr += `<button class='env-btn'>${item}</button>`
+    })
+
+    //创建弹窗
+    createDialog(contentStr)
+
+    const buttonList = document.querySelectorAll('.env-btn')
+    buttonList.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        expandUI = false
+        let env = e.target.textContent
+        Storage.set('global_env', env)
+        btn.innerText = env
+        envBtnDOM.innerText = Storage.get('global_env') || 'env'
+        Storage.set('global_url', `https://${env}.zzss.com`)
+        createToast('已成功修改' + env + '环境')
+      }, false)
+    })
+  }, false)
+
 }
 
 /**
@@ -318,9 +363,9 @@ const handleUI = (envBox) => {
  * @param {DOM} envBox  devTools DOM
  */
 const loadPerformanceModule = (envBox) => {
-  console.log(envBox);
   let button = document.createElement('button')
   envBox.appendChild(button)
+  button.innerText = 'performance'
 
   let FP, DCL, L = 0
   let { domLoading, navigationStart, domContentLoadedEventEnd, loadEventEnd } = window.performance.timing
@@ -328,9 +373,8 @@ const loadPerformanceModule = (envBox) => {
   DCL = domContentLoadedEventEnd - navigationStart
   L = loadEventEnd - navigationStart
 
-  button.innerText = 'performance'
   button.onclick = () => {
-    alert(`FP:${FP}ms----DCL:${DCL}ms---L:${L}ms`)
+    createDialog(`<div>FP:${FP}ms----DCL:${DCL}ms---L:${L}ms</div>`)
   }
 }
 
@@ -345,7 +389,11 @@ const loadErrorModule = (envBox) => {
   errorBtn.innerText = 'error'
 
   errorBtn.onclick = () => {
-    alert(errorSum)
+    if (!errorSum) {
+      createDialog(`<div>no error</div>`)
+      return
+    }
+    createDialog(`<div>${errorSum}</div>`)
   }
 }
 
@@ -362,10 +410,10 @@ const loadRoutesModule = (envBox) => {
   routesBtn.onclick = () => {
     let routerInfoStr = ''
     for (const [key, val] of Object.entries(routeInfo)) {
-      let str = key + '-----' + val + '\n'
+      let str = `<div>${key + '-----' + val}</div><br>`
       routerInfoStr += str
     }
-    alert(routerInfoStr)
+    createDialog(routerInfoStr)
   }
 }
 
@@ -391,13 +439,18 @@ const loadStorageModule = (envBox) => {
 
     storageData.newStorageList.forEach(storage => {
       let k = storage[0]
-      let v = JSON.stringify(storage[1])
-      let type = checkType(storage[1])
-      let str = 'key: ' + k + '   ' + 'val: ' + v + '   ' + 'type: ' + type + '\n'
+      let v = JSON.parse(storage[1])
+      let type = checkType(v)
+      console.log('type', type)
+      let str = `<div>key: ${k} val: ${v} type: ${type} <br></div>`
       storageInfoStr += str
     })
-    alert(storageInfoStr)
+    createDialog(storageInfoStr)
   }
+}
+
+const loadSystemModule = () => {
+
 }
 
 /**
@@ -425,15 +478,6 @@ const sendMsg = (obj, type, myMethods) => {
   if (myMethods === 'beacon' || method === 'beacon') {
     navigator.sendBeacon(baseURL, submitObj)
   }
-}
-
-/**
- * 检查数据类型工具
- * @param {*} params
- * @return {string} 数据类型
- */
-const checkType = (params) => {
-  return params && Object.prototype.toString.call(params).slice(8, -1).toLowerCase()
 }
 
 export default {

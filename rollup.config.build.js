@@ -1,10 +1,10 @@
-// import typescript from "@rollup/plugin-typescript";
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from "@rollup/plugin-commonjs";
 import babel from 'rollup-plugin-babel'
 import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import alias from '@rollup/plugin-alias'
+import svg from 'rollup-plugin-svg';
 
 const path = require('path')
 const resolveDir = dir => path.join(__dirname, dir)
@@ -17,7 +17,7 @@ export default {
     name: 'envTools'
   },
   plugins: [
-    // typescript(),
+    svg(),
     resolve(),
     commonjs(),
     babel({

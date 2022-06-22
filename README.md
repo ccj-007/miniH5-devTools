@@ -15,6 +15,8 @@
  ⚡  快 (rollup打包压缩后只有10kb)  
  📄  纯 (js原生，无任何生产环境依赖)  
  👽  DIY (支持多样化配置)  
+ 💛  美 (UI界面良心打造)  
+ 🍉  全 (小功能齐全)  
 
  **功能层面**  
  ☀️  支持环境切换  
@@ -26,9 +28,12 @@
  ✈️  路由监控  
  👆  一键手势解锁  
  🌊  工具拖拽  
+ 📲  检测设备信息  
+ 📫   console日志调试   
+ 💌  ajax请求检查    
+ 💍  检测版本是否更新    
 
 ---
-
 
 
 ### **准备**
@@ -104,13 +109,10 @@ let options = {
 }
 //通过手势解锁，第一个参数dom范围，第二个参数z字形手势解锁(目前只支持Z)
 h5tools.gesture(document.documentElement, 'z', options)
-
 //直接打开
 h5tools.start(options)
-
 //手动数据上报, obj上报数据对象，type可传入 'err' | 'pv'， myMethods(通过网络信标或gif方案上报数据) 可传入 'beacon' | 'gif' 
 h5tools.send(obj, type, myMthods)
-
 ```
 
 
@@ -120,3 +122,15 @@ h5tools.send(obj, type, myMthods)
 1. **环境变量切换后，如果使用？**
 
     默认在切换后会在localStorage存储key为global_env的属性，只需要获取对应的val修改http请求的域名即可
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

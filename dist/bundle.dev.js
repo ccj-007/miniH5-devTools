@@ -173,7 +173,7 @@
     }
   }
 
-  var css_248z = "#closeX {\n\twidth: 25px;\n\theight: 25px;\n\tbackground: #000;\n}\n\n#envBox {\n  position: fixed;\n\tz-index: 999999999999;\n\ttop: 50%;\n\tright: 0;\n\twidth: 15px;\n\theight: 15px;\n\tbackground: #40a9ff;\n\tborder-radius: 50% 0% 0% 50%;\n}\n\n#envBox-expand {\n\tposition: fixed;\n\tz-index: 9999999999999;\n\ttop: 50%;\n\tright: 0;\n\tbackground: transprant;\n}\n\n#envBox-expand button {\n  z-index: 1;\n  color: white;\n  background: #40a9ff;\n  outline: none;\n  border: none;\n  padding: 0.5em 1em;\n} \n\n#envBox-expand span {\n\tcolor: #40a9ff;\n\tfont-size: 14px;\n}\n\n\n\n";
+  var css_248z = "html,\nbody {\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n}\n\n#closeX {\n  width: 25px;\n  height: 25px;\n  background: #000;\n}\n\n#envBox {\n  position: fixed;\n  z-index: 999999999999;\n  top: 50%;\n  right: 0;\n  width: 10px;\n  height: 60px;\n  background: #40a9ff;\n  transition: top .5s linear;\n  border-radius: 5px 0 0 5px;\n}\n\n#envBox-expand {\n  position: fixed;\n  z-index: 9999999999999;\n  width: 100vw;\n  top: 50%;\n  right: 0;\n  background: #40a9ff;\n  transition: width .5s linear;\n}\n\n#envBox-expand button {\n  width: 20%;\n  height: 30px;\n  z-index: 1;\n  color: white;\n  background: #0987ee;\n  outline: none;\n  border: none;\n  padding: 0.5em auto;\n  box-sizing: border-box;\n}\n\n#envBox-dialog {\n  position: fixed;\n  top: 40%;\n  z-index: 99;\n  background: #40a9ff;\n  padding: 20px;\n  border-radius: 5px;\n  color: #fff;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n#envBox-dialog button {\n  z-index: 1;\n  color: white;\n  background: #0987ee;\n  outline: none;\n  border: none;\n  padding: 5px 10px;\n  box-sizing: border-box;\n}\n\n#envBox-toast {\n  position: fixed;\n  top: 2%;\n  z-index: 99;\n  background: white;\n  padding: 15px;\n  border-radius: 30px;\n  font-size: 14px;\n  color: #000;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n.dialog-detail {\n  width: 100%;\n  line-height: 32px;\n  font-size: 14px;\n}\n\n\n#envBox-expand span {\n  color: #ffffff;\n  font-size: 14px;\n}\n\n\n.jello-horizontal {\n  -webkit-animation: jello-horizontal .9s both;\n  animation: jello-horizontal .9s both\n}\n\n@-webkit-keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n@keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n.slide-in-blurred-top {\n  animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both\n}\n\n@keyframes slide-in-blurred-top {\n  0% {\n    transform: translateY(-1000px) scaleY(2.5) scaleX(.2);\n    transform-origin: 50% 0;\n    filter: blur(40px);\n    opacity: 0\n  }\n\n  100% {\n    transform: translateY(0) scaleY(1) scaleX(1);\n    transform-origin: 50% 50%;\n    filter: blur(0);\n    opacity: 1\n  }\n}\n\n.env-close {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 20px;\n  height: 20px;\n  background: #fff;\n  border-radius: 0 0 0 50%;\n}";
   styleInject(css_248z);
 
   /**
@@ -524,7 +524,138 @@
     }
   }
 
-  var curEnv = window.localStorage.getItem('global_env') || 'dev'; //当前环境
+  /**
+   *检查是否是移动端
+   *
+   * @return {boolean} 
+   */
+  var isMobileFn = function isMobileFn() {
+    var machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+
+    if (machineType === 'Mobile') {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * localStorage 封装
+   *
+   * @return {boolean} 
+   */
+
+  var Storage = {
+    get: function get(key) {
+      try {
+        return JSON.parse(localStorage.getItem(key));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    set: function set(key, val) {
+      localStorage.setItem(key, JSON.stringify(val));
+    },
+    remove: function remove(key) {
+      localStorage.removeItem(key);
+    },
+    clear: function clear() {
+      localStorage.clearItem();
+    }
+  };
+  /**
+   * 检查数据类型工具
+   * @param {*} params
+   * @return {string} 数据类型
+   */
+
+  var checkType = function checkType(params) {
+    return Object.prototype.toString.call(params).slice(8, -1).toLowerCase();
+  };
+
+  var closeIconSrc = "<svg class='env-close' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"closeIconTitle\" stroke=\"#0987ee\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#0987ee\"> <title id=\"closeIconTitle\">Close</title> <path d=\"M6.34314575 6.34314575L17.6568542 17.6568542M6.34314575 17.6568542L17.6568542 6.34314575\"/> </svg>";
+
+  /**
+   * @description dialog components
+   */
+  /**
+   * 创建dialog
+   *
+   * @param {*} contentStr
+   */
+
+  const createDialog = contentStr => {
+    Storage.set('global_forbid', true);
+    let dialogDOM = document.querySelector('#envBox-dialog');
+
+    if (!dialogDOM) {
+      dialogDOM = document.createElement('div');
+      dialogDOM.id = 'envBox-dialog';
+      dialogDOM.className = 'jello-horizontal';
+      document.body.appendChild(dialogDOM);
+      dialogDOM.innerHTML += closeIconSrc; //close icon
+    } //如果已存在就展示及更新数据
+
+
+    dialogDOM.style.display = 'block';
+    if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''; //一次性更新
+
+    dialogDOM.innerHTML = contentStr; //监听点击关闭dialog
+
+    let closeDOM = document.querySelector('.env-close');
+    closeDOM.addEventListener('click', () => {
+      clearDialog();
+    }, false);
+  };
+  /**
+   * 清除dialog
+   */
+
+  const clearDialog = () => {
+    let dialogDOM = document.querySelector('#envBox-dialog');
+    console.log(dialogDOM);
+    dialogDOM.innerHTML = '';
+    dialogDOM.style.display = 'none';
+    Storage.set('global_forbid', false);
+  };
+  /**
+   * 更新dialog
+   *
+   * @param {*} contentStr
+   */
+
+  const updateDialog = contentStr => {
+    let dialogDOM = document.querySelector('#envBox-dialog');
+    if (dialogDOM.innerHTML) dialogDOM.innerHTML = '';
+    dialogDOM.innerHTML += contentStr;
+    dialogDOM.innerHTML += closeIconSrc; //close icon
+    //监听点击关闭dialog
+
+    let closeDOM = document.querySelector('.env-close');
+    closeDOM.addEventListener('click', () => {
+      clearDialog();
+    }, false);
+  };
+
+  /**
+   * @description toast components
+   */
+
+  /**
+   * 创建toast
+   *
+   * @param {*} contentStr
+   */
+  const createToast = function (content) {
+    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+    let toastDOM = document.createElement('div');
+    toastDOM.id = 'envBox-toast';
+    toastDOM.className = 'slide-in-blurred-top';
+    toastDOM.innerText = content;
+    document.body.appendChild(toastDOM);
+    setTimeout(() => {
+      document.body.removeChild(toastDOM);
+    }, wait);
+  };
 
   var expandUI = false; //是否已经展示按钮
 
@@ -541,6 +672,8 @@
     envBoxExpandIdName: 'envBox-expand',
     envList: ['test', 'dev', 'prebrand'],
     //环境列表
+    watchEnv: true,
+    //是否监听环境
     watchPerformance: true,
     //是否监听性能
     watchError: true,
@@ -550,12 +683,15 @@
     watchActions: true,
     //是否监听行为
     watchStorage: true,
-    //是否监听storage，需要自定义分发事件
+    //是否监听storage
+    watchSystem: true,
+    //是否监听手机系统数据
     isNewStorage: true,
     //默认展示前5个更新的storage，false将展示所有
     watchActionDOMList: [{
       eventType: 'click',
-      domId: '.test1'
+      domId: '.test1',
+      eventId: '001'
     }],
     //监听数组内的DOM
     sendOptions: {
@@ -612,12 +748,21 @@
     maxLen: 5
   }; //手势数据
   /**
+   * 初始化
+   */
+
+  var init = function init() {
+    Storage.set('global_forbid', false);
+  };
+  /**
    * envTools开始入口
    * @param {Object} options 配置项
    */
 
+
   var startdevTools = function startdevTools() {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : newOptions;
+    init();
     Object.assign(newOptions, options); //覆盖配置
 
     checkOptions(newOptions); //校验options
@@ -627,6 +772,7 @@
     newOptions.watchActions && preWatchActions();
     newOptions.watchRoutes && preWatchRoutes();
     newOptions.watchStorage && preWatchStorage();
+    newOptions.watchSystem && preWatchSystem();
     var needSleep = newOptions.needSleep,
         wait = newOptions.wait; //如果需要延迟加载
 
@@ -648,25 +794,39 @@
   var createEnvDevTools = function createEnvDevTools(options) {
     var envBoxIdName = options.envBoxIdName,
         envBoxExpandIdName = options.envBoxExpandIdName,
-        insertDOM = options.insertDOM,
+        insertDOM = options.insertDOM;
+        options.watchSystem;
+        var watchEnv = options.watchEnv,
         watchPerformance = options.watchPerformance,
         watchError = options.watchError,
         watchRoutes = options.watchRoutes,
         watchStorage = options.watchStorage;
     var envBox = document.createElement('div');
     envBox.id = envBoxIdName;
-    envBox.draggable = "true";
     insertDOM.appendChild(envBox);
     handleDrag(envBox); //处理手势
 
     envBox.addEventListener('click', function (e) {
+      if (Storage.get('global_forbid') === true) return;
       envBox.id = envBoxExpandIdName;
       expandUI = true;
-      handleUI(envBox);
+      watchEnv && loadEnvModule(envBox);
       watchPerformance && loadPerformanceModule(envBox);
       watchError && loadErrorModule(envBox);
       watchRoutes && loadRoutesModule(envBox);
       watchStorage && loadStorageModule(envBox);
+
+      var envBoxBtnList = document.querySelectorAll('#envBox-expand button');
+      console.log(envBoxBtnList);
+      envBoxBtnList.forEach(function (btn) {
+        btn.ontouchstart = function () {
+          btn.style.background = '#40a9ff';
+        };
+
+        btn.ontouchend = function () {
+          btn.style.background = '#0987ee';
+        };
+      });
     }, false);
     document.addEventListener('click', function (e) {
       if (e.target.id === envBox.id) return;
@@ -692,14 +852,9 @@
     var et = envBox.offsetTop;
     var isDrag = false;
     document.documentElement.addEventListener('panstart', function (e) {
-      console.log(el);
-      console.log(e.clientX);
-      console.log(el + ew);
-
       if (el - 10 < e.clientX && e.clientX < el + ew + 10 && et - 10 < e.clientY && e.clientY < et + eh + 10) {
         console.log('darg');
-        isDrag = true; //此时移动
-        // envBox.style.top = e.clientY + 'px'
+        isDrag = true;
       } else {
         isDrag = false;
       }
@@ -736,9 +891,11 @@
   var preWatchError = function preWatchError() {
     window.addEventListener('error', function (e) {
       handleError("global error" + e.message);
+      updateDialog("<div>".concat(errorData.errorSum, "</div>"));
     });
     window.addEventListener('unhandledrejection', function (e) {
       handleError("promise error" + e.reason);
+      updateDialog("<div>".concat(errorData.errorSum, "</div>"));
     });
   };
   /**
@@ -786,8 +943,7 @@
     var originSetItem = localStorage.setItem; //自定义分发事件
 
     localStorage.setItem = function (key, val) {
-      val = JSON.parse(JSON.stringify(val));
-      console.log(val);
+      val = JSON.parse(val);
       var event = new Event("setItem", {
         key: val
       });
@@ -810,6 +966,21 @@
     };
   };
   /**
+   * 系统数据
+   */
+
+
+  var preWatchSystem = function preWatchSystem() {
+    console.log(window.plus);
+    document.addEventListener("plusready", function (e) {
+      console.log('getDeviceInfo success: ' + JSON.stringify(e));
+    }, false); // plus.device.getInfo({
+    //   success (e) {
+    //     console.log('getDeviceInfo success: ' + JSON.stringify(e));
+    //   }
+    // })
+  };
+  /**
    *处理错误
    */
 
@@ -823,7 +994,7 @@
     errorData.errorCount += 1;
 
     if (checkType(errorList) === 'array') {
-      errorData.errorSum += "".concat(errorData.errorCount, ": ") + msg + '\n';
+      errorData.errorSum += "".concat(errorData.errorCount, ": ") + msg + '<br>';
       var errorObj = {
         errorSum: errorData.errorSum
       }; //如果超过阈值上报错误数据
@@ -844,30 +1015,37 @@
     }
   };
   /**
-   * 处理ui界面
+   * 环境模块
    * @param {DOM} envBox  devTools DOM
    */
 
 
-  var handleUI = function handleUI(envBox) {
-    var envList = ['test', 'dev', 'prebrand'];
-    var content = "<span>now: ".concat(curEnv, "</span>");
-    envList.forEach(function (item) {
-      content += "<button>".concat(item, "</button>");
-    });
-    envBox.innerHTML = content; //此时按钮已渲染
+  var loadEnvModule = function loadEnvModule(envBox) {
+    var envList = newOptions.envList;
+    var envBtnDOM = document.createElement('button');
+    envBtnDOM.innerText = Storage.get('global_env') || 'env';
+    envBtnDOM.className = 'envBtn';
+    envBox.appendChild(envBtnDOM);
+    envBtnDOM.addEventListener('click', function () {
+      var contentStr = "<div class='dialog-detail'>\u5F53\u524D\u73AF\u5883: ".concat(Storage.get('global_env') || 'env', "</div>");
+      envList.forEach(function (item) {
+        contentStr += "<button class='env-btn'>".concat(item, "</button>");
+      }); //创建弹窗
 
-    var buttonList = document.querySelectorAll('#envBox, button');
-    buttonList.forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        expandUI = false;
-        var env = e.target.textContent;
-        window.localStorage.setItem('global_env', env);
-        btn.innerText = env;
-        window.localStorage.setItem('global_url', "https://".concat(env, ".zzss.com"));
-        alert('已成功修改' + env + '环境');
-      }, false);
-    });
+      createDialog(contentStr);
+      var buttonList = document.querySelectorAll('.env-btn');
+      buttonList.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          expandUI = false;
+          var env = e.target.textContent;
+          Storage.set('global_env', env);
+          btn.innerText = env;
+          envBtnDOM.innerText = Storage.get('global_env') || 'env';
+          Storage.set('global_url', "https://".concat(env, ".zzss.com"));
+          createToast('已成功修改' + env + '环境');
+        }, false);
+      });
+    }, false);
   };
   /**
    * 加载性能监控模块
@@ -876,9 +1054,9 @@
 
 
   var loadPerformanceModule = function loadPerformanceModule(envBox) {
-    console.log(envBox);
     var button = document.createElement('button');
     envBox.appendChild(button);
+    button.innerText = 'performance';
     var FP,
         DCL,
         L = 0;
@@ -890,10 +1068,9 @@
     FP = domLoading - navigationStart;
     DCL = domContentLoadedEventEnd - navigationStart;
     L = loadEventEnd - navigationStart;
-    button.innerText = 'performance';
 
     button.onclick = function () {
-      alert("FP:".concat(FP, "ms----DCL:").concat(DCL, "ms---L:").concat(L, "ms"));
+      createDialog("<div>FP:".concat(FP, "ms----DCL:").concat(DCL, "ms---L:").concat(L, "ms</div>"));
     };
   };
   /**
@@ -909,7 +1086,12 @@
     errorBtn.innerText = 'error';
 
     errorBtn.onclick = function () {
-      alert(errorSum);
+      if (!errorSum) {
+        createDialog("<div>no error</div>");
+        return;
+      }
+
+      createDialog("<div>".concat(errorSum, "</div>"));
     };
   };
   /**
@@ -932,11 +1114,11 @@
             key = _Object$entries$_i[0],
             val = _Object$entries$_i[1];
 
-        var str = key + '-----' + val + '\n';
+        var str = "<div>".concat(key + '-----' + val, "</div><br>");
         routerInfoStr += str;
       }
 
-      alert(routerInfoStr);
+      createDialog(routerInfoStr);
     };
   };
   /**
@@ -965,12 +1147,13 @@
 
       storageData.newStorageList.forEach(function (storage) {
         var k = storage[0];
-        var v = JSON.stringify(storage[1]);
-        var type = checkType(storage[1]);
-        var str = 'key: ' + k + '   ' + 'val: ' + v + '   ' + 'type: ' + type + '\n';
+        var v = JSON.parse(storage[1]);
+        var type = checkType(v);
+        console.log('type', type);
+        var str = "<div>key: ".concat(k, " val: ").concat(v, " type: ").concat(type, " <br></div>");
         storageInfoStr += str;
       });
-      alert(storageInfoStr);
+      createDialog(storageInfoStr);
     };
   };
   /**
@@ -1010,35 +1193,10 @@
       navigator.sendBeacon(baseURL, submitObj);
     }
   };
-  /**
-   * 检查数据类型工具
-   * @param {*} params
-   * @return {string} 数据类型
-   */
-
-
-  var checkType = function checkType(params) {
-    return params && Object.prototype.toString.call(params).slice(8, -1).toLowerCase();
-  };
 
   var h5Tools = {
     startdevTools: startdevTools,
     sendMsg: sendMsg
-  };
-
-  /**
-   *检查是否是移动端
-   *
-   * @return {boolean} 
-   */
-  var isMobileFn = function isMobileFn() {
-    var machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
-
-    if (machineType === 'Mobile') {
-      return true;
-    } else {
-      return false;
-    }
   };
 
   var isMobile = isMobileFn();

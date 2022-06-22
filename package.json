@@ -1,6 +1,6 @@
 {
   "name": "mini-h5-tools",
-  "version": "1.0.8",
+  "version": "1.0.5",
   "description": "h5 devTools",
   "main": "./dist/bundle.build.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.3"

@@ -11,3 +11,37 @@ export const isMobileFn = () => {
     return false
   }
 }
+
+
+/**
+ * localStorage 封装
+ *
+ * @return {boolean} 
+ */
+export const Storage = {
+  get (key) {
+    try {
+      return JSON.parse(localStorage.getItem(key))
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  set (key, val) {
+    localStorage.setItem(key, JSON.stringify(val))
+  },
+  remove (key) {
+    localStorage.removeItem(key)
+  },
+  clear () {
+    localStorage.clearItem()
+  }
+}
+
+/**
+ * 检查数据类型工具
+ * @param {*} params
+ * @return {string} 数据类型
+ */
+export const checkType = (params) => {
+  return Object.prototype.toString.call(params).slice(8, -1).toLowerCase()
+}
