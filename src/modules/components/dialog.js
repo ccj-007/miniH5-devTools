@@ -17,13 +17,13 @@ export const createDialog = (contentStr) => {
     dialogDOM.id = 'envBox-dialog'
     dialogDOM.className = 'jello-horizontal'
     document.body.appendChild(dialogDOM)
-    dialogDOM.innerHTML += closeIconSrc  //close icon
   }
 
   //如果已存在就展示及更新数据
   dialogDOM.style.display = 'block'
   if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''  //一次性更新
   dialogDOM.innerHTML = contentStr
+  dialogDOM.innerHTML += closeIconSrc  //close icon
 
   //监听点击关闭dialog
   let closeDOM = document.querySelector('.env-close')

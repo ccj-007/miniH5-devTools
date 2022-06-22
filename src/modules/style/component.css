@@ -1,0 +1,69 @@
+.console-log {
+  color: rgb(255, 255, 255);
+  background: rgb(162, 162, 162);
+}
+
+.console-warn {
+  color: rgb(255, 255, 255);
+  background: rgb(255, 162, 13);
+}
+
+.console-error {
+  color: rgb(255, 255, 255);
+  background: rgb(255, 42, 42);
+}
+
+.console-info {
+  color: rgb(255, 255, 255);
+  background: rgb(88, 70, 255);
+}
+
+#envBox-dialog {
+  position: fixed;
+  font-size: 14px;
+  top: 40%;
+  z-index: 99;
+  background: #40a9ff;
+  padding: 20px;
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)
+}
+
+#envBox-dialog button {
+  z-index: 1;
+  color: white;
+  background: #0987ee;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+#envBox-toast {
+  position: fixed;
+  top: 2%;
+  z-index: 99;
+  background: white;
+  padding: 15px;
+  border-radius: 30px;
+  font-size: 14px;
+  color: #000;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)
+}
+
+.dialog-detail {
+  width: 100%;
+  line-height: 32px;
+  font-size: 14px;
+}
+
+.env-close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 0 0 0 50%;
+}

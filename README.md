@@ -31,7 +31,8 @@
  📲  检测设备信息  
  📫   console日志调试   
  💌  ajax请求检查    
- 💍  检测版本是否更新    
+ 💍  检测版本是否更新  
+ 🍏  新增原生ui组件  
 
 ---
 
@@ -122,15 +123,4 @@ h5tools.send(obj, type, myMthods)
 1. **环境变量切换后，如果使用？**
 
     默认在切换后会在localStorage存储key为global_env的属性，只需要获取对应的val修改http请求的域名即可
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+

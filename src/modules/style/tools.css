@@ -1,0 +1,38 @@
+#envBox {
+  position: fixed;
+  z-index: 999999999999;
+  top: 50%;
+  right: 0;
+  width: 10px;
+  height: 60px;
+  background: #40a9ff;
+  transition: top .5s linear;
+  border-radius: 5px 0 0 5px;
+}
+
+#envBox-expand {
+  position: fixed;
+  z-index: 9999999999999;
+  width: 100vw;
+  top: 50%;
+  right: 0;
+  background: #40a9ff;
+  transition: width .5s linear;
+}
+
+#envBox-expand button {
+  width: 20%;
+  height: 30px;
+  z-index: 1;
+  color: white;
+  background: #0987ee;
+  outline: none;
+  border: none;
+  padding: 0.5em auto;
+  box-sizing: border-box;
+}
+
+#envBox-expand span {
+  color: #ffffff;
+  font-size: 14px;
+}

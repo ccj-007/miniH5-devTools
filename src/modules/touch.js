@@ -34,6 +34,7 @@ export class Listener {
     });
 
     element.addEventListener('cancel', event => {
+
       for (let touch of event.changedTouches) {
         let context = contexts.get(touch.identifier);
         recognizer.cancel(touch, context);

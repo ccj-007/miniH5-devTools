@@ -2,7 +2,10 @@
  * @description  用于在非打包后线上环境的环境切换，以及性能、异常、行为监控及上报
  */
 
-import './env.css'
+import './style/animate.css'
+import './style/tools.css'
+import './style/component.css'
+import './style/global.css'
 import { enableGesture } from "./touch.js";
 import { createDialog, updateDialog } from './components/dialog'
 import { createToast } from './components/toast'
@@ -26,6 +29,8 @@ const newOptions = {
   watchActions: true, //是否监听行为
   watchStorage: true, //是否监听storage
   watchSystem: true, //是否监听手机系统数据
+  watchConsole: true, //是否监听console.log日志
+  watchHttp: true, //是否监听ajax请求
   isNewStorage: true, //默认展示前5个更新的storage，false将展示所有
   watchActionDOMList: [{ eventType: 'click', domId: '.test1', eventId: '001' }], //监听数组内的DOM
   sendOptions: {
@@ -38,10 +43,12 @@ const newOptions = {
     method: 'gif', //是否通过sendBeacon发送埋点数据 'beacon' | 'gif' 
     baseURL: 'http://localhost:8000'
   },
+  version: '1.0.0', //版本信息
   maxLimit: 5,  //最大缓存限制
   asyncTime: 5000, //默认延迟时间
   endTime: 10000, //监听手势结束时间
 }
+
 //异常数据采集
 const errorData = {
   errorCount: 0,
@@ -61,11 +68,25 @@ const routesData = {
   },
   routesList: [] // 采集pv数据的列表
 }
-
-//最新缓存的采集
+//缓存数据采集
 const storageData = {
   newStorageList: [],
   maxLen: 5
+}
+//系统数据采集
+let systemData = {
+}
+//console采集
+let consoleData = {
+  consoleList: [],
+  info: [],
+  error: [],
+  log: [],
+  warn: []
+}
+//http请求采集
+let httpData = {
+
 }
 
 //手势数据
@@ -99,11 +120,12 @@ const startdevTools = (options = newOptions) => {
   newOptions.watchRoutes && preWatchRoutes()
   newOptions.watchStorage && preWatchStorage()
   newOptions.watchSystem && preWatchSystem()
-
+  newOptions.watchConsole && preWatchConsole()
+  newOptions.watchHttp && preWatchHttp()
 
   let { needSleep, wait } = newOptions
 
-  //如果需要延迟加载
+  //延迟加载
   if (needSleep) {
     setTimeout(() => {
       createEnvDevTools(newOptions)
@@ -118,7 +140,7 @@ const startdevTools = (options = newOptions) => {
  * @param  {Object} options 
  */
 const createEnvDevTools = (options) => {
-  let { envBoxIdName, envBoxExpandIdName, insertDOM, watchSystem, watchEnv, watchPerformance, watchError, watchRoutes, watchStorage } = options
+  let { envBoxIdName, envBoxExpandIdName, insertDOM, watchHttp, watchSystem, watchEnv, watchPerformance, watchError, watchRoutes, watchStorage, watchConsole } = options
   const envBox = document.createElement('div')
 
   envBox.id = envBoxIdName
@@ -130,17 +152,21 @@ const createEnvDevTools = (options) => {
     if (Storage.get('global_forbid') === true) return
     envBox.id = envBoxExpandIdName
     expandUI = true
+
+    // 在打开tabbar栏后监听
     watchEnv && loadEnvModule(envBox)
     watchPerformance && loadPerformanceModule(envBox)
     watchError && loadErrorModule(envBox)
     watchRoutes && loadRoutesModule(envBox)
     watchStorage && loadStorageModule(envBox)
-    watchSystem && loadSystemModule()
-
+    watchSystem && loadSystemModule(envBox)
+    watchConsole && loadConsoleModule(envBox)
+    watchHttp && loadHttpModule(envBox)
+    loadVersionModule(envBox)
+    loadCustomModule(envBox)
 
     //处理通用样式
     const envBoxBtnList = document.querySelectorAll('#envBox-expand button')
-    console.log(envBoxBtnList);
     envBoxBtnList.forEach(btn => {
       btn.ontouchstart = () => {
         btn.style.background = '#40a9ff'
@@ -171,14 +197,15 @@ const handleDrag = (envBox) => {
   let et = envBox.offsetTop
   let isDrag = false
   document.documentElement.addEventListener('panstart', (e) => {
+    e.preventDefault()
     if ((el - 10 < e.clientX && e.clientX < (el + ew + 10)) && (et - 10 < e.clientY && e.clientY < (et + eh + 10))) {
-      console.log('darg');
       isDrag = true
     } else {
       isDrag = false
     }
   })
   document.documentElement.addEventListener('panend', (e) => {
+    e.preventDefault()
     if (isDrag) {
       envBox.style.top = e.clientY + 'px'
       et = e.clientY
@@ -191,8 +218,6 @@ const handleDrag = (envBox) => {
  * @param {*} options 
  */
 const checkOptions = (options) => {
-  console.log(options);
-
   //自定义数据不能为空
   for (const key in options) {
     const val = options[key];
@@ -240,9 +265,8 @@ const preWatchRoutes = () => {
   routesData.routeInfo.url = window.location.href
   routesData.routeInfo.title = document.title
 
-  console.log(routesData);
   window.addEventListener('popstate', function (event) {
-    console.log('routes change', event);
+    // console.log('routes change', event);
   })
 }
 
@@ -276,19 +300,45 @@ const preWatchStorage = () => {
 }
 
 /**
- * 系统数据
+ * 前置监听系统数据
  */
 const preWatchSystem = () => {
-  console.log(window.plus);
+  function plusReady () {
+    systemData = plus.device
+    // alert("IMEI: " + plus.device.imei);  //设备的国际移动设备身份码
+    // alert("IMEI: " + plus.device.model);  // 设备的型号
+    // alert("uuid: " + plus.device.uuid);   //设备的uuid
+  }
+  if (window.plus) {
+    plusReady();
+  } else {
+    document.addEventListener("plusready", plusReady, false);
+  }
+}
 
-  document.addEventListener("plusready", (e) => {
-    console.log('getDeviceInfo success: ' + JSON.stringify(e));
-  }, false)
-  // plus.device.getInfo({
-  //   success (e) {
-  //     console.log('getDeviceInfo success: ' + JSON.stringify(e));
-  //   }
-  // })
+/**
+ * 前置监听console日志
+ */
+const preWatchConsole = () => {
+  function watchLog (type) {
+    let oldLog = console[type]
+    console[type] = function () {
+      consoleData.consoleList.push({ data: arguments[0], type })
+      oldLog.call(console, arguments);
+    }
+  }
+
+  let logList = ['info', 'error', 'log', 'warn']
+  logList.forEach(type => {
+    watchLog(type)
+  })
+}
+
+/**
+ * 前置监听http请求
+ */
+const preWatchHttp = () => {
+
 }
 
 /**
@@ -436,12 +486,15 @@ const loadStorageModule = (envBox) => {
     if (isNewStorage && maxLen < len) {
       storageData.newStorageList.splice(maxLen, len)
     }
+    if (!storageData.newStorageList.length) {
+      createToast('no storage')
+      return
+    }
 
     storageData.newStorageList.forEach(storage => {
       let k = storage[0]
       let v = JSON.parse(storage[1])
       let type = checkType(v)
-      console.log('type', type)
       let str = `<div>key: ${k} val: ${v} type: ${type} <br></div>`
       storageInfoStr += str
     })
@@ -449,9 +502,95 @@ const loadStorageModule = (envBox) => {
   }
 }
 
-const loadSystemModule = () => {
+/**
+ * System模块
+ * @param {DOM} envBox
+ */
+const loadSystemModule = (envBox) => {
+  let systemBtn = document.createElement('button')
+  envBox.appendChild(systemBtn)
+  systemBtn.innerText = 'system'
 
+  systemBtn.onclick = () => {
+    if (JSON.stringify(systemData) !== '{}') {
+      createDialog(`<div>${JSON.stringify(systemData)}</div>`)
+    } else {
+      createToast('请在真机webview调试')
+    }
+  }
 }
+
+/**
+ * Console模块
+ * @param {DOM} envBox
+ */
+const loadConsoleModule = (envBox) => {
+  let consoleBtn = document.createElement('button')
+  envBox.appendChild(consoleBtn)
+  consoleBtn.innerText = 'console'
+
+  consoleBtn.onclick = () => {
+    let sumContent = ''
+
+    if (!consoleData.consoleList.length) {
+      createToast('no log')
+      return
+    }
+    consoleData.consoleList.forEach(content => {
+      let { data, type } = content
+      if (typeof data === 'object') {
+        sumContent += `<div class='console-${type}'>${JSON.stringify(data)}</div>`
+      } else {
+        sumContent += `<div class='console-${type}'>${data}</div>`
+      }
+    })
+
+    createDialog(`<div>${sumContent}</div>`)
+  }
+}
+
+/**
+ * Http模块
+ * @param {DOM} envBox
+ */
+const loadHttpModule = (envBox) => {
+  let httpBtn = document.createElement('button')
+  envBox.appendChild(httpBtn)
+  httpBtn.innerText = 'http'
+
+  httpBtn.onclick = () => {
+    createToast('未开放.....')
+  }
+}
+
+/**
+ * 版本模块
+ * @param {DOM} envBox
+ */
+const loadVersionModule = (envBox) => {
+  let versionBtn = document.createElement('button')
+  envBox.appendChild(versionBtn)
+  versionBtn.innerText = 'version'
+
+  versionBtn.onclick = () => {
+    createToast(`当前版本${newOptions.version}`)
+  }
+}
+
+/**
+ * 自定义模块
+ * @param {DOM} envBox
+ */
+const loadCustomModule = (envBox) => {
+  let customBtn = document.createElement('button')
+  envBox.appendChild(customBtn)
+  customBtn.innerText = 'custom'
+
+  customBtn.onclick = () => {
+    createToast('未开放.....')
+  }
+}
+
 
 /**
  * 数据上报
@@ -473,7 +612,6 @@ const sendMsg = (obj, type, myMethods) => {
   if (myMethods === 'gif' || method === 'gif') {
     let img = new Image();
     img.src = `${baseURL}?` + encodeURIComponent(queryStr)
-    console.log("上传信息", decodeURIComponent(img.src));
   }
   if (myMethods === 'beacon' || method === 'beacon') {
     navigator.sendBeacon(baseURL, submitObj)
