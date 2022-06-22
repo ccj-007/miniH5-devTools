@@ -1,6 +1,6 @@
 {
   "name": "mini-h5-tools",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "h5 devTools",
   "main": "./dist/bundle.build.js",
   "scripts": {
