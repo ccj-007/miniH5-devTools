@@ -1,11 +1,18 @@
-import h5Tools from '@/envDevTools.js'
+import h5Tools from '@/devTools.js'
 import { startGesture } from '@/touch.js'
 import { isMobileFn } from '@/utils.js'
+import { createErrorToast } from '@/components/toast'
 
 let isMobile = isMobileFn()
 
-if (!window) throw new Error('it is must be brower environment')
-if (!isMobile) throw new Error('it is must be mobile H5 environment')
+if (!window) {
+  createErrorToast('it is must be brower environment')
+  throw new Error('it is must be brower environment')
+}
+if (!isMobile) {
+  createErrorToast('it is must be mobile H5 environment')
+  throw new Error('it is must be mobile H5 environment')
+}
 
 Object.prototype.h5tools = {
   gesture: startGesture,

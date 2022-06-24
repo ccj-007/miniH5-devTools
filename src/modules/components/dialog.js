@@ -51,6 +51,7 @@ export const clearDialog = () => {
  */
 export const updateDialog = (contentStr) => {
   let dialogDOM = document.querySelector('#envBox-dialog')
+  if (!dialogDOM) return
   if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''
   dialogDOM.innerHTML += contentStr
   dialogDOM.innerHTML += closeIconSrc  //close icon

@@ -1,5 +1,5 @@
-import h5Tools from "./envDevTools";
-
+import h5Tools from "./devTools";
+import { createToast } from './components/toast'
 /**
  * 监听器
  *
@@ -216,6 +216,15 @@ export function enableGesture (element) {
 function watchGestureZ (element, options) {
   enableGesture(element)
 
+  //声明后立即加载devTools，隐藏tools
+  if (options) {
+    h5Tools.startdevTools(options)
+  } else {
+    h5Tools.startdevTools()
+  }
+  let envBoxDOM = document.getElementById('envBox')
+  envBoxDOM.style.display = 'none'
+
   let dx = 0, dy = 0, startX = 0, clientX = 0
   let isRight = false, isRight_old_dy = 0
   let isLeftBias = false, isLeftBias_old_dx = false
@@ -250,14 +259,13 @@ function watchGestureZ (element, options) {
       }
       //再次右移
       if (isRight && isLeftBias && !isRight_two && dx - isLeftBias_old_dx > 100) {
-        alert('success unlock')
+        createToast('success unlock')
         isRight_two = true
-        //此时打开devTools
-        h5Tools.startdevTools()
+
+        envBoxDOM.style.display = 'block'
         clearInterval(timer)
         timer = null
 
-        console.log(timer);
       }
     }, 50)
   });

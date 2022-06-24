@@ -19,23 +19,10 @@
     //直接打开
     h5tools.start()
 
-    console.log('11')
-    //失败场景
-    axios.post('http://localhost:8081/api/error', (data) => {
+    axios.post('http://localhost:8080/api/home', (data) => {
       console.log(data);
     })
-    axios({
-      method: 'POST',
-      url: 'http://127.0.0.1:4523/mock/637160/api/suc',
-      header: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      data: {
-        name: '22'
-      }
-    }).then(function (res) {
-      console.log(res)
-    })
+    console.log("11111");
 
   </script>
 </body>

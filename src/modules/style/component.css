@@ -1,21 +1,12 @@
-.console-log {
-  color: rgb(255, 255, 255);
-  background: rgb(162, 162, 162);
-}
+/* dialog componetnts */
+:root {
+  --main-deep: #0987ee; 
+  --main-light: #40a9ff; 
 
-.console-warn {
-  color: rgb(255, 255, 255);
-  background: rgb(255, 162, 13);
-}
-
-.console-error {
-  color: rgb(255, 255, 255);
-  background: rgb(255, 42, 42);
-}
-
-.console-info {
-  color: rgb(255, 255, 255);
-  background: rgb(88, 70, 255);
+  --common-info: #0987ee; 
+  --common-warn: #ffa20d; 
+  --common-error: #ff2a2a; 
+  --common-success: #00d41c; 
 }
 
 #envBox-dialog {
@@ -23,7 +14,7 @@
   font-size: 14px;
   top: 40%;
   z-index: 99;
-  background: #40a9ff;
+  background: var(--main-light);
   padding: 20px;
   border-radius: 5px;
   color: #fff;
@@ -33,23 +24,11 @@
 #envBox-dialog button {
   z-index: 1;
   color: white;
-  background: #0987ee;
+  background: var(--main-deep);
   outline: none;
   border: none;
   padding: 5px 10px;
   box-sizing: border-box;
-}
-
-#envBox-toast {
-  position: fixed;
-  top: 2%;
-  z-index: 99;
-  background: white;
-  padding: 15px;
-  border-radius: 30px;
-  font-size: 14px;
-  color: #000;
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)
 }
 
 .dialog-detail {
@@ -67,3 +46,71 @@
   background: #fff;
   border-radius: 0 0 0 50%;
 }
+
+
+/* toast componetnts */
+#envBox-toast {
+  position: fixed;
+  top: 2%;
+  z-index: 99;
+  padding: 15px;
+  border-radius: 30px;
+  font-size: 14px;
+  color: #fff;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)
+}
+
+.envBox-toast-info {
+  background: var(--common-info);
+}
+
+.envBox-toast-error {
+  background: var(--common-error);
+}
+
+.envBox-toast-warn {
+  background: var(--common-warn);
+}
+
+
+.console-log {
+  color: #000;
+  background: #fff;
+}
+
+.console-warn {
+  color: rgb(255, 255, 255);
+  background: var(--common-warn);
+}
+
+.console-error {
+  color: rgb(255, 255, 255);
+  background: var(--common-error);
+}
+
+.console-info {
+  color: rgb(255, 255, 255);
+  background: var(--main-deep);
+}
+
+.http {
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 30px;
+}
+
+.http-start {
+  color: #fff;
+  background: var(--common-info);
+}
+
+.http-suc {
+  color: #fff;
+  background: var(--common-success);
+}
+
+.http-err {
+  color: #fff;
+  background: var(--common-error);
+}
+

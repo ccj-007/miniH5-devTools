@@ -1,3 +1,8 @@
+:root {
+  --primary-deep: #0987ee; 
+  --primary-light: #40a9ff; 
+}
+
 #envBox {
   position: fixed;
   z-index: 999999999999;
@@ -5,7 +10,7 @@
   right: 0;
   width: 10px;
   height: 60px;
-  background: #40a9ff;
+  background: var(--primary-light);
   transition: top .5s linear;
   border-radius: 5px 0 0 5px;
 }
@@ -13,10 +18,11 @@
 #envBox-expand {
   position: fixed;
   z-index: 9999999999999;
+  height: 60px;
   width: 100vw;
   top: 50%;
   right: 0;
-  background: #40a9ff;
+  background: var(--primary-light);
   transition: width .5s linear;
 }
 
@@ -25,7 +31,7 @@
   height: 30px;
   z-index: 1;
   color: white;
-  background: #0987ee;
+  background: var(--primary-deep);
   outline: none;
   border: none;
   padding: 0.5em auto;
@@ -36,3 +42,4 @@
   color: #ffffff;
   font-size: 14px;
 }
+
