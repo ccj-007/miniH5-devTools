@@ -7,11 +7,9 @@ let isMobile = isMobileFn()
 
 if (!window) {
   createErrorToast('it is must be brower environment')
-  throw new Error('it is must be brower environment')
 }
 if (!isMobile) {
   createErrorToast('it is must be mobile H5 environment')
-  throw new Error('it is must be mobile H5 environment')
 }
 
 Object.prototype.h5tools = {

@@ -28,6 +28,7 @@ export const addToastDOM = (content, wait, type, dialogStyle) => {
 
   if (dialogStyle === 'textDialog') {
     toastDOM.style.borderRadius = '5px'
+    toastDOM.style.borderRadius = '5px'
   }
   toastDOM.innerHTML = content
 

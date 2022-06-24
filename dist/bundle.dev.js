@@ -32,116 +32,17 @@
     }
   }
 
-  var css_248z$3 = ".jello-horizontal {\n  -webkit-animation: jello-horizontal .9s both;\n  animation: jello-horizontal .9s both\n}\n\n@-webkit-keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n@keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n.slide-in-blurred-top {\n  animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both\n}\n\n@keyframes slide-in-blurred-top {\n  0% {\n    transform: translateY(-1000px) scaleY(2.5) scaleX(.2);\n    transform-origin: 50% 0;\n    filter: blur(40px);\n    opacity: 0\n  }\n\n  100% {\n    transform: translateY(0) scaleY(1) scaleX(1);\n    transform-origin: 50% 50%;\n    filter: blur(0);\n    opacity: 1\n  }\n}";
+  var css_248z$3 = ".jello-horizontal {\r\n  -webkit-animation: jello-horizontal .9s both;\r\n  animation: jello-horizontal .9s both\r\n}\r\n\r\n@-webkit-keyframes jello-horizontal {\r\n  0% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n\r\n  30% {\r\n    -webkit-transform: scale3d(1.25, .75, 1);\r\n    transform: scale3d(1.25, .75, 1)\r\n  }\r\n\r\n  40% {\r\n    -webkit-transform: scale3d(.75, 1.25, 1);\r\n    transform: scale3d(.75, 1.25, 1)\r\n  }\r\n\r\n  50% {\r\n    -webkit-transform: scale3d(1.15, .85, 1);\r\n    transform: scale3d(1.15, .85, 1)\r\n  }\r\n\r\n  65% {\r\n    -webkit-transform: scale3d(.95, 1.05, 1);\r\n    transform: scale3d(.95, 1.05, 1)\r\n  }\r\n\r\n  75% {\r\n    -webkit-transform: scale3d(1.05, .95, 1);\r\n    transform: scale3d(1.05, .95, 1)\r\n  }\r\n\r\n  100% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n}\r\n\r\n@keyframes jello-horizontal {\r\n  0% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n\r\n  30% {\r\n    -webkit-transform: scale3d(1.25, .75, 1);\r\n    transform: scale3d(1.25, .75, 1)\r\n  }\r\n\r\n  40% {\r\n    -webkit-transform: scale3d(.75, 1.25, 1);\r\n    transform: scale3d(.75, 1.25, 1)\r\n  }\r\n\r\n  50% {\r\n    -webkit-transform: scale3d(1.15, .85, 1);\r\n    transform: scale3d(1.15, .85, 1)\r\n  }\r\n\r\n  65% {\r\n    -webkit-transform: scale3d(.95, 1.05, 1);\r\n    transform: scale3d(.95, 1.05, 1)\r\n  }\r\n\r\n  75% {\r\n    -webkit-transform: scale3d(1.05, .95, 1);\r\n    transform: scale3d(1.05, .95, 1)\r\n  }\r\n\r\n  100% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n}\r\n\r\n.slide-in-blurred-top {\r\n  animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both\r\n}\r\n\r\n@keyframes slide-in-blurred-top {\r\n  0% {\r\n    transform: translateY(-1000px) scaleY(2.5) scaleX(.2);\r\n    transform-origin: 50% 0;\r\n    filter: blur(40px);\r\n    opacity: 0\r\n  }\r\n\r\n  100% {\r\n    transform: translateY(0) scaleY(1) scaleX(1);\r\n    transform-origin: 50% 50%;\r\n    filter: blur(0);\r\n    opacity: 1\r\n  }\r\n}";
   styleInject(css_248z$3);
 
-  var css_248z$2 = ":root {\n  --primary-deep: #0987ee; \n  --primary-light: #40a9ff; \n}\n\n#envBox {\n  position: fixed;\n  z-index: 999999999999;\n  top: 50%;\n  right: 0;\n  width: 10px;\n  height: 60px;\n  background: var(--primary-light);\n  transition: top .5s linear;\n  border-radius: 5px 0 0 5px;\n}\n\n#envBox-expand {\n  position: fixed;\n  z-index: 9999999999999;\n  height: 60px;\n  width: 100vw;\n  top: 50%;\n  right: 0;\n  background: var(--primary-light);\n  transition: width .5s linear;\n}\n\n#envBox-expand button {\n  width: 20%;\n  height: 30px;\n  z-index: 1;\n  color: white;\n  background: var(--primary-deep);\n  outline: none;\n  border: none;\n  padding: 0.5em auto;\n  box-sizing: border-box;\n}\n\n#envBox-expand span {\n  color: #ffffff;\n  font-size: 14px;\n}\n\n\n.envBox-textline {\n  line-height: 20px;\n}\n";
+  var css_248z$2 = ":root {\r\n  --primary-deep: #0987ee; \r\n  --primary-light: #40a9ff; \r\n}\r\n\r\n#envBox {\r\n  position: fixed;\r\n  z-index: 999999999999;\r\n  top: 50%;\r\n  right: 0;\r\n  width: 10px;\r\n  height: 60px;\r\n  background: var(--primary-light);\r\n  transition: top .5s linear;\r\n  border-radius: 5px 0 0 5px;\r\n}\r\n\r\n#envBox-expand {\r\n  position: fixed;\r\n  z-index: 9999999999999;\r\n  height: 60px;\r\n  width: 100vw;\r\n  top: 50%;\r\n  right: 0;\r\n  background: var(--primary-light);\r\n  transition: width .5s linear;\r\n}\r\n\r\n#envBox-expand button {\r\n  width: 20%;\r\n  height: 30px;\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--primary-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 0.5em auto;\r\n  box-sizing: border-box;\r\n}\r\n\r\n#envBox-expand span {\r\n  color: #ffffff;\r\n  font-size: 14px;\r\n}\r\n\r\n\r\n.envBox-textline {\r\n  line-height: 20px;\r\n}\r\n";
   styleInject(css_248z$2);
 
-  var css_248z$1 = "/* dialog componetnts */\n:root {\n  --main-deep: #0987ee; \n  --main-light: #40a9ff; \n\n  --common-info: #40a9ff; \n  --common-warn: #ffa20d; \n  --common-error: #ff2a2a; \n  --common-success: #00d41c; \n}\n\n#envBox-dialog {\n  position: fixed;\n  font-size: 14px;\n  max-width: 80%;\n  z-index: 99;\n  background: var(--main-light);\n  padding: 20px;\n  border-radius: 5px;\n  color: #fff;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n#envBox-dialog button {\n  z-index: 1;\n  color: white;\n  background: var(--main-deep);\n  outline: none;\n  border: none;\n  padding: 5px 10px;\n  box-sizing: border-box;\n}\n\n.dialog-detail {\n  width: 100%;\n  line-height: 32px;\n  font-size: 14px;\n}\n\n.env-close {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 20px;\n  height: 20px;\n  background: #fff;\n  border-radius: 0 0 0 50%;\n}\n\n/* toast componetnts */\n#envBox-toast {\n  position: fixed;\n  max-width: 80%;\n  word-break: break-all;\n  top: 2%;\n  z-index: 99;\n  padding: 15px;\n  border-radius: 30px;\n  font-size: 14px;\n  color: #fff;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n.envBox-toast-info {\n  background: var(--common-info);\n}\n\n.envBox-toast-error {\n  background: var(--common-error);\n}\n\n.envBox-toast-warn {\n  background: var(--common-warn);\n}\n\n.envBox-error {\n  border-radius: 5px;\n  color: rgb(255, 255, 255);\n  background: var(--common-error);\n}\n\n.console {\n  width: 100%;\n  display: flex;\n  word-break: break-all;\n  display: inline-block;\n  white-space: nowrap; \n  overflow: hidden;\n  text-overflow:ellipsis;\n  border-radius: 5px;\n}\n\n.console-log {\n  color: #000;\n  background: #fff;\n}\n\n.console-warn {\n  color: rgb(255, 255, 255);\n  background: var(--common-warn);\n}\n\n.console-error {\n  color: rgb(255, 255, 255);\n  background: var(--common-error);\n}\n\n.console-info {\n  color: rgb(255, 255, 255);\n  background: var(--main-deep);\n}\n\n.http {\n  border-radius: 5px;\n  cursor: pointer;\n  line-height: 30px;\n}\n\n.http-start {\n  color: #fff;\n  background: var(--common-info);\n}\n\n.http-suc {\n  color: #fff;\n  background: var(--common-success);\n}\n\n.http-err {\n  color: #fff;\n  background: var(--common-error);\n}\n\n";
+  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194c75;\r\n  --main-deep: #0987ee;\r\n  --main-light: #40a9ff;\r\n\r\n  --common-info: #40a9ff;\r\n  --common-warn: #ffa20d;\r\n  --common-error: #ff2a2a;\r\n  --common-success: #00d41c;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-error);\r\n}\r\n\r\n.console,\r\n.http {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.console-log {\r\n  color: #000;\r\n  background: #fff;\r\n}\r\n\r\n.console-warn {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: #fff;\r\n  background: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: #fff;\r\n  background: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: #fff;\r\n  background: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  background: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  background: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  background: var(--main-deep);\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  background: var(--main-moredeep);\r\n}";
   styleInject(css_248z$1);
 
-  var css_248z = "html,\nbody {\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n";
+  var css_248z = "html,\r\nbody {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  font-size: 16px;\r\n  margin: 0;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.envBox-inlineText {\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}";
   styleInject(css_248z);
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    Object.defineProperty(Constructor, "prototype", {
-      writable: false
-    });
-    return Constructor;
-  }
-
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
-
-  function _createForOfIteratorHelper(o, allowArrayLike) {
-    var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-
-    if (!it) {
-      if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-        if (it) o = it;
-        var i = 0;
-
-        var F = function () {};
-
-        return {
-          s: F,
-          n: function () {
-            if (i >= o.length) return {
-              done: true
-            };
-            return {
-              done: false,
-              value: o[i++]
-            };
-          },
-          e: function (e) {
-            throw e;
-          },
-          f: F
-        };
-      }
-
-      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-
-    var normalCompletion = true,
-        didErr = false,
-        err;
-    return {
-      s: function () {
-        it = it.call(o);
-      },
-      n: function () {
-        var step = it.next();
-        normalCompletion = step.done;
-        return step;
-      },
-      e: function (e) {
-        didErr = true;
-        err = e;
-      },
-      f: function () {
-        try {
-          if (!normalCompletion && it.return != null) it.return();
-        } finally {
-          if (didErr) throw err;
-        }
-      }
-    };
-  }
 
   /**
    *检查是否是移动端
@@ -203,7 +104,7 @@
     return document.querySelector(params);
   };
   /**
-   * 处理循环json
+   * 处理循环引用的json
    * @param {*} data
    */
 
@@ -250,6 +151,7 @@
 
     if (dialogStyle === 'textDialog') {
       toastDOM.style.borderRadius = '5px';
+      toastDOM.style.borderRadius = '5px';
     }
 
     toastDOM.innerHTML = content;
@@ -278,78 +180,39 @@
    * @class Listener
    */
 
-  var Listener = /*#__PURE__*/_createClass(function Listener(element, recognizer) {
-    _classCallCheck(this, Listener);
-
-    var contexts = new Map();
-    element.addEventListener('touchstart', function (event) {
-      var _iterator = _createForOfIteratorHelper(event.changedTouches),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var touch = _step.value;
-          var context = Object.create(null);
+  class Listener {
+    constructor(element, recognizer) {
+      let contexts = new Map();
+      element.addEventListener('touchstart', event => {
+        for (let touch of event.changedTouches) {
+          let context = Object.create(null);
           contexts.set(touch.identifier, context);
           recognizer.start(touch, context);
         }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    });
-    element.addEventListener('touchmove', function (event) {
-      var _iterator2 = _createForOfIteratorHelper(event.changedTouches),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var touch = _step2.value;
-          var context = contexts.get(touch.identifier);
+      });
+      element.addEventListener('touchmove', event => {
+        for (let touch of event.changedTouches) {
+          let context = contexts.get(touch.identifier);
           recognizer.move(touch, context);
         }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-    });
-    element.addEventListener('touchend', function (event) {
-      var _iterator3 = _createForOfIteratorHelper(event.changedTouches),
-          _step3;
-
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var touch = _step3.value;
-          var context = contexts.get(touch.identifier);
+      });
+      element.addEventListener('touchend', event => {
+        for (let touch of event.changedTouches) {
+          let context = contexts.get(touch.identifier);
           recognizer.end(touch, context);
           contexts.delete(touch.identifier);
         }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
-      }
-    });
-    element.addEventListener('cancel', function (event) {
-      var _iterator4 = _createForOfIteratorHelper(event.changedTouches),
-          _step4;
-
-      try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var touch = _step4.value;
-          var context = contexts.get(touch.identifier);
+      });
+      element.addEventListener('cancel', event => {
+        for (let touch of event.changedTouches) {
+          let context = contexts.get(touch.identifier);
           recognizer.cancel(touch, context);
           contexts.delete(touch.identifier);
         }
-      } catch (err) {
-        _iterator4.e(err);
-      } finally {
-        _iterator4.f();
-      }
-    });
-  });
+      });
+    }
+
+  }
   /**
    * 识别手势
    *
@@ -357,145 +220,128 @@
    * @class Recognizer
    */
 
-  var Recognizer = /*#__PURE__*/function () {
-    function Recognizer(dispatcher) {
-      _classCallCheck(this, Recognizer);
-
+  class Recognizer {
+    constructor(dispatcher) {
       this.dispatcher = dispatcher;
     }
 
-    _createClass(Recognizer, [{
-      key: "start",
-      value: function start(point, context) {
-        var _this = this;
+    start(point, context) {
+      context.startX = point.clientX;
+      context.startY = point.clientY; //更新状态
 
-        context.startX = point.clientX;
-        context.startY = point.clientY; //更新状态
-
+      context.isPan = false;
+      context.isTap = true;
+      context.isPress = false;
+      context.handler = setTimeout(() => {
         context.isPan = false;
-        context.isTap = true;
-        context.isPress = false;
-        context.handler = setTimeout(function () {
-          context.isPan = false;
-          context.isTap = false;
-          context.isPress = true;
-
-          _this.dispatcher.dispatch('press', {
-            clientX: point.clientX,
-            clientY: point.clientY
-          });
-
-          context.handler = null; //保护不会在press-start时再次触发
-        }, 500);
-      }
-    }, {
-      key: "move",
-      value: function move(point, context) {
-        var dx = point.clientX - context.startX;
-        var dy = point.clientY - context.startY;
-        var d = Math.pow(dx, 2) + Math.pow(dy, 2); //处理临界状态
-
-        if (!context.isPan && d > 100) {
-          context.isPan = true;
-          context.isTap = false;
-          context.isPress = false;
-          context.isVertical = Math.abs(dx) < Math.abs(dy);
-          this.dispatcher.dispatch('panstart', {
-            startX: context.startX,
-            startY: context.startY,
-            clientX: point.clientX,
-            clientY: point.clientY,
-            dx: dx,
-            dy: dy,
-            isVertical: context.isVertical
-          });
-          clearTimeout(context.handler);
-        } //此时一直在滑动
-
-
-        if (context.isPan) {
-          this.dispatcher.dispatch('pan', {
-            startX: context.startX,
-            startY: context.startY,
-            clientX: point.clientX,
-            clientY: point.clientY,
-            dx: dx,
-            dy: dy,
-            isVertical: context.isVertical
-          });
-        } //筛选前500个取平均数
-
-
-        if (context.points) {
-          context.points = context.points.filter(function (point) {
-            return Date.now() - point.t < 500;
-          });
-        } else {
-          context.points = [];
-        }
-
-        context.points.push({
-          t: Date.now(),
-          x: point.clientX,
-          y: point.clientY
+        context.isTap = false;
+        context.isPress = true;
+        this.dispatcher.dispatch('press', {
+          clientX: point.clientX,
+          clientY: point.clientY
         });
+        context.handler = null; //保护不会在press-start时再次触发
+      }, 500);
+    }
+
+    move(point, context) {
+      let dx = point.clientX - context.startX;
+      let dy = point.clientY - context.startY;
+      let d = dx ** 2 + dy ** 2; //处理临界状态
+
+      if (!context.isPan && d > 100) {
+        context.isPan = true;
+        context.isTap = false;
+        context.isPress = false;
+        context.isVertical = Math.abs(dx) < Math.abs(dy);
+        this.dispatcher.dispatch('panstart', {
+          startX: context.startX,
+          startY: context.startY,
+          clientX: point.clientX,
+          clientY: point.clientY,
+          dx,
+          dy,
+          isVertical: context.isVertical
+        });
+        clearTimeout(context.handler);
+      } //此时一直在滑动
+
+
+      if (context.isPan) {
+        this.dispatcher.dispatch('pan', {
+          startX: context.startX,
+          startY: context.startY,
+          clientX: point.clientX,
+          clientY: point.clientY,
+          dx,
+          dy,
+          isVertical: context.isVertical
+        });
+      } //筛选前500个取平均数
+
+
+      if (context.points) {
+        context.points = context.points.filter(point => Date.now() - point.t < 500);
+      } else {
+        context.points = [];
       }
-    }, {
-      key: "end",
-      value: function end(point, context) {
-        context.isFlick = false; //在pan start 后isFlick代表快速滑动500ms内会触发flick
 
-        if (context.isTap) {
-          this.dispatcher.dispatch('tap', {}); //发布tap事件
+      context.points.push({
+        t: Date.now(),
+        x: point.clientX,
+        y: point.clientY
+      });
+    }
 
-          clearTimeout(context.handler);
-        }
+    end(point, context) {
+      context.isFlick = false; //在pan start 后isFlick代表快速滑动500ms内会触发flick
 
-        if (context.isPan) {
-          context.points = context.points.filter(function (point) {
-            return Date.now() - point.t < 500;
-          });
-          var d, v;
+      if (context.isTap) {
+        this.dispatcher.dispatch('tap', {}); //发布tap事件
 
-          if (!context.points.length) {
-            v = 0;
-          } else {
-            d = Math.sqrt(Math.pow(point.clientX - context.points[0].x, 2) + Math.pow(point.clientY - context.points[0].y, 2));
-            v = d / (Date.now() - context.points[0].t);
-          }
-
-          if (v > 1.5) {
-            context.isFlick = true;
-            this.dispatcher.dispatch('flick', {}); //发布flick事件
-          } else {
-            context.isFlick = false;
-            this.dispatcher.dispatch('panend', {
-              clientX: point.clientX,
-              clientY: point.clientY
-            }); //发布pan-end 事件 
-          }
-        }
-
-        if (context.isPress) {
-          this.dispatcher.dispatch('panend', {
-            startX: context.startX,
-            startY: context.startY,
-            clientX: point.clientX,
-            clientY: point.clientY,
-            isVertical: context.isVertical,
-            isFlick: context.isFlick
-          });
-        }
-      }
-    }, {
-      key: "cancel",
-      value: function cancel(point, context) {
         clearTimeout(context.handler);
       }
-    }]);
 
-    return Recognizer;
-  }();
+      if (context.isPan) {
+        context.points = context.points.filter(point => Date.now() - point.t < 500);
+        let d, v;
+
+        if (!context.points.length) {
+          v = 0;
+        } else {
+          d = Math.sqrt((point.clientX - context.points[0].x) ** 2 + (point.clientY - context.points[0].y) ** 2);
+          v = d / (Date.now() - context.points[0].t);
+        }
+
+        if (v > 1.5) {
+          context.isFlick = true;
+          this.dispatcher.dispatch('flick', {}); //发布flick事件
+        } else {
+          context.isFlick = false;
+          this.dispatcher.dispatch('panend', {
+            clientX: point.clientX,
+            clientY: point.clientY
+          }); //发布pan-end 事件 
+        }
+      }
+
+      if (context.isPress) {
+        this.dispatcher.dispatch('panend', {
+          startX: context.startX,
+          startY: context.startY,
+          clientX: point.clientX,
+          clientY: point.clientY,
+          isVertical: context.isVertical,
+          isFlick: context.isFlick
+        });
+      }
+    }
+
+    cancel(point, context) {
+      clearTimeout(context.handler);
+    }
+
+  }
   /**
    * 分发器
    *
@@ -503,28 +349,22 @@
    * @class dispatcher
    */
 
-  var Dispatcher = /*#__PURE__*/function () {
-    function Dispatcher(element) {
-      _classCallCheck(this, Dispatcher);
-
+  class Dispatcher {
+    constructor(element) {
       this.element = element;
     }
 
-    _createClass(Dispatcher, [{
-      key: "dispatch",
-      value: function dispatch(type, properties) {
-        var event = new Event(type);
+    dispatch(type, properties) {
+      let event = new Event(type);
 
-        for (var name in properties) {
-          event[name] = properties[name];
-        }
-
-        this.element.dispatchEvent(event);
+      for (let name in properties) {
+        event[name] = properties[name];
       }
-    }]);
 
-    return Dispatcher;
-  }();
+      this.element.dispatchEvent(event);
+    }
+
+  }
   /**
    * 手势快速监听
    *
@@ -553,21 +393,21 @@
       h5Tools.startdevTools();
     }
 
-    var envBoxDOM = document.getElementById('envBox');
+    let envBoxDOM = document.getElementById('envBox');
     envBoxDOM.style.display = 'none';
-    var dx = 0,
+    let dx = 0,
         dy = 0,
         startX = 0,
         clientX = 0;
-    var isRight = false,
+    let isRight = false,
         isRight_old_dy = 0;
-    var isLeftBias = false,
+    let isLeftBias = false,
         isLeftBias_old_dx = false;
-    var isRight_two = false;
-    var timer = null;
+    let isRight_two = false;
+    let timer = null;
 
     if (options.endTime) {
-      setTimeout(function () {
+      setTimeout(() => {
         if (timer) {
           clearInterval(timer);
           timer = null;
@@ -576,14 +416,14 @@
     }
 
     if (!document || !document.documentElement) return;
-    document.documentElement.addEventListener('pan', function (e) {
+    document.documentElement.addEventListener('pan', e => {
       dx = e.dx;
       dy = e.dy;
       startX = e.startX;
       clientX = e.clientX;
       if (timer) return; //防止多次執行
 
-      timer = setInterval(function () {
+      timer = setInterval(() => {
         //向右平移
         if (dx > 200 && !isRight) {
           isRight = true;
@@ -617,8 +457,8 @@
 
 
   function startGesture(element) {
-    var thumb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'z';
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    let thumb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'z';
+    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     //开启手势控制
     if (thumb === 'z') {
@@ -1127,6 +967,12 @@
     errorCount: 0,
     errorSum: '',
     errorList: []
+  }; //性能标准
+
+  const performaceData = {
+    FP: [30, 100],
+    DCL: [500, 1200],
+    L: [600, 2000]
   }; //路由数据采集
 
   const routesData = {
@@ -1379,7 +1225,7 @@
     let originSetItem = localStorage.setItem; //自定义分发事件
 
     localStorage.setItem = function (key, val) {
-      val = JSON.parse(val);
+      val = handleCircularJson(val);
       let event = new Event("setItem", {
         key: val
       });
@@ -1404,11 +1250,54 @@
    */
 
 
-  const preWatchSystem = () => {
+  const preWatchSystem = async () => {
     function plusReady() {
-      systemData = plus.device; // alert("IMEI: " + plus.device.imei);  //设备的国际移动设备身份码
-      // alert("IMEI: " + plus.device.model);  // 设备的型号
-      // alert("uuid: " + plus.device.uuid);   //设备的uuid
+      plus.geolocation.getCurrentPosition(function (p) {
+        console.log(JSON.stringify(p));
+        systemData.latitude = p.coords.latitude;
+        systemData.longitude = p.coords.longitude;
+        systemData.altitude = p.coords.altitude;
+        systemData.accuracy = p.coords.accuracy;
+        systemData.country = p.address.country;
+        systemData.city = p.address.city;
+        systemData.district = p.address.district;
+        systemData.street = p.address.street;
+        systemData.streetNum = p.address.streetNum;
+        systemData.poiName = p.address.poiName;
+        systemData.postalCode = p.address.postalCode;
+        systemData.cityCode = p.address.cityCode;
+        systemData.addresses = p.addresses;
+      }, function (e) {
+        alert('Geolocation error: ' + e.message);
+      }); //获取H5的app 设备信息
+
+      plus.device.getInfo({
+        success(deviceInfo) {
+          systemData = {
+            IMEI: deviceInfo.imei,
+            IMSI: deviceInfo.imsi,
+            uuid: deviceInfo.uuid,
+            Model: plus.device.model,
+            vendor: plus.device.vendor,
+            dpiX: plus.screen.dpiX,
+            dpiY: plus.screen.dpiY,
+            height: plus.screen.height,
+            width: plus.screen.width,
+            resolutionHeight: plus.screen.resolutionHeight,
+            resolutionWidth: plus.screen.resolutionWidth,
+            scale: plus.screen.scale,
+            CONNECTION_NONE: plus.networkinfo.CONNECTION_NONE,
+            CONNECTION_ETHERNET: plus.networkinfo.CONNECTION_ETHERNET,
+            CONNECTION_WIFI: plus.networkinfo.CONNECTION_WIFI,
+            language: plus.os.language,
+            name: plus.os.name,
+            vendor: plus.os.vendor,
+            version: plus.os.version,
+            language: plus.os.language
+          };
+        }
+
+      });
     }
 
     if (window.plus) {
@@ -1592,7 +1481,13 @@
     FP = domLoading - navigationStart;
     DCL = domContentLoadedEventEnd - navigationStart;
     L = loadEventEnd - navigationStart;
-    let content = `<div>首屏开始渲染时间:${FP}ms</div><br><div>DOM加载完毕时间:${DCL}ms</div><br><div>所有资源及DOM加载完毕时间:${L}ms</div>`;
+
+    function getPerformaceStyle(type, data) {
+      let standard = performaceData[type];
+      return data < standard[0] ? 'xn-quick xn' : data > standard[1] ? 'xn-low xn' : 'xn-mid xn';
+    }
+
+    let content = `<div>首屏渲染: <span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕: <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成: <span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`;
 
     button.onclick = () => {
       createDialog(content);
@@ -1665,7 +1560,8 @@
     storageBtn.innerText = 'storage';
 
     storageBtn.onclick = () => {
-      let storageInfoStr = ''; //展示前几
+      let storageInfoStr = '';
+      let storageList = []; //展示前几
 
       let len = storageData.newStorageList?.length;
 
@@ -1678,14 +1574,23 @@
         return;
       }
 
-      storageData.newStorageList.forEach(storage => {
+      storageData.newStorageList.forEach((storage, index) => {
         let k = storage[0];
-        let v = JSON.parse(storage[1]);
+        let v = JSON.parse(handleCircularJson(storage[1]));
         let type = checkType(v);
-        let str = `<div>key: ${k} val: ${v} type: ${type} <br></div>`;
+        let str = `<div class='envBox-inlineText storage-box'><span class='storage-key'>key: </span><span >${k}</span> <span class='storage-key'>val: </span><span >${v}</span> <span class='storage-key'>type: </span><span >${type}</span> <br></div>`;
         storageInfoStr += str;
+        let strAll = str.replace('envBox-inlineText', '');
+        storageList.push(strAll);
       });
-      createDialog(storageInfoStr);
+      createDialog(storageInfoStr); //开始监听url点击，展示详情
+
+      let storageDOM = document.querySelectorAll('.storage-box');
+      storageDOM.forEach((dom, index) => {
+        dom.addEventListener('click', () => {
+          createToastText(storageList[index], 5000);
+        }, false);
+      });
     };
   };
   /**
@@ -1701,9 +1606,15 @@
 
     systemBtn.onclick = () => {
       if (JSON.stringify(systemData) !== '{}') {
-        createDialog(`<div>${JSON.stringify(systemData)}</div>`);
+        let contents = '';
+
+        for (const [k, v] of Object.entries(systemData)) {
+          contents += `<div>${k}: ${v}</div>`;
+        }
+
+        createDialog(contents);
       } else {
-        createToast('请在真机webview调试');
+        createToast('请在webview中调试');
       }
     };
   };
@@ -1775,7 +1686,7 @@
           let allContent = '';
 
           for (const [k, v] of Object.entries(httpData.httpList[index])) {
-            allContent += `<div>${k}: ${v}</div> <br>`;
+            allContent += `<div>${k}: ${v}</div> `;
           }
 
           createToastText(allContent, 5000);

@@ -1,12 +1,13 @@
 /* dialog componetnts */
 :root {
-  --main-deep: #0987ee; 
-  --main-light: #40a9ff; 
+  --main-moredeep: #194c75;
+  --main-deep: #0987ee;
+  --main-light: #40a9ff;
 
-  --common-info: #40a9ff; 
-  --common-warn: #ffa20d; 
-  --common-error: #ff2a2a; 
-  --common-success: #00d41c; 
+  --common-info: #40a9ff;
+  --common-warn: #ffa20d;
+  --common-error: #ff2a2a;
+  --common-success: #00d41c;
 }
 
 #envBox-dialog {
@@ -79,15 +80,17 @@
   background: var(--common-error);
 }
 
-.console {
+.console,
+.http {
   width: 100%;
   display: flex;
   word-break: break-all;
   display: inline-block;
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow:ellipsis;
   border-radius: 5px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .console-log {
@@ -110,11 +113,7 @@
   background: var(--main-deep);
 }
 
-.http {
-  border-radius: 5px;
-  cursor: pointer;
-  line-height: 30px;
-}
+
 
 .http-start {
   color: #fff;
@@ -131,3 +130,34 @@
   background: var(--common-error);
 }
 
+.xn {
+  color: #fff;
+  border-radius: 5px;
+}
+
+.xn-quick {
+  background: var(--common-success);
+}
+
+.xn-mid {
+  background: var(--common-warn);
+}
+
+.xn-low {
+  background: var(--common-error);
+}
+
+.storage-box {
+  border-radius: 2px;
+  word-break: break-all;
+  background: var(--main-deep);
+  width: 100%;
+  display: flex;
+  word-break: break-all;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.storage-key {
+  background: var(--main-moredeep);
+}

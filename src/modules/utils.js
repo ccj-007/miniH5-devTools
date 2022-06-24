@@ -54,7 +54,7 @@ export const $ = (params) => {
 }
 
 /**
- * 处理循环json
+ * 处理循环引用的json
  * @param {*} data
  */
 export const handleCircularJson = (data) => {

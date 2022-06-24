@@ -9,7 +9,7 @@ import { enableGesture } from "./touch.js";
 import { createDialog, updateDialog } from './components/dialog'
 import { createToast, createErrorToast, createToastText } from './components/toast'
 import { Storage, checkType, handleCircularJson } from "@/utils";
-import { proxy, unProxy } from "ajax-hook";
+import { proxy } from "ajax-hook";
 
 let expandUI = false  //是否已经展示按钮
 const insertDOM = document.querySelector('#app')
@@ -55,6 +55,13 @@ const errorData = {
   errorSum: '',
   errorList: []
 }
+//性能标准
+const performaceData = {
+  FP: [30, 100],
+  DCL: [500, 1200],
+  L: [600, 2000]
+}
+
 //路由数据采集
 const routesData = {
   //用于当前页面展示
@@ -75,6 +82,7 @@ const storageData = {
 }
 //系统数据采集
 let systemData = {
+
 }
 //console采集
 let consoleData = {
@@ -278,7 +286,7 @@ const preWatchStorage = () => {
   let originSetItem = localStorage.setItem
   //自定义分发事件
   localStorage.setItem = function (key, val) {
-    val = JSON.parse(val)
+    val = (handleCircularJson(val))
 
     let event = new Event("setItem", { key: val });
     event.key = key
@@ -300,12 +308,55 @@ const preWatchStorage = () => {
 /**
  * 前置监听系统数据
  */
-const preWatchSystem = () => {
+const preWatchSystem = async () => {
   function plusReady () {
-    systemData = plus.device
-    // alert("IMEI: " + plus.device.imei);  //设备的国际移动设备身份码
-    // alert("IMEI: " + plus.device.model);  // 设备的型号
-    // alert("uuid: " + plus.device.uuid);   //设备的uuid
+    plus.geolocation.getCurrentPosition(function (p) {
+      console.log(JSON.stringify(p));
+      systemData.latitude = p.coords.latitude
+      systemData.longitude = p.coords.longitude
+      systemData.altitude = p.coords.altitude
+      systemData.accuracy = p.coords.accuracy
+
+      systemData.country = p.address.country
+      systemData.city = p.address.city
+      systemData.district = p.address.district
+      systemData.street = p.address.street
+      systemData.streetNum = p.address.streetNum
+      systemData.poiName = p.address.poiName
+      systemData.postalCode = p.address.postalCode
+      systemData.cityCode = p.address.cityCode
+      systemData.addresses = p.addresses
+    }, function (e) {
+      alert('Geolocation error: ' + e.message);
+    });
+
+    //获取H5的app 设备信息
+    plus.device.getInfo({
+      success (deviceInfo) {
+        systemData = {
+          IMEI: deviceInfo.imei,
+          IMSI: deviceInfo.imsi,
+          uuid: deviceInfo.uuid,
+          Model: plus.device.model,
+          vendor: plus.device.vendor,
+          dpiX: plus.screen.dpiX,
+          dpiY: plus.screen.dpiY,
+          height: plus.screen.height,
+          width: plus.screen.width,
+          resolutionHeight: plus.screen.resolutionHeight,
+          resolutionWidth: plus.screen.resolutionWidth,
+          scale: plus.screen.scale,
+          CONNECTION_NONE: plus.networkinfo.CONNECTION_NONE,
+          CONNECTION_ETHERNET: plus.networkinfo.CONNECTION_ETHERNET,
+          CONNECTION_WIFI: plus.networkinfo.CONNECTION_WIFI,
+          language: plus.os.language,
+          name: plus.os.name,
+          vendor: plus.os.vendor,
+          version: plus.os.version,
+          language: plus.os.language,
+        }
+      }
+    });
   }
   if (window.plus) {
     plusReady();
@@ -463,7 +514,14 @@ const loadPerformanceModule = (envBox) => {
   DCL = domContentLoadedEventEnd - navigationStart
   L = loadEventEnd - navigationStart
 
-  let content = `<div>首屏开始渲染时间:${FP}ms</div><br><div>DOM加载完毕时间:${DCL}ms</div><br><div>所有资源及DOM加载完毕时间:${L}ms</div>`
+  function getPerformaceStyle (type, data) {
+    let standard = performaceData[type]
+    return data < standard[0] ? 'xn-quick xn' : (
+      data > standard[1] ? 'xn-low xn' : 'xn-mid xn'
+    )
+  }
+
+  let content = `<div>首屏渲染: <span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕: <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成: <span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`
 
   button.onclick = () => {
     createDialog(content)
@@ -522,7 +580,7 @@ const loadStorageModule = (envBox) => {
 
   storageBtn.onclick = () => {
     let storageInfoStr = ''
-
+    let storageList = []
     //展示前几
     let len = storageData.newStorageList?.length
     if (isNewStorage && maxLen < len) {
@@ -533,14 +591,25 @@ const loadStorageModule = (envBox) => {
       return
     }
 
-    storageData.newStorageList.forEach(storage => {
+    storageData.newStorageList.forEach((storage, index) => {
       let k = storage[0]
-      let v = JSON.parse(storage[1])
+      let v = JSON.parse(handleCircularJson(storage[1]))
       let type = checkType(v)
-      let str = `<div>key: ${k} val: ${v} type: ${type} <br></div>`
+      let str = `<div class='envBox-inlineText storage-box'><span class='storage-key'>key: </span><span >${k}</span> <span class='storage-key'>val: </span><span >${v}</span> <span class='storage-key'>type: </span><span >${type}</span> <br></div>`
       storageInfoStr += str
+
+      let strAll = str.replace('envBox-inlineText', '')
+      storageList.push(strAll)
     })
     createDialog(storageInfoStr)
+
+    //开始监听url点击，展示详情
+    let storageDOM = document.querySelectorAll('.storage-box')
+    storageDOM.forEach((dom, index) => {
+      dom.addEventListener('click', () => {
+        createToastText(storageList[index], 5000)
+      }, false)
+    })
   }
 }
 
@@ -555,9 +624,13 @@ const loadSystemModule = (envBox) => {
 
   systemBtn.onclick = () => {
     if (JSON.stringify(systemData) !== '{}') {
-      createDialog(`<div>${JSON.stringify(systemData)}</div>`)
+      let contents = ''
+      for (const [k, v] of Object.entries(systemData)) {
+        contents += `<div>${k}: ${v}</div>`
+      }
+      createDialog(contents)
     } else {
-      createToast('请在真机webview调试')
+      createToast('请在webview中调试')
     }
   }
 }
@@ -624,7 +697,7 @@ const loadHttpModule = (envBox) => {
       dom.addEventListener('click', () => {
         let allContent = ''
         for (const [k, v] of Object.entries(httpData.httpList[index])) {
-          allContent += `<div>${k}: ${v}</div> <br>`
+          allContent += `<div>${k}: ${v}</div> `
         }
         createToastText(allContent, 5000)
       }, false)
