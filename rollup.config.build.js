@@ -5,7 +5,7 @@ import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import alias from '@rollup/plugin-alias'
 import svg from 'rollup-plugin-svg';
-
+import { visualizer } from "rollup-plugin-visualizer";
 const path = require('path')
 const resolveDir = dir => path.join(__dirname, dir)
 
@@ -29,6 +29,7 @@ export default {
         find: '@', replacement: resolveDir('src/modules')
       }]
     }),
-    terser()
+    terser(),
+    visualizer(),
   ]
 }

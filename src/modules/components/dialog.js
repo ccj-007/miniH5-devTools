@@ -1,7 +1,7 @@
 /**
  * @description dialog components
  */
-import { Storage } from "@/utils";
+import { Storage, $ } from "@/utils";
 import closeIconSrc from '@/svg/close.svg'
 
 /**
@@ -38,18 +38,19 @@ export const createDialog = (contentStr) => {
  */
 export const clearDialog = () => {
   let dialogDOM = document.querySelector('#envBox-dialog')
-  console.log(dialogDOM)
   dialogDOM.innerHTML = ''
   dialogDOM.style.display = 'none'
   Storage.set('global_forbid', false)
 }
 
 /**
- * 更新dialog
+ * 更新dialog(支持 error)
  *
  * @param {*} contentStr
  */
 export const updateDialog = (contentStr) => {
+  if (!$('.envBox-error')) return
+
   let dialogDOM = document.querySelector('#envBox-dialog')
   if (!dialogDOM) return
   if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''

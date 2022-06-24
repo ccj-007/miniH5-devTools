@@ -41,6 +41,6 @@ export default {
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
-    })
+    }),
   ]
 }

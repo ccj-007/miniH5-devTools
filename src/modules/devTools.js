@@ -7,8 +7,8 @@ import './style/component.css'
 import './style/global.css'
 import { enableGesture } from "./touch.js";
 import { createDialog, updateDialog } from './components/dialog'
-import { createToast, createErrorToast } from './components/toast'
-import { Storage, checkType } from "@/utils";
+import { createToast, createErrorToast, createToastText } from './components/toast'
+import { Storage, checkType, handleCircularJson } from "@/utils";
 import { proxy, unProxy } from "ajax-hook";
 
 let expandUI = false  //是否已经展示按钮
@@ -19,8 +19,8 @@ const newOptions = {
   insertDOM: insertDOM, //插入的envTools的容器
   wait: 1000, //等待时间
   needSleep: false, //是否要延迟加载 
-  envBoxIdName: 'envBox',
-  envBoxExpandIdName: 'envBox-expand',
+  envBoxIdName: 'envBox',  //未展开DOM
+  envBoxExpandIdName: 'envBox-expand', //延展后的DOM
   envList: ['test', 'dev', 'prebrand'],  //环境列表
   watchEnv: true, //是否监听环境
   watchPerformance: true, //是否监听性能
@@ -41,7 +41,7 @@ const newOptions = {
       did: '', //设备id
     },
     method: 'gif', //是否通过sendBeacon发送埋点数据 'beacon' | 'gif' 
-    baseURL: 'http://localhost:8000'
+    baseURL: 'http://localhost:8000'  //请求的根路径
   },
   version: '1.0.0', //版本信息
   maxLimit: 5,  //最大缓存限制
@@ -164,7 +164,7 @@ const createEnvDevTools = (options) => {
     watchConsole && loadConsoleModule(envBox)
     watchHttp && loadHttpModule(envBox)
     loadVersionModule(envBox)
-    loadCustomModule(envBox)
+    loadClearModule(envBox)
 
     //处理通用样式
     const envBoxBtnList = document.querySelectorAll('#envBox-expand button')
@@ -340,21 +340,41 @@ const preWatchHttp = () => {
     //请求发起前进入
     onRequest: (config, handler) => {
       console.log("preWatchHttp----start", config)
-      httpData.httpList.push(config)
+
+      let sendObj = {
+        method: config.method,
+        headers: config['content-type'],
+        url: config.url,
+        body: config.body || ''
+      }
+      httpData.httpList.push(sendObj)
       httpData.urlList.push({ url: config.url, type: 'send' })
       handler.next(config);
     },
     //请求发生错误时进入，比如超时；注意，不包括http状态码错误，如404仍然会认为请求成功
     onError: (err, handler) => {
       console.log("preWatch----error", err)
-      httpData.httpList.push(err)
+
+      let errObj = {
+        method: err.config.method,
+        headers: err.config['content-type'],
+        url: err.config.url,
+      }
+      httpData.httpList.push(errObj)
       httpData.urlList.push({ url: err.config.url, type: 'err' })
       handler.next(err)
     },
     //请求成功后进入
     onResponse: (res, handler) => {
       console.log("preWatch----success", res)
-      httpData.httpList.push(res)
+      let sucObj = {
+        method: res.config.method,
+        headers: res.headers['content-type'],
+        url: res.config.url,
+        status: res.status,
+        response: res.response,
+      }
+      httpData.httpList.push(sucObj)
       httpData.urlList.push({ url: res.config.url, type: 'suc' })
       handler.next(res)
     }
@@ -465,7 +485,7 @@ const loadErrorModule = (envBox) => {
       createToast('no error')
       return
     }
-    createDialog(`<div>${errorSum}</div>`)
+    createDialog(`<div class='envBox-error'>${errorSum}</div>`)
   }
 }
 
@@ -482,7 +502,7 @@ const loadRoutesModule = (envBox) => {
   routesBtn.onclick = () => {
     let routerInfoStr = ''
     for (const [key, val] of Object.entries(routeInfo)) {
-      let str = `<div>${key + '-----' + val}</div><br>`
+      let str = `<div class='envBox-textline'>${key + '->' + val}</div>`
       routerInfoStr += str
     }
     createDialog(routerInfoStr)
@@ -561,13 +581,24 @@ const loadConsoleModule = (envBox) => {
     consoleData.consoleList.forEach(content => {
       let { data, type } = content
       if (typeof data === 'object') {
-        sumContent += `<div class='console-${type}'>${JSON.stringify(data)}</div>`
+        let newObj = handleCircularJson(data)
+        sumContent += `<div class='console console-${type}'>${newObj}</div>`
       } else {
-        sumContent += `<div class='console-${type}'>${data}</div>`
+        sumContent += `<div class='console console-${type}'>${data}</div>`
       }
     })
 
     createDialog(`<div>${sumContent}</div>`)
+
+    //开始监听log点击，展示详情
+    let logDOM = document.querySelectorAll('.console')
+    logDOM.forEach((dom, index) => {
+      dom.addEventListener('click', () => {
+        const data = consoleData.consoleList[index].data
+        let allContent = typeof data === 'object' ? handleCircularJson(data) : data
+        createToastText(allContent, 5000)
+      }, false)
+    })
   }
 }
 
@@ -587,7 +618,17 @@ const loadHttpModule = (envBox) => {
     })
     createDialog(urlContents)
 
-    // createToast('未开放.....')
+    //开始监听url点击，展示详情
+    let urlDOM = document.querySelectorAll('.http')
+    urlDOM.forEach((dom, index) => {
+      dom.addEventListener('click', () => {
+        let allContent = ''
+        for (const [k, v] of Object.entries(httpData.httpList[index])) {
+          allContent += `<div>${k}: ${v}</div> <br>`
+        }
+        createToastText(allContent, 5000)
+      }, false)
+    })
   }
 }
 
@@ -606,16 +647,21 @@ const loadVersionModule = (envBox) => {
 }
 
 /**
- * 自定义模块
+ * 清除缓存模块
  * @param {DOM} envBox
  */
-const loadCustomModule = (envBox) => {
-  let customBtn = document.createElement('button')
-  envBox.appendChild(customBtn)
-  customBtn.innerText = 'custom'
+const loadClearModule = (envBox) => {
+  let clearBtn = document.createElement('button')
+  envBox.appendChild(clearBtn)
+  clearBtn.innerText = 'clear'
 
-  customBtn.onclick = () => {
-    createToast('未开放.....')
+  clearBtn.onclick = () => {
+    errorData.errorList = []
+    routesData.routesList = []
+    storageData.newStorageList = []
+    consoleData.consoleList = []
+    httpData.httpList = []
+    createToast('cache cleared successfully')
   }
 }
 

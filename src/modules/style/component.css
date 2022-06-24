@@ -3,7 +3,7 @@
   --main-deep: #0987ee; 
   --main-light: #40a9ff; 
 
-  --common-info: #0987ee; 
+  --common-info: #40a9ff; 
   --common-warn: #ffa20d; 
   --common-error: #ff2a2a; 
   --common-success: #00d41c; 
@@ -12,7 +12,7 @@
 #envBox-dialog {
   position: fixed;
   font-size: 14px;
-  top: 40%;
+  max-width: 80%;
   z-index: 99;
   background: var(--main-light);
   padding: 20px;
@@ -47,10 +47,11 @@
   border-radius: 0 0 0 50%;
 }
 
-
 /* toast componetnts */
 #envBox-toast {
   position: fixed;
+  max-width: 80%;
+  word-break: break-all;
   top: 2%;
   z-index: 99;
   padding: 15px;
@@ -72,6 +73,22 @@
   background: var(--common-warn);
 }
 
+.envBox-error {
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  background: var(--common-error);
+}
+
+.console {
+  width: 100%;
+  display: flex;
+  word-break: break-all;
+  display: inline-block;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+  border-radius: 5px;
+}
 
 .console-log {
   color: #000;

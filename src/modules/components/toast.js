@@ -1,6 +1,7 @@
 /**
  * @description toast component
  */
+import { $ } from "@/utils";
 
 const toastType = {
   'info': 'envBox-toast-info',
@@ -10,15 +11,25 @@ const toastType = {
 
 /**
  * 创建toast
- * @param {*} content  
- * @param {*} wait 
- * @param {*} type 
+ * @param {string} content  
+ * @param {number} wait 
+ * @param {string} type 
+ * @param {style} dialogStyle 
  */
-export const addToastDOM = (content, wait, type) => {
+export const addToastDOM = (content, wait, type, dialogStyle) => {
+  //去除全局重复
+  if ($('#envBox-toast')) {
+    document.body.removeChild($('#envBox-toast'))
+  }
+
   let toastDOM = document.createElement('div')
   toastDOM.id = 'envBox-toast'
   toastDOM.className = `slide-in-blurred-top ${toastType[type]}`
-  toastDOM.innerText = content
+
+  if (dialogStyle === 'textDialog') {
+    toastDOM.style.borderRadius = '5px'
+  }
+  toastDOM.innerHTML = content
 
   document.body.appendChild(toastDOM)
   setTimeout(() => {
@@ -26,6 +37,9 @@ export const addToastDOM = (content, wait, type) => {
   }, wait);
 }
 
+export const createToastText = function (content, wait = 2000) {
+  addToastDOM(content, wait, 'info', 'textDialog')
+}
 
 export const createToast = function (content, wait = 2000) {
   addToastDOM(content, wait, 'info')

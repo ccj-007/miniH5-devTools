@@ -5,15 +5,44 @@
   factory();
 })((function () { 'use strict';
 
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
+  function styleInject(css, ref) {
+    if ( ref === void 0 ) ref = {};
+    var insertAt = ref.insertAt;
 
-    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-      return typeof obj;
-    } : function (obj) {
-      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    }, _typeof(obj);
+    if (!css || typeof document === 'undefined') { return; }
+
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var style = document.createElement('style');
+    style.type = 'text/css';
+
+    if (insertAt === 'top') {
+      if (head.firstChild) {
+        head.insertBefore(style, head.firstChild);
+      } else {
+        head.appendChild(style);
+      }
+    } else {
+      head.appendChild(style);
+    }
+
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
   }
+
+  var css_248z$3 = ".jello-horizontal {\n  -webkit-animation: jello-horizontal .9s both;\n  animation: jello-horizontal .9s both\n}\n\n@-webkit-keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n@keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n.slide-in-blurred-top {\n  animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both\n}\n\n@keyframes slide-in-blurred-top {\n  0% {\n    transform: translateY(-1000px) scaleY(2.5) scaleX(.2);\n    transform-origin: 50% 0;\n    filter: blur(40px);\n    opacity: 0\n  }\n\n  100% {\n    transform: translateY(0) scaleY(1) scaleX(1);\n    transform-origin: 50% 50%;\n    filter: blur(0);\n    opacity: 1\n  }\n}";
+  styleInject(css_248z$3);
+
+  var css_248z$2 = ":root {\n  --primary-deep: #0987ee; \n  --primary-light: #40a9ff; \n}\n\n#envBox {\n  position: fixed;\n  z-index: 999999999999;\n  top: 50%;\n  right: 0;\n  width: 10px;\n  height: 60px;\n  background: var(--primary-light);\n  transition: top .5s linear;\n  border-radius: 5px 0 0 5px;\n}\n\n#envBox-expand {\n  position: fixed;\n  z-index: 9999999999999;\n  height: 60px;\n  width: 100vw;\n  top: 50%;\n  right: 0;\n  background: var(--primary-light);\n  transition: width .5s linear;\n}\n\n#envBox-expand button {\n  width: 20%;\n  height: 30px;\n  z-index: 1;\n  color: white;\n  background: var(--primary-deep);\n  outline: none;\n  border: none;\n  padding: 0.5em auto;\n  box-sizing: border-box;\n}\n\n#envBox-expand span {\n  color: #ffffff;\n  font-size: 14px;\n}\n\n\n.envBox-textline {\n  line-height: 20px;\n}\n";
+  styleInject(css_248z$2);
+
+  var css_248z$1 = "/* dialog componetnts */\n:root {\n  --main-deep: #0987ee; \n  --main-light: #40a9ff; \n\n  --common-info: #40a9ff; \n  --common-warn: #ffa20d; \n  --common-error: #ff2a2a; \n  --common-success: #00d41c; \n}\n\n#envBox-dialog {\n  position: fixed;\n  font-size: 14px;\n  max-width: 80%;\n  z-index: 99;\n  background: var(--main-light);\n  padding: 20px;\n  border-radius: 5px;\n  color: #fff;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n#envBox-dialog button {\n  z-index: 1;\n  color: white;\n  background: var(--main-deep);\n  outline: none;\n  border: none;\n  padding: 5px 10px;\n  box-sizing: border-box;\n}\n\n.dialog-detail {\n  width: 100%;\n  line-height: 32px;\n  font-size: 14px;\n}\n\n.env-close {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 20px;\n  height: 20px;\n  background: #fff;\n  border-radius: 0 0 0 50%;\n}\n\n/* toast componetnts */\n#envBox-toast {\n  position: fixed;\n  max-width: 80%;\n  word-break: break-all;\n  top: 2%;\n  z-index: 99;\n  padding: 15px;\n  border-radius: 30px;\n  font-size: 14px;\n  color: #fff;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n.envBox-toast-info {\n  background: var(--common-info);\n}\n\n.envBox-toast-error {\n  background: var(--common-error);\n}\n\n.envBox-toast-warn {\n  background: var(--common-warn);\n}\n\n.envBox-error {\n  border-radius: 5px;\n  color: rgb(255, 255, 255);\n  background: var(--common-error);\n}\n\n.console {\n  width: 100%;\n  display: flex;\n  word-break: break-all;\n  display: inline-block;\n  white-space: nowrap; \n  overflow: hidden;\n  text-overflow:ellipsis;\n  border-radius: 5px;\n}\n\n.console-log {\n  color: #000;\n  background: #fff;\n}\n\n.console-warn {\n  color: rgb(255, 255, 255);\n  background: var(--common-warn);\n}\n\n.console-error {\n  color: rgb(255, 255, 255);\n  background: var(--common-error);\n}\n\n.console-info {\n  color: rgb(255, 255, 255);\n  background: var(--main-deep);\n}\n\n.http {\n  border-radius: 5px;\n  cursor: pointer;\n  line-height: 30px;\n}\n\n.http-start {\n  color: #fff;\n  background: var(--common-info);\n}\n\n.http-suc {\n  color: #fff;\n  background: var(--common-success);\n}\n\n.http-err {\n  color: #fff;\n  background: var(--common-error);\n}\n\n";
+  styleInject(css_248z$1);
+
+  var css_248z = "html,\nbody {\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n";
+  styleInject(css_248z);
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -40,44 +69,6 @@
     return Constructor;
   }
 
-  function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-  }
-
-  function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-  }
-
-  function _iterableToArrayLimit(arr, i) {
-    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
-    if (_i == null) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-
-    var _s, _e;
-
-    try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-        _arr.push(_s.value);
-
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"] != null) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-
-    return _arr;
-  }
-
   function _unsupportedIterableToArray(o, minLen) {
     if (!o) return;
     if (typeof o === "string") return _arrayLikeToArray(o, minLen);
@@ -93,10 +84,6 @@
     for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
 
     return arr2;
-  }
-
-  function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
   function _createForOfIteratorHelper(o, allowArrayLike) {
@@ -156,76 +143,131 @@
     };
   }
 
-  function styleInject(css, ref) {
-    if ( ref === void 0 ) ref = {};
-    var insertAt = ref.insertAt;
+  /**
+   *检查是否是移动端
+   *
+   * @return {boolean} 
+   */
+  const isMobileFn = () => {
+    const machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
 
-    if (!css || typeof document === 'undefined') { return; }
+    if (machineType === 'Mobile') {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * localStorage 封装
+   *
+   * @return {boolean} 
+   */
 
-    var head = document.head || document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
-    style.type = 'text/css';
-
-    if (insertAt === 'top') {
-      if (head.firstChild) {
-        head.insertBefore(style, head.firstChild);
-      } else {
-        head.appendChild(style);
+  const Storage = {
+    get(key) {
+      try {
+        return JSON.parse(localStorage.getItem(key));
+      } catch (error) {
+        console.log(error);
       }
-    } else {
-      head.appendChild(style);
+    },
+
+    set(key, val) {
+      localStorage.setItem(key, JSON.stringify(val));
+    },
+
+    remove(key) {
+      localStorage.removeItem(key);
+    },
+
+    clear() {
+      localStorage.clearItem();
     }
 
-    if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(document.createTextNode(css));
-    }
-  }
+  };
+  /**
+   * 检查数据类型工具
+   * @param {*} params
+   * @return {string} 数据类型
+   */
 
-  var css_248z$3 = ".jello-horizontal {\n  -webkit-animation: jello-horizontal .9s both;\n  animation: jello-horizontal .9s both\n}\n\n@-webkit-keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n@keyframes jello-horizontal {\n  0% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n\n  30% {\n    -webkit-transform: scale3d(1.25, .75, 1);\n    transform: scale3d(1.25, .75, 1)\n  }\n\n  40% {\n    -webkit-transform: scale3d(.75, 1.25, 1);\n    transform: scale3d(.75, 1.25, 1)\n  }\n\n  50% {\n    -webkit-transform: scale3d(1.15, .85, 1);\n    transform: scale3d(1.15, .85, 1)\n  }\n\n  65% {\n    -webkit-transform: scale3d(.95, 1.05, 1);\n    transform: scale3d(.95, 1.05, 1)\n  }\n\n  75% {\n    -webkit-transform: scale3d(1.05, .95, 1);\n    transform: scale3d(1.05, .95, 1)\n  }\n\n  100% {\n    -webkit-transform: scale3d(1, 1, 1);\n    transform: scale3d(1, 1, 1)\n  }\n}\n\n.slide-in-blurred-top {\n  animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both\n}\n\n@keyframes slide-in-blurred-top {\n  0% {\n    transform: translateY(-1000px) scaleY(2.5) scaleX(.2);\n    transform-origin: 50% 0;\n    filter: blur(40px);\n    opacity: 0\n  }\n\n  100% {\n    transform: translateY(0) scaleY(1) scaleX(1);\n    transform-origin: 50% 50%;\n    filter: blur(0);\n    opacity: 1\n  }\n}";
-  styleInject(css_248z$3);
+  const checkType = params => {
+    return Object.prototype.toString.call(params).slice(8, -1).toLowerCase();
+  };
+  /**
+   * 获取DOM
+   * @param {*} params
+   */
 
-  var css_248z$2 = ":root {\n  --primary-deep: #0987ee; \n  --primary-light: #40a9ff; \n}\n\n#envBox {\n  position: fixed;\n  z-index: 999999999999;\n  top: 50%;\n  right: 0;\n  width: 10px;\n  height: 60px;\n  background: var(--primary-light);\n  transition: top .5s linear;\n  border-radius: 5px 0 0 5px;\n}\n\n#envBox-expand {\n  position: fixed;\n  z-index: 9999999999999;\n  height: 60px;\n  width: 100vw;\n  top: 50%;\n  right: 0;\n  background: var(--primary-light);\n  transition: width .5s linear;\n}\n\n#envBox-expand button {\n  width: 20%;\n  height: 30px;\n  z-index: 1;\n  color: white;\n  background: var(--primary-deep);\n  outline: none;\n  border: none;\n  padding: 0.5em auto;\n  box-sizing: border-box;\n}\n\n#envBox-expand span {\n  color: #ffffff;\n  font-size: 14px;\n}\n\n";
-  styleInject(css_248z$2);
+  const $ = params => {
+    return document.querySelector(params);
+  };
+  /**
+   * 处理循环json
+   * @param {*} data
+   */
 
-  var css_248z$1 = "/* dialog componetnts */\n:root {\n  --main-deep: #0987ee; \n  --main-light: #40a9ff; \n\n  --common-info: #0987ee; \n  --common-warn: #ffa20d; \n  --common-error: #ff2a2a; \n  --common-success: #00d41c; \n}\n\n#envBox-dialog {\n  position: fixed;\n  font-size: 14px;\n  top: 40%;\n  z-index: 99;\n  background: var(--main-light);\n  padding: 20px;\n  border-radius: 5px;\n  color: #fff;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n#envBox-dialog button {\n  z-index: 1;\n  color: white;\n  background: var(--main-deep);\n  outline: none;\n  border: none;\n  padding: 5px 10px;\n  box-sizing: border-box;\n}\n\n.dialog-detail {\n  width: 100%;\n  line-height: 32px;\n  font-size: 14px;\n}\n\n.env-close {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 20px;\n  height: 20px;\n  background: #fff;\n  border-radius: 0 0 0 50%;\n}\n\n\n/* toast componetnts */\n#envBox-toast {\n  position: fixed;\n  top: 2%;\n  z-index: 99;\n  padding: 15px;\n  border-radius: 30px;\n  font-size: 14px;\n  color: #fff;\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\n}\n\n.envBox-toast-info {\n  background: var(--common-info);\n}\n\n.envBox-toast-error {\n  background: var(--common-error);\n}\n\n.envBox-toast-warn {\n  background: var(--common-warn);\n}\n\n\n.console-log {\n  color: #000;\n  background: #fff;\n}\n\n.console-warn {\n  color: rgb(255, 255, 255);\n  background: var(--common-warn);\n}\n\n.console-error {\n  color: rgb(255, 255, 255);\n  background: var(--common-error);\n}\n\n.console-info {\n  color: rgb(255, 255, 255);\n  background: var(--main-deep);\n}\n\n.http {\n  border-radius: 5px;\n  cursor: pointer;\n  line-height: 30px;\n}\n\n.http-start {\n  color: #fff;\n  background: var(--common-info);\n}\n\n.http-suc {\n  color: #fff;\n  background: var(--common-success);\n}\n\n.http-err {\n  color: #fff;\n  background: var(--common-error);\n}\n\n";
-  styleInject(css_248z$1);
+  const handleCircularJson = data => {
+    const seen = new WeakSet();
+    return JSON.stringify(data, (key, value) => {
+      if (typeof value === "object" && value !== null) {
+        if (seen.has(value)) {
+          return;
+        }
 
-  var css_248z = "html,\nbody {\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n}";
-  styleInject(css_248z);
+        seen.add(value);
+      }
+
+      return value;
+    });
+  };
 
   /**
    * @description toast component
    */
-  var toastType = {
+  const toastType = {
     'info': 'envBox-toast-info',
     'error': 'envBox-toast-error',
     'warn': 'envBox-toast-warn'
   };
   /**
    * 创建toast
-   * @param {*} content  
-   * @param {*} wait 
-   * @param {*} type 
+   * @param {string} content  
+   * @param {number} wait 
+   * @param {string} type 
+   * @param {style} dialogStyle 
    */
 
-  var addToastDOM = function addToastDOM(content, wait, type) {
-    var toastDOM = document.createElement('div');
+  const addToastDOM = (content, wait, type, dialogStyle) => {
+    //去除全局重复
+    if ($('#envBox-toast')) {
+      document.body.removeChild($('#envBox-toast'));
+    }
+
+    let toastDOM = document.createElement('div');
     toastDOM.id = 'envBox-toast';
-    toastDOM.className = "slide-in-blurred-top ".concat(toastType[type]);
-    toastDOM.innerText = content;
+    toastDOM.className = `slide-in-blurred-top ${toastType[type]}`;
+
+    if (dialogStyle === 'textDialog') {
+      toastDOM.style.borderRadius = '5px';
+    }
+
+    toastDOM.innerHTML = content;
     document.body.appendChild(toastDOM);
-    setTimeout(function () {
+    setTimeout(() => {
       document.body.removeChild(toastDOM);
     }, wait);
   };
-  var createToast = function createToast(content) {
-    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  const createToastText = function (content) {
+    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+    addToastDOM(content, wait, 'info', 'textDialog');
+  };
+  const createToast = function (content) {
+    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'info');
   };
-  var createErrorToast = function createErrorToast(content) {
-    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  const createErrorToast = function (content) {
+    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'error');
   };
 
@@ -584,54 +626,6 @@
     }
   }
 
-  /**
-   *检查是否是移动端
-   *
-   * @return {boolean} 
-   */
-  var isMobileFn = function isMobileFn() {
-    var machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
-
-    if (machineType === 'Mobile') {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  /**
-   * localStorage 封装
-   *
-   * @return {boolean} 
-   */
-
-  var Storage = {
-    get: function get(key) {
-      try {
-        return JSON.parse(localStorage.getItem(key));
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    set: function set(key, val) {
-      localStorage.setItem(key, JSON.stringify(val));
-    },
-    remove: function remove(key) {
-      localStorage.removeItem(key);
-    },
-    clear: function clear() {
-      localStorage.clearItem();
-    }
-  };
-  /**
-   * 检查数据类型工具
-   * @param {*} params
-   * @return {string} 数据类型
-   */
-
-  var checkType = function checkType(params) {
-    return Object.prototype.toString.call(params).slice(8, -1).toLowerCase();
-  };
-
   var closeIconSrc = "<svg class='env-close' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"closeIconTitle\" stroke=\"#0987ee\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#0987ee\"> <title id=\"closeIconTitle\">Close</title> <path d=\"M6.34314575 6.34314575L17.6568542 17.6568542M6.34314575 17.6568542L17.6568542 6.34314575\"/> </svg>";
 
   /**
@@ -673,18 +667,18 @@
 
   const clearDialog = () => {
     let dialogDOM = document.querySelector('#envBox-dialog');
-    console.log(dialogDOM);
     dialogDOM.innerHTML = '';
     dialogDOM.style.display = 'none';
     Storage.set('global_forbid', false);
   };
   /**
-   * 更新dialog
+   * 更新dialog(支持 error)
    *
    * @param {*} contentStr
    */
 
   const updateDialog = contentStr => {
+    if (!$('.envBox-error')) return;
     let dialogDOM = document.querySelector('#envBox-dialog');
     if (!dialogDOM) return;
     if (dialogDOM.innerHTML) dialogDOM.innerHTML = '';
@@ -1057,11 +1051,14 @@
     }, win);
   }
 
-  var expandUI = false; //是否已经展示按钮
+  /**
+   * @description  用于在非打包后线上环境的环境切换，以及性能、异常、行为监控及上报
+   */
+  let expandUI = false; //是否已经展示按钮
 
-  var insertDOM = document.querySelector('#app'); // 配置项
+  const insertDOM = document.querySelector('#app'); // 配置项
 
-  var newOptions = {
+  const newOptions = {
     insertDOM: insertDOM,
     //插入的envTools的容器
     wait: 1000,
@@ -1069,7 +1066,9 @@
     needSleep: false,
     //是否要延迟加载 
     envBoxIdName: 'envBox',
+    //未展开DOM
     envBoxExpandIdName: 'envBox-expand',
+    //延展后的DOM
     envList: ['test', 'dev', 'prebrand'],
     //环境列表
     watchEnv: true,
@@ -1111,7 +1110,8 @@
       },
       method: 'gif',
       //是否通过sendBeacon发送埋点数据 'beacon' | 'gif' 
-      baseURL: 'http://localhost:8000'
+      baseURL: 'http://localhost:8000' //请求的根路径
+
     },
     version: '1.0.0',
     //版本信息
@@ -1123,13 +1123,13 @@
 
   }; //异常数据采集
 
-  var errorData = {
+  const errorData = {
     errorCount: 0,
     errorSum: '',
     errorList: []
   }; //路由数据采集
 
-  var routesData = {
+  const routesData = {
     //用于当前页面展示
     routeInfo: {
       url: '',
@@ -1149,14 +1149,14 @@
 
   }; //缓存数据采集
 
-  var storageData = {
+  const storageData = {
     newStorageList: [],
     maxLen: 5
   }; //系统数据采集
 
-  var systemData = {}; //console采集
+  let systemData = {}; //console采集
 
-  var consoleData = {
+  let consoleData = {
     consoleList: [],
     info: [],
     error: [],
@@ -1164,7 +1164,7 @@
     warn: []
   }; //http请求采集
 
-  var httpData = {
+  let httpData = {
     httpList: [],
     urlList: []
   }; //手势数据
@@ -1172,7 +1172,7 @@
    * 初始化
    */
 
-  var init = function init() {
+  const init = () => {
     Storage.set('global_forbid', false);
   };
   /**
@@ -1181,8 +1181,8 @@
    */
 
 
-  var startdevTools = function startdevTools() {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : newOptions;
+  const startdevTools = function () {
+    let options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : newOptions;
     init();
     Object.assign(newOptions, options); //覆盖配置
 
@@ -1196,11 +1196,13 @@
     newOptions.watchSystem && preWatchSystem();
     newOptions.watchConsole && preWatchConsole();
     newOptions.watchHttp && preWatchHttp();
-    var needSleep = newOptions.needSleep,
-        wait = newOptions.wait; //延迟加载
+    let {
+      needSleep,
+      wait
+    } = newOptions; //延迟加载
 
     if (needSleep) {
-      setTimeout(function () {
+      setTimeout(() => {
         createEnvDevTools(newOptions);
       }, wait);
       return;
@@ -1214,24 +1216,26 @@
    */
 
 
-  var createEnvDevTools = function createEnvDevTools(options) {
-    var envBoxIdName = options.envBoxIdName,
-        envBoxExpandIdName = options.envBoxExpandIdName,
-        insertDOM = options.insertDOM,
-        watchHttp = options.watchHttp,
-        watchSystem = options.watchSystem,
-        watchEnv = options.watchEnv,
-        watchPerformance = options.watchPerformance,
-        watchError = options.watchError,
-        watchRoutes = options.watchRoutes,
-        watchStorage = options.watchStorage,
-        watchConsole = options.watchConsole;
-    var envBox = document.createElement('div');
+  const createEnvDevTools = options => {
+    let {
+      envBoxIdName,
+      envBoxExpandIdName,
+      insertDOM,
+      watchHttp,
+      watchSystem,
+      watchEnv,
+      watchPerformance,
+      watchError,
+      watchRoutes,
+      watchStorage,
+      watchConsole
+    } = options;
+    const envBox = document.createElement('div');
     envBox.id = envBoxIdName;
     insertDOM.appendChild(envBox);
     handleDrag(envBox); //处理手势
 
-    envBox.addEventListener('click', function (e) {
+    envBox.addEventListener('click', e => {
       if (Storage.get('global_forbid') === true) return;
       expandUI = true;
       envBox.id = envBoxExpandIdName; // 在打开tabbar栏后监听
@@ -1245,20 +1249,20 @@
       watchConsole && loadConsoleModule(envBox);
       watchHttp && loadHttpModule(envBox);
       loadVersionModule(envBox);
-      loadCustomModule(envBox); //处理通用样式
+      loadClearModule(envBox); //处理通用样式
 
-      var envBoxBtnList = document.querySelectorAll('#envBox-expand button');
-      envBoxBtnList.forEach(function (btn) {
-        btn.ontouchstart = function () {
+      const envBoxBtnList = document.querySelectorAll('#envBox-expand button');
+      envBoxBtnList.forEach(btn => {
+        btn.ontouchstart = () => {
           btn.style.background = '#40a9ff';
         };
 
-        btn.ontouchend = function () {
+        btn.ontouchend = () => {
           btn.style.background = '#0987ee';
         };
       });
     }, false);
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', e => {
       if (e.target.id === envBox.id) return;
 
       if (expandUI) {
@@ -1273,15 +1277,15 @@
    */
 
 
-  var handleDrag = function handleDrag(envBox) {
+  const handleDrag = envBox => {
     enableGesture(); //监听手势
 
-    var ew = envBox.offsetWidth;
-    var eh = envBox.offsetHeight;
-    var el = envBox.offsetLeft;
-    var et = envBox.offsetTop;
-    var isDrag = false;
-    document.documentElement.addEventListener('panstart', function (e) {
+    let ew = envBox.offsetWidth;
+    let eh = envBox.offsetHeight;
+    let el = envBox.offsetLeft;
+    let et = envBox.offsetTop;
+    let isDrag = false;
+    document.documentElement.addEventListener('panstart', e => {
       e.preventDefault();
 
       if (el - 10 < e.clientX && e.clientX < el + ew + 10 && et - 10 < e.clientY && e.clientY < et + eh + 10) {
@@ -1290,7 +1294,7 @@
         isDrag = false;
       }
     });
-    document.documentElement.addEventListener('panend', function (e) {
+    document.documentElement.addEventListener('panend', e => {
       e.preventDefault();
 
       if (isDrag) {
@@ -1305,10 +1309,10 @@
    */
 
 
-  var checkOptions = function checkOptions(options) {
+  const checkOptions = options => {
     //自定义数据不能为空
-    for (var key in options) {
-      var val = options[key];
+    for (const key in options) {
+      const val = options[key];
 
       if (val == null) {
         createErrorToast("options exist null or undefined----" + key);
@@ -1320,14 +1324,14 @@
    */
 
 
-  var preWatchError = function preWatchError() {
-    window.addEventListener('error', function (e) {
+  const preWatchError = () => {
+    window.addEventListener('error', e => {
       handleError("global error" + e.message);
-      updateDialog("<div>".concat(errorData.errorSum, "</div>"));
+      updateDialog(`<div>${errorData.errorSum}</div>`);
     }, false);
-    window.addEventListener('unhandledrejection', function (e) {
+    window.addEventListener('unhandledrejection', e => {
       handleError("promise error" + e.reason);
-      updateDialog("<div>".concat(errorData.errorSum, "</div>"));
+      updateDialog(`<div>${errorData.errorSum}</div>`);
     }, false);
   };
   /**
@@ -1335,14 +1339,16 @@
    */
 
 
-  var preWatchActions = function preWatchActions() {
-    var watchActionDOMList = newOptions.watchActionDOMList;
-    watchActionDOMList.forEach(function (item) {
-      var domList = item.domId && document.querySelectorAll(item.domId);
+  const preWatchActions = () => {
+    let {
+      watchActionDOMList
+    } = newOptions;
+    watchActionDOMList.forEach(item => {
+      let domList = item.domId && document.querySelectorAll(item.domId);
 
       if (domList) {
-        domList.forEach(function (dom) {
-          dom.addEventListener(item.eventType, function () {
+        domList.forEach(dom => {
+          dom.addEventListener(item.eventType, () => {
             sendMsg({
               type: item.eventType,
               DOM: item.domId
@@ -1357,7 +1363,7 @@
    */
 
 
-  var preWatchRoutes = function preWatchRoutes() {
+  const preWatchRoutes = () => {
     routesData.routeInfo.url = window.location.href;
     routesData.routeInfo.title = document.title;
     window.addEventListener('popstate', function (event) {
@@ -1369,19 +1375,17 @@
    */
 
 
-  var preWatchStorage = function preWatchStorage() {
-    var originSetItem = localStorage.setItem; //自定义分发事件
+  const preWatchStorage = () => {
+    let originSetItem = localStorage.setItem; //自定义分发事件
 
     localStorage.setItem = function (key, val) {
       val = JSON.parse(val);
-      var event = new Event("setItem", {
+      let event = new Event("setItem", {
         key: val
       });
       event.key = key;
       event.val = val;
-      var index = storageData.newStorageList.findIndex(function (item) {
-        return item[0] === key;
-      });
+      let index = storageData.newStorageList.findIndex(item => item[0] === key);
 
       if (index > -1) {
         //如果已经存在置于顶部
@@ -1400,7 +1404,7 @@
    */
 
 
-  var preWatchSystem = function preWatchSystem() {
+  const preWatchSystem = () => {
     function plusReady() {
       systemData = plus.device; // alert("IMEI: " + plus.device.imei);  //设备的国际移动设备身份码
       // alert("IMEI: " + plus.device.model);  // 设备的型号
@@ -1418,21 +1422,21 @@
    */
 
 
-  var preWatchConsole = function preWatchConsole() {
+  const preWatchConsole = () => {
     function watchLog(type) {
-      var oldLog = console[type];
+      let oldLog = console[type];
 
       console[type] = function () {
         consoleData.consoleList.push({
           data: arguments[0],
-          type: type
+          type
         });
-        oldLog.call.apply(oldLog, [console].concat(Array.prototype.slice.call(arguments)));
+        oldLog.call(console, ...arguments);
       };
     }
 
-    var logList = ['info', 'error', 'log', 'warn'];
-    logList.forEach(function (type) {
+    let logList = ['info', 'error', 'log', 'warn'];
+    logList.forEach(type => {
       watchLog(type);
     });
   };
@@ -1441,12 +1445,18 @@
    */
 
 
-  var preWatchHttp = function preWatchHttp() {
+  const preWatchHttp = () => {
     proxy({
       //请求发起前进入
-      onRequest: function onRequest(config, handler) {
+      onRequest: (config, handler) => {
         console.log("preWatchHttp----start", config);
-        httpData.httpList.push(config);
+        let sendObj = {
+          method: config.method,
+          headers: config['content-type'],
+          url: config.url,
+          body: config.body || ''
+        };
+        httpData.httpList.push(sendObj);
         httpData.urlList.push({
           url: config.url,
           type: 'send'
@@ -1454,9 +1464,14 @@
         handler.next(config);
       },
       //请求发生错误时进入，比如超时；注意，不包括http状态码错误，如404仍然会认为请求成功
-      onError: function onError(err, handler) {
+      onError: (err, handler) => {
         console.log("preWatch----error", err);
-        httpData.httpList.push(err);
+        let errObj = {
+          method: err.config.method,
+          headers: err.config['content-type'],
+          url: err.config.url
+        };
+        httpData.httpList.push(errObj);
         httpData.urlList.push({
           url: err.config.url,
           type: 'err'
@@ -1464,9 +1479,16 @@
         handler.next(err);
       },
       //请求成功后进入
-      onResponse: function onResponse(res, handler) {
+      onResponse: (res, handler) => {
         console.log("preWatch----success", res);
-        httpData.httpList.push(res);
+        let sucObj = {
+          method: res.config.method,
+          headers: res.headers['content-type'],
+          url: res.config.url,
+          status: res.status,
+          response: res.response
+        };
+        httpData.httpList.push(sucObj);
         httpData.urlList.push({
           url: res.config.url,
           type: 'suc'
@@ -1480,17 +1502,21 @@
    */
 
 
-  var handleError = function handleError(msg) {
-    var errorList = errorData.errorList;
-    newOptions.maxLimit;
-        var asyncTime = newOptions.asyncTime;
+  const handleError = msg => {
+    let {
+      errorList
+    } = errorData;
+    let {
+      maxLimit,
+      asyncTime
+    } = newOptions;
     if (!msg) return;
     errorList.push(msg);
     errorData.errorCount += 1;
 
     if (checkType(errorList) === 'array') {
-      errorData.errorSum += "".concat(errorData.errorCount, ": ") + msg + '<br>';
-      var errorObj = {
+      errorData.errorSum += `${errorData.errorCount}: ` + msg + '<br>';
+      let errorObj = {
         errorSum: errorData.errorSum
       }; //如果超过阈值上报错误数据
 
@@ -1500,7 +1526,7 @@
       } else {
         //默认延迟5s, 如果没有达到上限就发送
         if (!errorData.errorList.length) return;
-        setTimeout(function () {
+        setTimeout(() => {
           if (errorData.errorCount < newOptions.maxLimit) {
             sendMsg(errorObj, 'err');
             errorData.errorList = [];
@@ -1515,28 +1541,30 @@
    */
 
 
-  var loadEnvModule = function loadEnvModule(envBox) {
-    var envList = newOptions.envList;
-    var envBtnDOM = document.createElement('button');
+  const loadEnvModule = envBox => {
+    let {
+      envList
+    } = newOptions;
+    let envBtnDOM = document.createElement('button');
     envBtnDOM.innerText = Storage.get('global_env') || 'env';
     envBtnDOM.className = 'envBtn';
     envBox.appendChild(envBtnDOM);
-    envBtnDOM.addEventListener('click', function () {
-      var contentStr = "<div class='dialog-detail'>\u5F53\u524D\u73AF\u5883: ".concat(Storage.get('global_env') || 'env', "</div>");
-      envList.forEach(function (item) {
-        contentStr += "<button class='env-btn'>".concat(item, "</button>");
+    envBtnDOM.addEventListener('click', () => {
+      let contentStr = `<div class='dialog-detail'>当前环境: ${Storage.get('global_env') || 'env'}</div>`;
+      envList.forEach(item => {
+        contentStr += `<button class='env-btn'>${item}</button>`;
       }); //创建弹窗
 
       createDialog(contentStr);
-      var buttonList = document.querySelectorAll('.env-btn');
-      buttonList.forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
+      const buttonList = document.querySelectorAll('.env-btn');
+      buttonList.forEach(btn => {
+        btn.addEventListener('click', e => {
           expandUI = false;
-          var env = e.target.textContent;
+          let env = e.target.textContent;
           Storage.set('global_env', env);
           btn.innerText = env;
           envBtnDOM.innerText = Storage.get('global_env') || 'env';
-          Storage.set('global_url', "https://".concat(env, ".zzss.com"));
+          Storage.set('global_url', `https://${env}.zzss.com`);
           createToast('已成功修改' + env + '环境');
         }, false);
       });
@@ -1548,24 +1576,25 @@
    */
 
 
-  var loadPerformanceModule = function loadPerformanceModule(envBox) {
-    var button = document.createElement('button');
+  const loadPerformanceModule = envBox => {
+    let button = document.createElement('button');
     envBox.appendChild(button);
     button.innerText = 'performance';
-    var FP,
+    let FP,
         DCL,
         L = 0;
-    var _window$performance$t = window.performance.timing,
-        domLoading = _window$performance$t.domLoading,
-        navigationStart = _window$performance$t.navigationStart,
-        domContentLoadedEventEnd = _window$performance$t.domContentLoadedEventEnd,
-        loadEventEnd = _window$performance$t.loadEventEnd;
+    let {
+      domLoading,
+      navigationStart,
+      domContentLoadedEventEnd,
+      loadEventEnd
+    } = window.performance.timing;
     FP = domLoading - navigationStart;
     DCL = domContentLoadedEventEnd - navigationStart;
     L = loadEventEnd - navigationStart;
-    var content = "<div>\u9996\u5C4F\u5F00\u59CB\u6E32\u67D3\u65F6\u95F4:".concat(FP, "ms</div><br><div>DOM\u52A0\u8F7D\u5B8C\u6BD5\u65F6\u95F4:").concat(DCL, "ms</div><br><div>\u6240\u6709\u8D44\u6E90\u53CADOM\u52A0\u8F7D\u5B8C\u6BD5\u65F6\u95F4:").concat(L, "ms</div>");
+    let content = `<div>首屏开始渲染时间:${FP}ms</div><br><div>DOM加载完毕时间:${DCL}ms</div><br><div>所有资源及DOM加载完毕时间:${L}ms</div>`;
 
-    button.onclick = function () {
+    button.onclick = () => {
       createDialog(content);
     };
   };
@@ -1575,19 +1604,21 @@
    */
 
 
-  var loadErrorModule = function loadErrorModule(envBox) {
-    var errorSum = errorData.errorSum;
-    var errorBtn = document.createElement('button');
+  const loadErrorModule = envBox => {
+    const {
+      errorSum
+    } = errorData;
+    let errorBtn = document.createElement('button');
     envBox.appendChild(errorBtn);
     errorBtn.innerText = 'error';
 
-    errorBtn.onclick = function () {
+    errorBtn.onclick = () => {
       if (!errorSum) {
         createToast('no error');
         return;
       }
 
-      createDialog("<div>".concat(errorSum, "</div>"));
+      createDialog(`<div class='envBox-error'>${errorSum}</div>`);
     };
   };
   /**
@@ -1596,21 +1627,19 @@
    */
 
 
-  var loadRoutesModule = function loadRoutesModule(envBox) {
-    var routeInfo = routesData.routeInfo;
-    var routesBtn = document.createElement('button');
+  const loadRoutesModule = envBox => {
+    const {
+      routeInfo
+    } = routesData;
+    let routesBtn = document.createElement('button');
     envBox.appendChild(routesBtn);
     routesBtn.innerText = 'route';
 
-    routesBtn.onclick = function () {
-      var routerInfoStr = '';
+    routesBtn.onclick = () => {
+      let routerInfoStr = '';
 
-      for (var _i = 0, _Object$entries = Object.entries(routeInfo); _i < _Object$entries.length; _i++) {
-        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-            key = _Object$entries$_i[0],
-            val = _Object$entries$_i[1];
-
-        var str = "<div>".concat(key + '-----' + val, "</div><br>");
+      for (const [key, val] of Object.entries(routeInfo)) {
+        let str = `<div class='envBox-textline'>${key + '->' + val}</div>`;
         routerInfoStr += str;
       }
 
@@ -1623,19 +1652,22 @@
    */
 
 
-  var loadStorageModule = function loadStorageModule(envBox) {
-    var isNewStorage = newOptions.isNewStorage;
-    var maxLen = storageData.maxLen;
-    var storageBtn = document.createElement('button');
+  const loadStorageModule = envBox => {
+    const {
+      isNewStorage
+    } = newOptions;
+    const {
+      maxLen,
+      newStorageList
+    } = storageData;
+    let storageBtn = document.createElement('button');
     envBox.appendChild(storageBtn);
     storageBtn.innerText = 'storage';
 
-    storageBtn.onclick = function () {
-      var _storageData$newStora;
+    storageBtn.onclick = () => {
+      let storageInfoStr = ''; //展示前几
 
-      var storageInfoStr = ''; //展示前几
-
-      var len = (_storageData$newStora = storageData.newStorageList) === null || _storageData$newStora === void 0 ? void 0 : _storageData$newStora.length;
+      let len = storageData.newStorageList?.length;
 
       if (isNewStorage && maxLen < len) {
         storageData.newStorageList.splice(maxLen, len);
@@ -1646,11 +1678,11 @@
         return;
       }
 
-      storageData.newStorageList.forEach(function (storage) {
-        var k = storage[0];
-        var v = JSON.parse(storage[1]);
-        var type = checkType(v);
-        var str = "<div>key: ".concat(k, " val: ").concat(v, " type: ").concat(type, " <br></div>");
+      storageData.newStorageList.forEach(storage => {
+        let k = storage[0];
+        let v = JSON.parse(storage[1]);
+        let type = checkType(v);
+        let str = `<div>key: ${k} val: ${v} type: ${type} <br></div>`;
         storageInfoStr += str;
       });
       createDialog(storageInfoStr);
@@ -1662,14 +1694,14 @@
    */
 
 
-  var loadSystemModule = function loadSystemModule(envBox) {
-    var systemBtn = document.createElement('button');
+  const loadSystemModule = envBox => {
+    let systemBtn = document.createElement('button');
     envBox.appendChild(systemBtn);
     systemBtn.innerText = 'system';
 
-    systemBtn.onclick = function () {
+    systemBtn.onclick = () => {
       if (JSON.stringify(systemData) !== '{}') {
-        createDialog("<div>".concat(JSON.stringify(systemData), "</div>"));
+        createDialog(`<div>${JSON.stringify(systemData)}</div>`);
       } else {
         createToast('请在真机webview调试');
       }
@@ -1681,30 +1713,42 @@
    */
 
 
-  var loadConsoleModule = function loadConsoleModule(envBox) {
-    var consoleBtn = document.createElement('button');
+  const loadConsoleModule = envBox => {
+    let consoleBtn = document.createElement('button');
     envBox.appendChild(consoleBtn);
     consoleBtn.innerText = 'console';
 
-    consoleBtn.onclick = function () {
-      var sumContent = '';
+    consoleBtn.onclick = () => {
+      let sumContent = '';
 
       if (!consoleData.consoleList.length) {
         createToast('no log');
         return;
       }
 
-      consoleData.consoleList.forEach(function (content) {
-        var data = content.data,
-            type = content.type;
+      consoleData.consoleList.forEach(content => {
+        let {
+          data,
+          type
+        } = content;
 
-        if (_typeof(data) === 'object') {
-          sumContent += "<div class='console-".concat(type, "'>").concat(JSON.stringify(data), "</div>");
+        if (typeof data === 'object') {
+          let newObj = handleCircularJson(data);
+          sumContent += `<div class='console console-${type}'>${newObj}</div>`;
         } else {
-          sumContent += "<div class='console-".concat(type, "'>").concat(data, "</div>");
+          sumContent += `<div class='console console-${type}'>${data}</div>`;
         }
       });
-      createDialog("<div>".concat(sumContent, "</div>"));
+      createDialog(`<div>${sumContent}</div>`); //开始监听log点击，展示详情
+
+      let logDOM = document.querySelectorAll('.console');
+      logDOM.forEach((dom, index) => {
+        dom.addEventListener('click', () => {
+          const data = consoleData.consoleList[index].data;
+          let allContent = typeof data === 'object' ? handleCircularJson(data) : data;
+          createToastText(allContent, 5000);
+        }, false);
+      });
     };
   };
   /**
@@ -1713,17 +1757,30 @@
    */
 
 
-  var loadHttpModule = function loadHttpModule(envBox) {
-    var httpBtn = document.createElement('button');
+  const loadHttpModule = envBox => {
+    let httpBtn = document.createElement('button');
     envBox.appendChild(httpBtn);
     httpBtn.innerText = 'http';
 
-    httpBtn.onclick = function () {
-      var urlContents = '';
-      httpData.urlList.forEach(function (content, index) {
-        urlContents += "<div class='http http-".concat(content.type, "'>").concat(content.url, "</div>");
+    httpBtn.onclick = () => {
+      let urlContents = '';
+      httpData.urlList.forEach((content, index) => {
+        urlContents += `<div class='http http-${content.type}'>${content.url}</div>`;
       });
-      createDialog(urlContents); // createToast('未开放.....')
+      createDialog(urlContents); //开始监听url点击，展示详情
+
+      let urlDOM = document.querySelectorAll('.http');
+      urlDOM.forEach((dom, index) => {
+        dom.addEventListener('click', () => {
+          let allContent = '';
+
+          for (const [k, v] of Object.entries(httpData.httpList[index])) {
+            allContent += `<div>${k}: ${v}</div> <br>`;
+          }
+
+          createToastText(allContent, 5000);
+        }, false);
+      });
     };
   };
   /**
@@ -1732,28 +1789,33 @@
    */
 
 
-  var loadVersionModule = function loadVersionModule(envBox) {
-    var versionBtn = document.createElement('button');
+  const loadVersionModule = envBox => {
+    let versionBtn = document.createElement('button');
     envBox.appendChild(versionBtn);
     versionBtn.innerText = 'version';
 
-    versionBtn.onclick = function () {
-      createToast("\u5F53\u524D\u7248\u672C".concat(newOptions.version));
+    versionBtn.onclick = () => {
+      createToast(`当前版本${newOptions.version}`);
     };
   };
   /**
-   * 自定义模块
+   * 清除缓存模块
    * @param {DOM} envBox
    */
 
 
-  var loadCustomModule = function loadCustomModule(envBox) {
-    var customBtn = document.createElement('button');
-    envBox.appendChild(customBtn);
-    customBtn.innerText = 'custom';
+  const loadClearModule = envBox => {
+    let clearBtn = document.createElement('button');
+    envBox.appendChild(clearBtn);
+    clearBtn.innerText = 'clear';
 
-    customBtn.onclick = function () {
-      createToast('未开放.....');
+    clearBtn.onclick = () => {
+      errorData.errorList = [];
+      routesData.routesList = [];
+      storageData.newStorageList = [];
+      consoleData.consoleList = [];
+      httpData.httpList = [];
+      createToast('cache cleared successfully');
     };
   };
   /**
@@ -1764,28 +1826,28 @@
    */
 
 
-  var sendMsg = function sendMsg(obj, type, myMethods) {
+  const sendMsg = (obj, type, myMethods) => {
     //校验
     if (checkType(obj) !== 'object' && !type) {
       createErrorToast('do not input object or type');
     }
 
-    var _newOptions$sendOptio = newOptions.sendOptions,
-        baseURL = _newOptions$sendOptio.baseURL,
-        commonInfo = _newOptions$sendOptio.commonInfo,
-        method = _newOptions$sendOptio.method;
-    var submitObj = Object.assign({}, obj, commonInfo);
-    var queryStr = Object.entries(submitObj).map(function (_ref) {
-      var _ref2 = _slicedToArray(_ref, 2),
-          key = _ref2[0],
-          val = _ref2[1];
-
-      return "".concat(key, "=").concat(val);
+    const {
+      sendOptions: {
+        baseURL,
+        commonInfo,
+        method
+      }
+    } = newOptions;
+    let submitObj = Object.assign({}, obj, commonInfo);
+    let queryStr = Object.entries(submitObj).map(_ref => {
+      let [key, val] = _ref;
+      return `${key}=${val}`;
     }).join('&'); //gif图片发送方式
 
     if (myMethods === 'gif' || method === 'gif') {
-      var img = new Image();
-      img.src = "".concat(baseURL, "?") + encodeURIComponent(queryStr);
+      let img = new Image();
+      img.src = `${baseURL}?` + encodeURIComponent(queryStr);
     }
 
     if (myMethods === 'beacon' || method === 'beacon') {
@@ -1794,8 +1856,8 @@
   };
 
   var h5Tools = {
-    startdevTools: startdevTools,
-    sendMsg: sendMsg
+    startdevTools,
+    sendMsg
   };
 
   var isMobile = isMobileFn();

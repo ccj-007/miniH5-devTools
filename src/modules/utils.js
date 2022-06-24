@@ -12,7 +12,6 @@ export const isMobileFn = () => {
   }
 }
 
-
 /**
  * localStorage 封装
  *
@@ -45,3 +44,29 @@ export const Storage = {
 export const checkType = (params) => {
   return Object.prototype.toString.call(params).slice(8, -1).toLowerCase()
 }
+
+/**
+ * 获取DOM
+ * @param {*} params
+ */
+export const $ = (params) => {
+  return document.querySelector(params)
+}
+
+/**
+ * 处理循环json
+ * @param {*} data
+ */
+export const handleCircularJson = (data) => {
+  const seen = new WeakSet();
+  return JSON.stringify(data, (key, value) => {
+    if (typeof value === "object" && value !== null) {
+      if (seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+    }
+    return value;
+  })
+}
+
