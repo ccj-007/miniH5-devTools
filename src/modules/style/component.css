@@ -19,7 +19,7 @@
   padding: 20px;
   border-radius: 5px;
   color: #fff;
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
 #envBox-dialog button {
@@ -76,7 +76,10 @@
 
 .envBox-error {
   border-radius: 5px;
+  max-height: 400px;
   color: var(--common-error);
+  word-break: break-all;
+  overflow-y: auto;
 }
 
 .console,

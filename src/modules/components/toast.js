@@ -34,7 +34,7 @@ export const addToastDOM = (content, wait, type, dialogStyle) => {
 
   document.body.appendChild(toastDOM)
   setTimeout(() => {
-    document.body.removeChild(toastDOM)
+    toastDOM && document.body.removeChild(toastDOM)
   }, wait);
 }
 

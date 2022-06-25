@@ -4,6 +4,9 @@
 import { Storage, $ } from "@/utils";
 import closeIconSrc from '@/svg/close.svg'
 
+let contentX, contentY
+let isDragDialog = false
+
 /**
  * 创建dialog
  *
@@ -25,12 +28,15 @@ export const createDialog = (contentStr) => {
   dialogDOM.innerHTML = contentStr
   dialogDOM.innerHTML += closeIconSrc  //close icon
 
+  //监听拖拽
+  initDialogPosition(dialogDOM)
+  watchDragDialog()
+
   //监听点击关闭dialog
   let closeDOM = document.querySelector('.env-close')
   closeDOM.addEventListener('click', () => {
     clearDialog()
   }, false)
-
 }
 
 /**
@@ -61,4 +67,58 @@ export const updateDialog = (contentStr) => {
   closeDOM.addEventListener('click', () => {
     clearDialog()
   }, false)
+}
+
+/**
+ * 监听dialog的drag
+ */
+export const watchDragDialog = () => {
+  document.documentElement.addEventListener('panstart', (e) => {
+    const dialogDOM = $('#envBox-dialog')
+    contentX = e.clientX - dialogDOM.offsetLeft
+    contentY = e.clientY - dialogDOM.offsetTop
+    if (isContentTouch(dialogDOM, e.startX, e.startY)) {
+      isDragDialog = true
+    }
+  }, false)
+
+  document.documentElement.addEventListener('pan', (e) => {
+    const dialogDOM = $('#envBox-dialog')
+    moveDialog(dialogDOM, e)
+  }, false)
+
+  document.documentElement.addEventListener('panend', (e) => {
+    const dialogDOM = $('#envBox-dialog')
+    moveDialog(dialogDOM, e)
+    isDragDialog = false
+  }, false)
+}
+
+/**
+ * 移动位置
+ * @param {DOM} dom 
+ * @param {Object} e 
+ */
+const moveDialog = (dom, e) => {
+  if (isDragDialog) {
+    dom.style.left = (e.clientX - contentX) + 'px'
+    dom.style.top = (e.clientY - contentY) + 'px'
+  }
+}
+
+/**
+ * 重置位置
+ * @param {DOM} dom 
+ */
+const initDialogPosition = (dom) => {
+  dom.style.left = ((window.innerWidth / 2) - (dom.offsetWidth / 2)) + 'px'
+  dom.style.top = ((window.innerHeight / 2) - (dom.offsetHeight / 2)) + 'px'
+}
+
+const isContentTouch = (dom, x, y) => {
+  let l = dom.offsetLeft
+  let r = dom.offsetLeft + dom.offsetWidth
+  let t = dom.offsetTop
+  let b = dom.offsetTop + dom.offsetHeight
+  return l < x && x < r && t < y && y < b
 }

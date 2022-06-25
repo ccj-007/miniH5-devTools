@@ -38,7 +38,7 @@
   var css_248z$2 = ":root {\r\n  --primary-deep: #194769;\r\n  --primary-light: #194769;\r\n}\r\n\r\n#envBox {\r\n  position: fixed;\r\n  z-index: 999999999999;\r\n  top: 50%;\r\n  right: 0;\r\n  width: 10px;\r\n  height: 60px;\r\n  background: var(--primary-light);\r\n  transition: top .5s linear;\r\n  border-radius: 5px 0 0 5px;\r\n}\r\n\r\n#envBox-expand {\r\n  position: fixed;\r\n  z-index: 9999999999999;\r\n  height: 60px;\r\n  width: 100vw;\r\n  top: 50%;\r\n  right: 0;\r\n  background: var(--primary-light);\r\n  /* transition: width .5s linear; */\r\n}\r\n\r\n#envBox-expand button {\r\n  width: 20%;\r\n  height: 30px;\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--primary-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 0.5em auto;\r\n  box-sizing: border-box;\r\n}\r\n\r\n#envBox-expand span {\r\n  color: #ffffff;\r\n  font-size: 14px;\r\n}\r\n\r\n\r\n.envBox-textline {\r\n  line-height: 20px;\r\n}";
   styleInject(css_248z$2);
 
-  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-deep: #26699c;\r\n  --main-light: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  color: var(--common-error);\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}";
+  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-deep: #26699c;\r\n  --main-light: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  max-height: 400px;\r\n  color: var(--common-error);\r\n  word-break: break-all;\r\n  overflow-y: auto;\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}";
   styleInject(css_248z$1);
 
   var css_248z = "html,\r\nbody {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  font-size: 16px;\r\n  margin: 0;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n.envBox-inlineText {\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}";
@@ -165,7 +165,7 @@
     toastDOM.innerHTML = content;
     document.body.appendChild(toastDOM);
     setTimeout(() => {
-      document.body.removeChild(toastDOM);
+      toastDOM && document.body.removeChild(toastDOM);
     }, wait);
   };
   const createToastText = function (content) {
@@ -479,6 +479,8 @@
   /**
    * @description dialog components
    */
+  let contentX, contentY;
+  let isDragDialog = false;
   /**
    * 创建dialog
    *
@@ -502,7 +504,10 @@
 
     dialogDOM.innerHTML = contentStr;
     dialogDOM.innerHTML += closeIconSrc; //close icon
-    //监听点击关闭dialog
+    //监听拖拽
+
+    initDialogPosition(dialogDOM);
+    watchDragDialog(); //监听点击关闭dialog
 
     let closeDOM = document.querySelector('.env-close');
     closeDOM.addEventListener('click', () => {
@@ -538,6 +543,60 @@
     closeDOM.addEventListener('click', () => {
       clearDialog();
     }, false);
+  };
+  /**
+   * 监听dialog的drag
+   */
+
+  const watchDragDialog = () => {
+    document.documentElement.addEventListener('panstart', e => {
+      const dialogDOM = $('#envBox-dialog');
+      contentX = e.clientX - dialogDOM.offsetLeft;
+      contentY = e.clientY - dialogDOM.offsetTop;
+
+      if (isContentTouch(dialogDOM, e.startX, e.startY)) {
+        isDragDialog = true;
+      }
+    }, false);
+    document.documentElement.addEventListener('pan', e => {
+      const dialogDOM = $('#envBox-dialog');
+      moveDialog(dialogDOM, e);
+    }, false);
+    document.documentElement.addEventListener('panend', e => {
+      const dialogDOM = $('#envBox-dialog');
+      moveDialog(dialogDOM, e);
+      isDragDialog = false;
+    }, false);
+  };
+  /**
+   * 移动位置
+   * @param {DOM} dom 
+   * @param {Object} e 
+   */
+
+  const moveDialog = (dom, e) => {
+    if (isDragDialog) {
+      dom.style.left = e.clientX - contentX + 'px';
+      dom.style.top = e.clientY - contentY + 'px';
+    }
+  };
+  /**
+   * 重置位置
+   * @param {DOM} dom 
+   */
+
+
+  const initDialogPosition = dom => {
+    dom.style.left = window.innerWidth / 2 - dom.offsetWidth / 2 + 'px';
+    dom.style.top = window.innerHeight / 2 - dom.offsetHeight / 2 + 'px';
+  };
+
+  const isContentTouch = (dom, x, y) => {
+    let l = dom.offsetLeft;
+    let r = dom.offsetLeft + dom.offsetWidth;
+    let t = dom.offsetTop;
+    let b = dom.offsetTop + dom.offsetHeight;
+    return l < x && x < r && t < y && y < b;
   };
 
   /*
@@ -1140,20 +1199,16 @@
     let eh = envBox.offsetHeight;
     let el = envBox.offsetLeft;
     let et = envBox.offsetTop;
-    let isDrag = false;
+    let isTouchDrag = false;
     document.documentElement.addEventListener('panstart', e => {
-      e.preventDefault();
-
       if (el - 10 < e.clientX && e.clientX < el + ew + 10 && et - 10 < e.clientY && e.clientY < et + eh + 10) {
-        isDrag = true;
+        isTouchDrag = true;
       } else {
-        isDrag = false;
+        isTouchDrag = false;
       }
     });
     document.documentElement.addEventListener('panend', e => {
-      e.preventDefault();
-
-      if (isDrag) {
+      if (isTouchDrag) {
         envBox.style.top = e.clientY + 'px';
         et = e.clientY;
       }
@@ -1797,6 +1852,7 @@
 
     clearBtn.onclick = () => {
       errorData.errorList = [];
+      errorData.errorSum = '';
       routesData.routesList = [];
       routesData.routeInfo.refreshNums = 0;
       storageData.newStorageList = [];

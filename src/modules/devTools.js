@@ -6,9 +6,9 @@ import './style/tools.css'
 import './style/component.css'
 import './style/global.css'
 import { enableGesture } from "./touch.js";
-import { createDialog, updateDialog } from './components/dialog'
+import { createDialog, updateDialog, dragDialog } from './components/dialog'
 import { createToast, createErrorToast, createToastText } from './components/toast'
-import { Storage, checkType, handleCircularJson, $, toDate, $http } from "@/utils";
+import { Storage, checkType, handleCircularJson, $, toDate } from "@/utils";
 import { proxy } from "ajax-hook";
 
 let expandUI = false  //是否已经展示按钮
@@ -205,18 +205,18 @@ const handleDrag = (envBox) => {
   let eh = envBox.offsetHeight
   let el = envBox.offsetLeft
   let et = envBox.offsetTop
-  let isDrag = false
+  let isTouchDrag = false
+
   document.documentElement.addEventListener('panstart', (e) => {
-    e.preventDefault()
     if ((el - 10 < e.clientX && e.clientX < (el + ew + 10)) && (et - 10 < e.clientY && e.clientY < (et + eh + 10))) {
-      isDrag = true
+      isTouchDrag = true
     } else {
-      isDrag = false
+      isTouchDrag = false
     }
+
   })
   document.documentElement.addEventListener('panend', (e) => {
-    e.preventDefault()
-    if (isDrag) {
+    if (isTouchDrag) {
       envBox.style.top = e.clientY + 'px'
       et = e.clientY
     }
@@ -791,6 +791,7 @@ const loadClearModule = (envBox) => {
 
   clearBtn.onclick = () => {
     errorData.errorList = []
+    errorData.errorSum = ''
     routesData.routesList = []
     routesData.routeInfo.refreshNums = 0
     storageData.newStorageList = []
