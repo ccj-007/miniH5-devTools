@@ -1,13 +1,13 @@
 /* dialog componetnts */
 :root {
-  --main-moredeep: #194c75;
-  --main-deep: #0987ee;
-  --main-light: #40a9ff;
+  --main-moredeep: #194769;
+  --main-deep: #26699c;
+  --main-light: #194769;
 
-  --common-info: #40a9ff;
-  --common-warn: #cd8818;
-  --common-error: #ad1212;
-  --common-success: #1aaa2d;
+  --common-info: #194769;
+  --common-warn: #d2bc19;
+  --common-error: #F2855E;
+  --common-success: #6FEF8D;
 }
 
 #envBox-dialog {
@@ -76,8 +76,7 @@
 
 .envBox-error {
   border-radius: 5px;
-  color: rgb(255, 255, 255);
-  background: var(--common-error);
+  color: var(--common-error);
 }
 
 .console,
@@ -96,44 +95,34 @@
 
 .router {
   color: #fff;
-  background: var(--main-deep);
 }
 
-.console-log {
-  color: #000;
-  background: #fff;
-}
+.console-log {}
 
 .console-warn {
-  color: rgb(255, 255, 255);
-  background: var(--common-warn);
+  color: var(--common-warn);
 }
 
 .console-error {
-  color: rgb(255, 255, 255);
-  background: var(--common-error);
+  color: var(--common-error);
 }
 
 .console-info {
-  color: rgb(255, 255, 255);
-  background: var(--main-deep);
+  color: var(--main-deep);
 }
 
 
 
 .http-start {
-  color: #fff;
-  background: var(--common-info);
+  color: var(--common-info);
 }
 
 .http-suc {
-  color: #fff;
-  background: var(--common-success);
+  color: var(--common-success);
 }
 
 .http-err {
-  color: #fff;
-  background: var(--common-error);
+  color: var(--common-error);
 }
 
 .xn {
@@ -142,21 +131,20 @@
 }
 
 .xn-quick {
-  background: var(--common-success);
+  color: var(--common-success);
 }
 
 .xn-mid {
-  background: var(--common-warn);
+  color: var(--common-warn);
 }
 
 .xn-low {
-  background: var(--common-error);
+  color: var(--common-error);
 }
 
 .storage-box {
   border-radius: 2px;
   word-break: break-all;
-  background: var(--main-deep);
   width: 100%;
   display: flex;
   word-break: break-all;
@@ -165,5 +153,5 @@
 }
 
 .storage-key {
-  background: var(--main-moredeep);
+  color: #fff;
 }

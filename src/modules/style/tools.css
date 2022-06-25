@@ -1,6 +1,6 @@
 :root {
-  --primary-deep: #0987ee;
-  --primary-light: #40a9ff;
+  --primary-deep: #194769;
+  --primary-light: #194769;
 }
 
 #envBox {
@@ -23,7 +23,7 @@
   top: 50%;
   right: 0;
   background: var(--primary-light);
-  transition: width .5s linear;
+  /* transition: width .5s linear; */
 }
 
 #envBox-expand button {

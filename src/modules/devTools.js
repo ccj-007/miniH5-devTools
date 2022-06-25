@@ -161,7 +161,7 @@ const createEnvDevTools = (options) => {
     if (Storage.get('global_forbid') === true) return
     expandUI = true
     envBox.id = envBoxExpandIdName
-
+    envBox.className = 'slide-in-right'
     // 在打开tabbar栏后监听
     watchEnv && loadEnvModule(envBox)
     watchPerformance && loadPerformanceModule(envBox)
@@ -178,10 +178,10 @@ const createEnvDevTools = (options) => {
     const envBoxBtnList = document.querySelectorAll('#envBox-expand button')
     envBoxBtnList.forEach(btn => {
       btn.ontouchstart = () => {
-        btn.style.background = '#40a9ff'
+        btn.style.background = '#26699c'
       }
       btn.ontouchend = () => {
-        btn.style.background = '#0987ee'
+        btn.style.background = '#194769'
       }
     })
   }, false)
@@ -191,6 +191,7 @@ const createEnvDevTools = (options) => {
       envBox.id = envBoxIdName
       envBox.innerHTML = ''
       expandUI = false
+      envBox.className = ''
     }
   }, false)
 }
@@ -567,7 +568,7 @@ const loadPerformanceModule = (envBox) => {
     )
   }
 
-  let content = `<div>首屏渲染: <span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕: <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成: <span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`
+  let content = `<div>首屏渲染：<span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕： <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成：<span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`
 
   button.onclick = () => {
     createDialog(content)
