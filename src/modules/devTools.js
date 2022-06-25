@@ -8,7 +8,7 @@ import './style/global.css'
 import { enableGesture } from "./touch.js";
 import { createDialog, updateDialog } from './components/dialog'
 import { createToast, createErrorToast, createToastText } from './components/toast'
-import { Storage, checkType, handleCircularJson } from "@/utils";
+import { Storage, checkType, handleCircularJson, $, toDate, $http } from "@/utils";
 import { proxy } from "ajax-hook";
 
 let expandUI = false  //是否已经展示按钮
@@ -66,12 +66,12 @@ const performaceData = {
 const routesData = {
   //用于当前页面展示
   routeInfo: {
-    url: '',  //当前页面url
-    referer: '', // 上级页面
+    newURL: '',  //当前页面url
+    oldURL: '', // 上级页面
     title: '', //页面标题
-    action: '', //页面加载来源
-    sendTime: '', //发送时间
-    triggerTime: '', //事件发送时间
+    routeType: '', //路由类型
+    refreshNums: Storage.get('global_refreshNums') || 0, //存在刷新次数
+    changeTime: '', //路由改变时间
   },
   routesList: [] // 采集pv数据的列表
 }
@@ -81,11 +81,11 @@ const storageData = {
   maxLen: 5
 }
 //系统数据采集
-let systemData = {
+const systemData = {
 
 }
 //console采集
-let consoleData = {
+const consoleData = {
   consoleList: [],
   info: [],
   error: [],
@@ -93,7 +93,7 @@ let consoleData = {
   warn: []
 }
 //http请求采集
-let httpData = {
+const httpData = {
   httpList: [],
   urlList: []
 }
@@ -271,11 +271,36 @@ const preWatchActions = () => {
  * 前置监听处理routes
  */
 const preWatchRoutes = () => {
-  routesData.routeInfo.url = window.location.href
-  routesData.routeInfo.title = document.title
+  const info = routesData.routeInfo
+  info.newURL = window.location.href
+  info.oldURL = window.location.href
+  info.title = document.title
+  info.routeType = window.location.href.includes('/#/') ? 'hash' : 'history'
+  info.changeTime = toDate()
 
+  window.onload = () => {
+    info.refreshNums += 1
+    Storage.set('global_refreshNums', info.refreshNums)
+  }
   window.addEventListener('popstate', function (event) {
-    console.log('routes change', event);
+    info.changeTime = toDate()
+    if (info.routeType === 'history') {
+      createToast('back：' + window.location.href)
+    }
+  })
+  window.addEventListener('hashchange', function (event) {
+    info.newURL = event.newURL
+    info.oldURL = event.oldURL
+    info.routeType = 'hash'
+    info.changeTime = toDate()
+    info.routesList.push(event.newURL)
+    createToast('back：' + event.newURL)
+  })
+  window.addHistoryListener('history', function () {
+    info.newURL = window.location.href
+    info.routeType = 'history'
+    info.changeTime = toDate()
+    createToast('enter：' + window.location.href)
   })
 }
 
@@ -309,9 +334,30 @@ const preWatchStorage = () => {
  * 前置监听系统数据
  */
 const preWatchSystem = async () => {
+  //通过第三方sdk获取
+  if (returnCitySN) {
+    systemData['IP'] = returnCitySN['cip']
+    systemData['地区代码'] = returnCitySN['cid']
+    systemData['城市'] = returnCitySN['cname']
+  }
+
+  //原生设备数据
+  if (!window.plus) {
+    systemData.userAgent = navigator.userAgent
+    systemData.appName = navigator.appName
+    systemData.appCodeName = navigator.appCodeName
+    systemData.appVersion = navigator.appVersion
+    systemData.appMinorVersion = navigator.appMinorVersion
+    systemData.platform = navigator.platform
+    systemData.language = navigator.language
+    systemData.width = window.screen.width
+    systemData.height = window.screen.height
+    systemData.pixelDepth = window.screen.pixelDepth
+  }
+
+  //webview
   function plusReady () {
     plus.geolocation.getCurrentPosition(function (p) {
-      console.log(JSON.stringify(p));
       systemData.latitude = p.coords.latitude
       systemData.longitude = p.coords.longitude
       systemData.altitude = p.coords.altitude
@@ -560,10 +606,16 @@ const loadRoutesModule = (envBox) => {
   routesBtn.onclick = () => {
     let routerInfoStr = ''
     for (const [key, val] of Object.entries(routeInfo)) {
-      let str = `<div class='envBox-textline'>${key + '->' + val}</div>`
+      let str = `<div class='envBox-textline router'>${key + '：' + val}</div>`
       routerInfoStr += str
     }
+    routerInfoStr += `<div class='envBox-inlineText envBox-textline router-log router'>routesList: ${routesData.routesList}</div>`
+
     createDialog(routerInfoStr)
+
+    $('.router-log').onclick = () => {
+      createToastText(JSON.stringify(routesData.routesList))
+    }
   }
 }
 
@@ -595,13 +647,14 @@ const loadStorageModule = (envBox) => {
       let k = storage[0]
       let v = JSON.parse(handleCircularJson(storage[1]))
       let type = checkType(v)
-      let str = `<div class='envBox-inlineText storage-box'><span class='storage-key'>key: </span><span >${k}</span> <span class='storage-key'>val: </span><span >${v}</span> <span class='storage-key'>type: </span><span >${type}</span> <br></div>`
+      let str = `<div class='envBox-inlineText storage-box'><span class='storage-key'>key： </span><span >${k}</span> <span class='storage-key'>val：</span><span >${v}</span> <span class='storage-key'>type：</span><span >${type}</span> <br></div>`
       storageInfoStr += str
 
       let strAll = str.replace('envBox-inlineText', '')
       storageList.push(strAll)
     })
     createDialog(storageInfoStr)
+    storageInfoStr = ''
 
     //开始监听url点击，展示详情
     let storageDOM = document.querySelectorAll('.storage-box')
@@ -623,6 +676,9 @@ const loadSystemModule = (envBox) => {
   systemBtn.innerText = 'system'
 
   systemBtn.onclick = () => {
+    if (!window.plus) {
+      createToast('在真机webview中可以获取更多设备数据')
+    }
     if (JSON.stringify(systemData) !== '{}') {
       let contents = ''
       for (const [k, v] of Object.entries(systemData)) {
@@ -630,7 +686,7 @@ const loadSystemModule = (envBox) => {
       }
       createDialog(contents)
     } else {
-      createToast('请在webview中调试')
+      createErrorToast('设备数据获取异常')
     }
   }
 }
@@ -686,6 +742,10 @@ const loadHttpModule = (envBox) => {
 
   httpBtn.onclick = () => {
     let urlContents = ''
+    if (!httpData.urlList.length) {
+      createToast('no http data')
+      return
+    }
     httpData.urlList.forEach((content, index) => {
       urlContents += `<div class='http http-${content.type}'>${content.url}</div>`
     })
@@ -731,9 +791,11 @@ const loadClearModule = (envBox) => {
   clearBtn.onclick = () => {
     errorData.errorList = []
     routesData.routesList = []
+    routesData.routeInfo.refreshNums = 0
     storageData.newStorageList = []
     consoleData.consoleList = []
-    httpData.httpList = []
+    httpData.urlList = []
+
     createToast('cache cleared successfully')
   }
 }

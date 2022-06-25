@@ -5,9 +5,9 @@
   --main-light: #40a9ff;
 
   --common-info: #40a9ff;
-  --common-warn: #ffa20d;
-  --common-error: #ff2a2a;
-  --common-success: #00d41c;
+  --common-warn: #cd8818;
+  --common-error: #ad1212;
+  --common-success: #1aaa2d;
 }
 
 #envBox-dialog {
@@ -81,7 +81,8 @@
 }
 
 .console,
-.http {
+.http,
+.router {
   width: 100%;
   display: flex;
   word-break: break-all;
@@ -91,6 +92,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.router {
+  color: #fff;
+  background: var(--main-deep);
 }
 
 .console-log {

@@ -35,10 +35,10 @@
   var css_248z$3 = ".jello-horizontal {\r\n  -webkit-animation: jello-horizontal .9s both;\r\n  animation: jello-horizontal .9s both\r\n}\r\n\r\n@-webkit-keyframes jello-horizontal {\r\n  0% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n\r\n  30% {\r\n    -webkit-transform: scale3d(1.25, .75, 1);\r\n    transform: scale3d(1.25, .75, 1)\r\n  }\r\n\r\n  40% {\r\n    -webkit-transform: scale3d(.75, 1.25, 1);\r\n    transform: scale3d(.75, 1.25, 1)\r\n  }\r\n\r\n  50% {\r\n    -webkit-transform: scale3d(1.15, .85, 1);\r\n    transform: scale3d(1.15, .85, 1)\r\n  }\r\n\r\n  65% {\r\n    -webkit-transform: scale3d(.95, 1.05, 1);\r\n    transform: scale3d(.95, 1.05, 1)\r\n  }\r\n\r\n  75% {\r\n    -webkit-transform: scale3d(1.05, .95, 1);\r\n    transform: scale3d(1.05, .95, 1)\r\n  }\r\n\r\n  100% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n}\r\n\r\n@keyframes jello-horizontal {\r\n  0% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n\r\n  30% {\r\n    -webkit-transform: scale3d(1.25, .75, 1);\r\n    transform: scale3d(1.25, .75, 1)\r\n  }\r\n\r\n  40% {\r\n    -webkit-transform: scale3d(.75, 1.25, 1);\r\n    transform: scale3d(.75, 1.25, 1)\r\n  }\r\n\r\n  50% {\r\n    -webkit-transform: scale3d(1.15, .85, 1);\r\n    transform: scale3d(1.15, .85, 1)\r\n  }\r\n\r\n  65% {\r\n    -webkit-transform: scale3d(.95, 1.05, 1);\r\n    transform: scale3d(.95, 1.05, 1)\r\n  }\r\n\r\n  75% {\r\n    -webkit-transform: scale3d(1.05, .95, 1);\r\n    transform: scale3d(1.05, .95, 1)\r\n  }\r\n\r\n  100% {\r\n    -webkit-transform: scale3d(1, 1, 1);\r\n    transform: scale3d(1, 1, 1)\r\n  }\r\n}\r\n\r\n.slide-in-blurred-top {\r\n  animation: slide-in-blurred-top .6s cubic-bezier(.23, 1.000, .32, 1.000) both\r\n}\r\n\r\n@keyframes slide-in-blurred-top {\r\n  0% {\r\n    transform: translateY(-1000px) scaleY(2.5) scaleX(.2);\r\n    transform-origin: 50% 0;\r\n    filter: blur(40px);\r\n    opacity: 0\r\n  }\r\n\r\n  100% {\r\n    transform: translateY(0) scaleY(1) scaleX(1);\r\n    transform-origin: 50% 50%;\r\n    filter: blur(0);\r\n    opacity: 1\r\n  }\r\n}";
   styleInject(css_248z$3);
 
-  var css_248z$2 = ":root {\r\n  --primary-deep: #0987ee; \r\n  --primary-light: #40a9ff; \r\n}\r\n\r\n#envBox {\r\n  position: fixed;\r\n  z-index: 999999999999;\r\n  top: 50%;\r\n  right: 0;\r\n  width: 10px;\r\n  height: 60px;\r\n  background: var(--primary-light);\r\n  transition: top .5s linear;\r\n  border-radius: 5px 0 0 5px;\r\n}\r\n\r\n#envBox-expand {\r\n  position: fixed;\r\n  z-index: 9999999999999;\r\n  height: 60px;\r\n  width: 100vw;\r\n  top: 50%;\r\n  right: 0;\r\n  background: var(--primary-light);\r\n  transition: width .5s linear;\r\n}\r\n\r\n#envBox-expand button {\r\n  width: 20%;\r\n  height: 30px;\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--primary-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 0.5em auto;\r\n  box-sizing: border-box;\r\n}\r\n\r\n#envBox-expand span {\r\n  color: #ffffff;\r\n  font-size: 14px;\r\n}\r\n\r\n\r\n.envBox-textline {\r\n  line-height: 20px;\r\n}\r\n";
+  var css_248z$2 = ":root {\r\n  --primary-deep: #0987ee;\r\n  --primary-light: #40a9ff;\r\n}\r\n\r\n#envBox {\r\n  position: fixed;\r\n  z-index: 999999999999;\r\n  top: 50%;\r\n  right: 0;\r\n  width: 10px;\r\n  height: 60px;\r\n  background: var(--primary-light);\r\n  transition: top .5s linear;\r\n  border-radius: 5px 0 0 5px;\r\n}\r\n\r\n#envBox-expand {\r\n  position: fixed;\r\n  z-index: 9999999999999;\r\n  height: 60px;\r\n  width: 100vw;\r\n  top: 50%;\r\n  right: 0;\r\n  background: var(--primary-light);\r\n  transition: width .5s linear;\r\n}\r\n\r\n#envBox-expand button {\r\n  width: 20%;\r\n  height: 30px;\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--primary-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 0.5em auto;\r\n  box-sizing: border-box;\r\n}\r\n\r\n#envBox-expand span {\r\n  color: #ffffff;\r\n  font-size: 14px;\r\n}\r\n\r\n\r\n.envBox-textline {\r\n  line-height: 20px;\r\n}";
   styleInject(css_248z$2);
 
-  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194c75;\r\n  --main-deep: #0987ee;\r\n  --main-light: #40a9ff;\r\n\r\n  --common-info: #40a9ff;\r\n  --common-warn: #ffa20d;\r\n  --common-error: #ff2a2a;\r\n  --common-success: #00d41c;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-error);\r\n}\r\n\r\n.console,\r\n.http {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.console-log {\r\n  color: #000;\r\n  background: #fff;\r\n}\r\n\r\n.console-warn {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: #fff;\r\n  background: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: #fff;\r\n  background: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: #fff;\r\n  background: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  background: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  background: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  background: var(--main-deep);\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  background: var(--main-moredeep);\r\n}";
+  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194c75;\r\n  --main-deep: #0987ee;\r\n  --main-light: #40a9ff;\r\n\r\n  --common-info: #40a9ff;\r\n  --common-warn: #cd8818;\r\n  --common-error: #ad1212;\r\n  --common-success: #1aaa2d;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-error);\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n  background: var(--main-deep);\r\n}\r\n\r\n.console-log {\r\n  color: #000;\r\n  background: #fff;\r\n}\r\n\r\n.console-warn {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: rgb(255, 255, 255);\r\n  background: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: #fff;\r\n  background: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: #fff;\r\n  background: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: #fff;\r\n  background: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  background: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  background: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  background: var(--main-deep);\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  background: var(--main-moredeep);\r\n}";
   styleInject(css_248z$1);
 
   var css_248z = "html,\r\nbody {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  font-size: 16px;\r\n  margin: 0;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.envBox-inlineText {\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}";
@@ -121,6 +121,14 @@
 
       return value;
     });
+  };
+  /**
+   * 转为时间格式
+   */
+
+  const toDate = () => {
+    var nowDay = new Date();
+    return `${nowDay.getFullYear()}年${nowDay.getMonth() + 1}月${nowDay.getDate()}日${nowDay.getHours()}时${nowDay.getMinutes()}分${nowDay.getSeconds()}秒`;
   };
 
   /**
@@ -978,17 +986,17 @@
   const routesData = {
     //用于当前页面展示
     routeInfo: {
-      url: '',
+      newURL: '',
       //当前页面url
-      referer: '',
+      oldURL: '',
       // 上级页面
       title: '',
       //页面标题
-      action: '',
-      //页面加载来源
-      sendTime: '',
-      //发送时间
-      triggerTime: '' //事件发送时间
+      routeType: '',
+      //路由类型
+      refreshNums: Storage.get('global_refreshNums') || 0,
+      //存在刷新次数
+      changeTime: '' //路由改变时间
 
     },
     routesList: [] // 采集pv数据的列表
@@ -1000,9 +1008,9 @@
     maxLen: 5
   }; //系统数据采集
 
-  let systemData = {}; //console采集
+  const systemData = {}; //console采集
 
-  let consoleData = {
+  const consoleData = {
     consoleList: [],
     info: [],
     error: [],
@@ -1010,7 +1018,7 @@
     warn: []
   }; //http请求采集
 
-  let httpData = {
+  const httpData = {
     httpList: [],
     urlList: []
   }; //手势数据
@@ -1210,10 +1218,38 @@
 
 
   const preWatchRoutes = () => {
-    routesData.routeInfo.url = window.location.href;
-    routesData.routeInfo.title = document.title;
+    const info = routesData.routeInfo;
+    info.newURL = window.location.href;
+    info.oldURL = window.location.href;
+    info.title = document.title;
+    info.routeType = window.location.href.includes('/#/') ? 'hash' : 'history';
+    info.changeTime = toDate();
+
+    window.onload = () => {
+      info.refreshNums += 1;
+      Storage.set('global_refreshNums', info.refreshNums);
+    };
+
     window.addEventListener('popstate', function (event) {
-      console.log('routes change', event);
+      info.changeTime = toDate();
+
+      if (info.routeType === 'history') {
+        createToast('back：' + window.location.href);
+      }
+    });
+    window.addEventListener('hashchange', function (event) {
+      info.newURL = event.newURL;
+      info.oldURL = event.oldURL;
+      info.routeType = 'hash';
+      info.changeTime = toDate();
+      info.routesList.push(event.newURL);
+      createToast('back：' + event.newURL);
+    });
+    window.addHistoryListener('history', function () {
+      info.newURL = window.location.href;
+      info.routeType = 'history';
+      info.changeTime = toDate();
+      createToast('enter：' + window.location.href);
     });
   };
   /**
@@ -1251,9 +1287,30 @@
 
 
   const preWatchSystem = async () => {
+    //通过第三方sdk获取
+    if (returnCitySN) {
+      systemData['IP'] = returnCitySN['cip'];
+      systemData['地区代码'] = returnCitySN['cid'];
+      systemData['城市'] = returnCitySN['cname'];
+    } //原生设备数据
+
+
+    if (!window.plus) {
+      systemData.userAgent = navigator.userAgent;
+      systemData.appName = navigator.appName;
+      systemData.appCodeName = navigator.appCodeName;
+      systemData.appVersion = navigator.appVersion;
+      systemData.appMinorVersion = navigator.appMinorVersion;
+      systemData.platform = navigator.platform;
+      systemData.language = navigator.language;
+      systemData.width = window.screen.width;
+      systemData.height = window.screen.height;
+      systemData.pixelDepth = window.screen.pixelDepth;
+    } //webview
+
+
     function plusReady() {
       plus.geolocation.getCurrentPosition(function (p) {
-        console.log(JSON.stringify(p));
         systemData.latitude = p.coords.latitude;
         systemData.longitude = p.coords.longitude;
         systemData.altitude = p.coords.altitude;
@@ -1534,11 +1591,16 @@
       let routerInfoStr = '';
 
       for (const [key, val] of Object.entries(routeInfo)) {
-        let str = `<div class='envBox-textline'>${key + '->' + val}</div>`;
+        let str = `<div class='envBox-textline router'>${key + '：' + val}</div>`;
         routerInfoStr += str;
       }
 
+      routerInfoStr += `<div class='envBox-inlineText envBox-textline router-log router'>routesList: ${routesData.routesList}</div>`;
       createDialog(routerInfoStr);
+
+      $('.router-log').onclick = () => {
+        createToastText(JSON.stringify(routesData.routesList));
+      };
     };
   };
   /**
@@ -1578,12 +1640,13 @@
         let k = storage[0];
         let v = JSON.parse(handleCircularJson(storage[1]));
         let type = checkType(v);
-        let str = `<div class='envBox-inlineText storage-box'><span class='storage-key'>key: </span><span >${k}</span> <span class='storage-key'>val: </span><span >${v}</span> <span class='storage-key'>type: </span><span >${type}</span> <br></div>`;
+        let str = `<div class='envBox-inlineText storage-box'><span class='storage-key'>key： </span><span >${k}</span> <span class='storage-key'>val：</span><span >${v}</span> <span class='storage-key'>type：</span><span >${type}</span> <br></div>`;
         storageInfoStr += str;
         let strAll = str.replace('envBox-inlineText', '');
         storageList.push(strAll);
       });
-      createDialog(storageInfoStr); //开始监听url点击，展示详情
+      createDialog(storageInfoStr);
+      storageInfoStr = ''; //开始监听url点击，展示详情
 
       let storageDOM = document.querySelectorAll('.storage-box');
       storageDOM.forEach((dom, index) => {
@@ -1605,6 +1668,10 @@
     systemBtn.innerText = 'system';
 
     systemBtn.onclick = () => {
+      if (!window.plus) {
+        createToast('在真机webview中可以获取更多设备数据');
+      }
+
       if (JSON.stringify(systemData) !== '{}') {
         let contents = '';
 
@@ -1614,7 +1681,7 @@
 
         createDialog(contents);
       } else {
-        createToast('请在webview中调试');
+        createErrorToast('设备数据获取异常');
       }
     };
   };
@@ -1675,6 +1742,12 @@
 
     httpBtn.onclick = () => {
       let urlContents = '';
+
+      if (!httpData.urlList.length) {
+        createToast('no http data');
+        return;
+      }
+
       httpData.urlList.forEach((content, index) => {
         urlContents += `<div class='http http-${content.type}'>${content.url}</div>`;
       });
@@ -1723,9 +1796,10 @@
     clearBtn.onclick = () => {
       errorData.errorList = [];
       routesData.routesList = [];
+      routesData.routeInfo.refreshNums = 0;
       storageData.newStorageList = [];
       consoleData.consoleList = [];
-      httpData.httpList = [];
+      httpData.urlList = [];
       createToast('cache cleared successfully');
     };
   };
@@ -1771,16 +1845,98 @@
     sendMsg
   };
 
-  var isMobile = isMobileFn();
+  /**
+   * 改写路由
+   */
+  const startNewRoute = () => {
+    class Dep {
+      //订阅池
+      constructor(name) {
+        this.id = new Date(); // 使用时间戳做订阅池的ID
+
+        this.subs = []; // 该事件下对象的集合
+      }
+
+      defined() {
+        // 添加订阅者
+        Dep.watch.add(this);
+      }
+
+      notify() {
+        // 通知订阅者有变化
+        this.subs.forEach((e, i) => {
+          if (typeof e.update === 'function') {
+            try {
+              e.update.apply(e); // 触发订阅者更新函数
+            } catch (err) {
+              console.warr(err);
+            }
+          }
+        });
+      }
+
+    }
+
+    Dep.watch = null;
+
+    class Watch {
+      constructor(name, fn) {
+        this.name = name; // 订阅消息的名称
+
+        this.id = new Date(); // 使用时间戳做订阅者的ID
+
+        this.callBack = fn; // 订阅消息发送改变时 -> 订阅者执行的回调函数
+      }
+
+      add(dep) {
+        // 将订阅者放入dep订阅池
+        dep.subs.push(this);
+      }
+
+      update() {
+        // 将订阅者更新方法
+        var cb = this.callBack; // 赋值为了不改变函数内调用的this
+
+        cb(this.name);
+      }
+
+    }
+
+    var addHistoryMethod = function () {
+      var historyDep = new Dep();
+      return function (name) {
+        if (name === 'historychange') {
+          return function (name, fn) {
+            var event = new Watch(name, fn);
+            Dep.watch = event;
+            historyDep.defined();
+            Dep.watch = null; //    置空供下一个订阅者使用
+          };
+        } else if (name === 'pushState' || name === 'replaceState') {
+          console.log(history);
+          var method = history[name];
+          return function () {
+            method.apply(history, arguments);
+            historyDep.notify();
+          };
+        }
+      };
+    }();
+
+    window.addHistoryListener = addHistoryMethod('historychange');
+    history.pushState = addHistoryMethod('pushState');
+    history.replaceState = addHistoryMethod('replaceState');
+  };
+
+  startNewRoute();
+  let isMobile = isMobileFn();
 
   if (!window) {
     createErrorToast('it is must be brower environment');
-    throw new Error('it is must be brower environment');
   }
 
   if (!isMobile) {
     createErrorToast('it is must be mobile H5 environment');
-    throw new Error('it is must be mobile H5 environment');
   }
 
   Object.prototype.h5tools = {

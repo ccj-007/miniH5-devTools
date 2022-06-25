@@ -70,3 +70,27 @@ export const handleCircularJson = (data) => {
   })
 }
 
+/**
+ * 转为时间格式
+ */
+export const toDate = () => {
+  var nowDay = new Date()
+  return `${nowDay.getFullYear()}年${nowDay.getMonth() + 1}月${nowDay.getDate()}日${nowDay.getHours()}时${nowDay.getMinutes()}分${nowDay.getSeconds()}秒`
+}
+
+/**
+ * ajax封装
+ * @param {*} method 
+ * @param {*} url 
+ */
+export const $http = (method, url) => {
+  let xmlhttp = new XMLHttpRequest();
+  xmlhttp.open(method, url);
+  xmlhttp.send();
+  xmlhttp.onreadystatechange = () => {
+    if (xmlhttp.readyState == 4) {
+      console.log("responseText", xmlhttp.responseText);
+      return xmlhttp.responseText
+    }
+  }
+}

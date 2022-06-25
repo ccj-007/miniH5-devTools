@@ -40,15 +40,14 @@
  
 1. 点击按钮展开存在动画掉落现象 ！
 2. 某些业务需求经常会扫码获取数据，那么在webview中需要增加一个scan扫码功能模块 ！
-3.  某些情况下storage的val值存在异常
-4.  clear模块清除缓存存在异常
+3.  某些情况下storage的val值存在异常  
 5.  ui界面的美观性有提高空间
 6.  路由模块的切换以及各个数据的拦截，统计pv，uv等核心数据
 
 ---
 
 # **体验一把 ！！！**
-![img](https://chen-1305792286.cos.ap-shanghai.myqcloud.com/cclib%2FdevTools%2FdevTools-detail.png)
+![img](https://s21.aconvert.com/convert/p3r68-cdx67/198zj-5o71m.gif)
 
 
 **预览链接**
@@ -111,6 +110,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- 引入后可获取设备的ip，地区代码，城市 -->
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>  
 </head>
 
 <body>

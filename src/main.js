@@ -2,6 +2,10 @@ import h5Tools from '@/devTools.js'
 import { startGesture } from '@/touch.js'
 import { isMobileFn } from '@/utils.js'
 import { createErrorToast } from '@/components/toast'
+import { startNewRoute } from '@/modules/router'
+
+//改写路由
+startNewRoute()
 
 let isMobile = isMobileFn()
 
