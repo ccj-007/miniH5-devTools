@@ -3,6 +3,7 @@
  */
 import { Storage, $ } from "@/utils";
 import closeIconSrc from '@/svg/close.svg'
+import { createToolbar } from './toolbar'
 
 let contentX, contentY
 let isDragDialog = false
@@ -20,6 +21,7 @@ export const createDialog = (contentStr) => {
     dialogDOM.id = 'envBox-dialog'
     dialogDOM.className = 'jello-horizontal'
     document.body.appendChild(dialogDOM)
+    createToolbar()
   }
 
   //如果已存在就展示及更新数据

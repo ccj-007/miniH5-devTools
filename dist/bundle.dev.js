@@ -38,19 +38,128 @@
   var css_248z$2 = ":root {\r\n  --primary-deep: #194769;\r\n  --primary-light: #194769;\r\n}\r\n\r\n#envBox {\r\n  position: fixed;\r\n  z-index: 999999999999;\r\n  top: 50%;\r\n  right: 0;\r\n  width: 10px;\r\n  height: 60px;\r\n  background: var(--primary-light);\r\n  transition: top .5s linear;\r\n  border-radius: 5px 0 0 5px;\r\n}\r\n\r\n#envBox-expand {\r\n  position: fixed;\r\n  z-index: 9999999999999;\r\n  height: 60px;\r\n  width: 100vw;\r\n  top: 50%;\r\n  right: 0;\r\n  background: var(--primary-light);\r\n  /* transition: width .5s linear; */\r\n}\r\n\r\n#envBox-expand button {\r\n  width: 20%;\r\n  height: 30px;\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--primary-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 0.5em auto;\r\n  box-sizing: border-box;\r\n}\r\n\r\n#envBox-expand span {\r\n  color: #ffffff;\r\n  font-size: 14px;\r\n}\r\n\r\n\r\n.envBox-textline {\r\n  line-height: 20px;\r\n}";
   styleInject(css_248z$2);
 
-  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-deep: #26699c;\r\n  --main-light: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  max-height: 400px;\r\n  color: var(--common-error);\r\n  word-break: break-all;\r\n  overflow-y: auto;\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}";
+  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-deep: #26699c;\r\n  --main-light: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  max-height: 400px;\r\n  color: var(--common-error);\r\n  word-break: break-all;\r\n  overflow-y: auto;\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}\r\n\r\n.toolbar-warp {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  z-index: 999;\r\n}\r\n\r\n.toolbar-svg {\r\n  width: 20px;\r\n  height: 20px;\r\n}";
   styleInject(css_248z$1);
 
   var css_248z = "html,\r\nbody {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  font-size: 16px;\r\n  margin: 0;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n.envBox-inlineText {\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}";
   styleInject(css_248z);
+
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    }, _typeof(obj);
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+      writable: false
+    });
+    return Constructor;
+  }
+
+  function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+  }
+
+  function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+
+    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+
+  function _createForOfIteratorHelper(o, allowArrayLike) {
+    var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+
+    if (!it) {
+      if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+        if (it) o = it;
+        var i = 0;
+
+        var F = function () {};
+
+        return {
+          s: F,
+          n: function () {
+            if (i >= o.length) return {
+              done: true
+            };
+            return {
+              done: false,
+              value: o[i++]
+            };
+          },
+          e: function (e) {
+            throw e;
+          },
+          f: F
+        };
+      }
+
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }
+
+    var normalCompletion = true,
+        didErr = false,
+        err;
+    return {
+      s: function () {
+        it = it.call(o);
+      },
+      n: function () {
+        var step = it.next();
+        normalCompletion = step.done;
+        return step;
+      },
+      e: function (e) {
+        didErr = true;
+        err = e;
+      },
+      f: function () {
+        try {
+          if (!normalCompletion && it.return != null) it.return();
+        } finally {
+          if (didErr) throw err;
+        }
+      }
+    };
+  }
 
   /**
    *检查是否是移动端
    *
    * @return {boolean} 
    */
-  const isMobileFn = () => {
-    const machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+  var isMobileFn = function isMobileFn() {
+    var machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
 
     if (machineType === 'Mobile') {
       return true;
@@ -64,27 +173,23 @@
    * @return {boolean} 
    */
 
-  const Storage = {
-    get(key) {
+  var Storage = {
+    get: function get(key) {
       try {
         return JSON.parse(localStorage.getItem(key));
       } catch (error) {
         console.log(error);
       }
     },
-
-    set(key, val) {
+    set: function set(key, val) {
       localStorage.setItem(key, JSON.stringify(val));
     },
-
-    remove(key) {
+    remove: function remove(key) {
       localStorage.removeItem(key);
     },
-
-    clear() {
+    clear: function clear() {
       localStorage.clearItem();
     }
-
   };
   /**
    * 检查数据类型工具
@@ -92,7 +197,7 @@
    * @return {string} 数据类型
    */
 
-  const checkType = params => {
+  var checkType = function checkType(params) {
     return Object.prototype.toString.call(params).slice(8, -1).toLowerCase();
   };
   /**
@@ -100,7 +205,7 @@
    * @param {*} params
    */
 
-  const $ = params => {
+  var $ = function $(params) {
     return document.querySelector(params);
   };
   /**
@@ -108,10 +213,10 @@
    * @param {*} data
    */
 
-  const handleCircularJson = data => {
-    const seen = new WeakSet();
-    return JSON.stringify(data, (key, value) => {
-      if (typeof value === "object" && value !== null) {
+  var handleCircularJson = function handleCircularJson(data) {
+    var seen = new WeakSet();
+    return JSON.stringify(data, function (key, value) {
+      if (_typeof(value) === "object" && value !== null) {
         if (seen.has(value)) {
           return;
         }
@@ -126,15 +231,15 @@
    * 转为时间格式
    */
 
-  const toDate = () => {
+  var toDate = function toDate() {
     var nowDay = new Date();
-    return `${nowDay.getFullYear()}年${nowDay.getMonth() + 1}月${nowDay.getDate()}日${nowDay.getHours()}时${nowDay.getMinutes()}分${nowDay.getSeconds()}秒`;
+    return "".concat(nowDay.getFullYear(), "\u5E74").concat(nowDay.getMonth() + 1, "\u6708").concat(nowDay.getDate(), "\u65E5").concat(nowDay.getHours(), "\u65F6").concat(nowDay.getMinutes(), "\u5206").concat(nowDay.getSeconds(), "\u79D2");
   };
 
   /**
    * @description toast component
    */
-  const toastType = {
+  var toastType = {
     'info': 'envBox-toast-info',
     'error': 'envBox-toast-error',
     'warn': 'envBox-toast-warn'
@@ -147,15 +252,15 @@
    * @param {style} dialogStyle 
    */
 
-  const addToastDOM = (content, wait, type, dialogStyle) => {
+  var addToastDOM = function addToastDOM(content, wait, type, dialogStyle) {
     //去除全局重复
     if ($('#envBox-toast')) {
       document.body.removeChild($('#envBox-toast'));
     }
 
-    let toastDOM = document.createElement('div');
+    var toastDOM = document.createElement('div');
     toastDOM.id = 'envBox-toast';
-    toastDOM.className = `slide-in-blurred-top ${toastType[type]}`;
+    toastDOM.className = "slide-in-blurred-top ".concat(toastType[type]);
 
     if (dialogStyle === 'textDialog') {
       toastDOM.style.borderRadius = '5px';
@@ -164,20 +269,20 @@
 
     toastDOM.innerHTML = content;
     document.body.appendChild(toastDOM);
-    setTimeout(() => {
+    setTimeout(function () {
       toastDOM && document.body.removeChild(toastDOM);
     }, wait);
   };
-  const createToastText = function (content) {
-    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  var createToastText = function createToastText(content) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'info', 'textDialog');
   };
-  const createToast = function (content) {
-    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  var createToast = function createToast(content) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'info');
   };
-  const createErrorToast = function (content) {
-    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  var createErrorToast = function createErrorToast(content) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'error');
   };
 
@@ -188,39 +293,78 @@
    * @class Listener
    */
 
-  class Listener {
-    constructor(element, recognizer) {
-      let contexts = new Map();
-      element.addEventListener('touchstart', event => {
-        for (let touch of event.changedTouches) {
-          let context = Object.create(null);
+  var Listener = /*#__PURE__*/_createClass(function Listener(element, recognizer) {
+    _classCallCheck(this, Listener);
+
+    var contexts = new Map();
+    element.addEventListener('touchstart', function (event) {
+      var _iterator = _createForOfIteratorHelper(event.changedTouches),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var touch = _step.value;
+          var context = Object.create(null);
           contexts.set(touch.identifier, context);
           recognizer.start(touch, context);
         }
-      });
-      element.addEventListener('touchmove', event => {
-        for (let touch of event.changedTouches) {
-          let context = contexts.get(touch.identifier);
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    });
+    element.addEventListener('touchmove', function (event) {
+      var _iterator2 = _createForOfIteratorHelper(event.changedTouches),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var touch = _step2.value;
+          var context = contexts.get(touch.identifier);
           recognizer.move(touch, context);
         }
-      });
-      element.addEventListener('touchend', event => {
-        for (let touch of event.changedTouches) {
-          let context = contexts.get(touch.identifier);
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+    });
+    element.addEventListener('touchend', function (event) {
+      var _iterator3 = _createForOfIteratorHelper(event.changedTouches),
+          _step3;
+
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var touch = _step3.value;
+          var context = contexts.get(touch.identifier);
           recognizer.end(touch, context);
           contexts.delete(touch.identifier);
         }
-      });
-      element.addEventListener('cancel', event => {
-        for (let touch of event.changedTouches) {
-          let context = contexts.get(touch.identifier);
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+    });
+    element.addEventListener('cancel', function (event) {
+      var _iterator4 = _createForOfIteratorHelper(event.changedTouches),
+          _step4;
+
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var touch = _step4.value;
+          var context = contexts.get(touch.identifier);
           recognizer.cancel(touch, context);
           contexts.delete(touch.identifier);
         }
-      });
-    }
-
-  }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+    });
+  });
   /**
    * 识别手势
    *
@@ -228,128 +372,145 @@
    * @class Recognizer
    */
 
-  class Recognizer {
-    constructor(dispatcher) {
+  var Recognizer = /*#__PURE__*/function () {
+    function Recognizer(dispatcher) {
+      _classCallCheck(this, Recognizer);
+
       this.dispatcher = dispatcher;
     }
 
-    start(point, context) {
-      context.startX = point.clientX;
-      context.startY = point.clientY; //更新状态
+    _createClass(Recognizer, [{
+      key: "start",
+      value: function start(point, context) {
+        var _this = this;
 
-      context.isPan = false;
-      context.isTap = true;
-      context.isPress = false;
-      context.handler = setTimeout(() => {
+        context.startX = point.clientX;
+        context.startY = point.clientY; //更新状态
+
         context.isPan = false;
-        context.isTap = false;
-        context.isPress = true;
-        this.dispatcher.dispatch('press', {
-          clientX: point.clientX,
-          clientY: point.clientY
-        });
-        context.handler = null; //保护不会在press-start时再次触发
-      }, 500);
-    }
-
-    move(point, context) {
-      let dx = point.clientX - context.startX;
-      let dy = point.clientY - context.startY;
-      let d = dx ** 2 + dy ** 2; //处理临界状态
-
-      if (!context.isPan && d > 100) {
-        context.isPan = true;
-        context.isTap = false;
+        context.isTap = true;
         context.isPress = false;
-        context.isVertical = Math.abs(dx) < Math.abs(dy);
-        this.dispatcher.dispatch('panstart', {
-          startX: context.startX,
-          startY: context.startY,
-          clientX: point.clientX,
-          clientY: point.clientY,
-          dx,
-          dy,
-          isVertical: context.isVertical
-        });
-        clearTimeout(context.handler);
-      } //此时一直在滑动
+        context.handler = setTimeout(function () {
+          context.isPan = false;
+          context.isTap = false;
+          context.isPress = true;
 
-
-      if (context.isPan) {
-        this.dispatcher.dispatch('pan', {
-          startX: context.startX,
-          startY: context.startY,
-          clientX: point.clientX,
-          clientY: point.clientY,
-          dx,
-          dy,
-          isVertical: context.isVertical
-        });
-      } //筛选前500个取平均数
-
-
-      if (context.points) {
-        context.points = context.points.filter(point => Date.now() - point.t < 500);
-      } else {
-        context.points = [];
-      }
-
-      context.points.push({
-        t: Date.now(),
-        x: point.clientX,
-        y: point.clientY
-      });
-    }
-
-    end(point, context) {
-      context.isFlick = false; //在pan start 后isFlick代表快速滑动500ms内会触发flick
-
-      if (context.isTap) {
-        this.dispatcher.dispatch('tap', {}); //发布tap事件
-
-        clearTimeout(context.handler);
-      }
-
-      if (context.isPan) {
-        context.points = context.points.filter(point => Date.now() - point.t < 500);
-        let d, v;
-
-        if (!context.points.length) {
-          v = 0;
-        } else {
-          d = Math.sqrt((point.clientX - context.points[0].x) ** 2 + (point.clientY - context.points[0].y) ** 2);
-          v = d / (Date.now() - context.points[0].t);
-        }
-
-        if (v > 1.5) {
-          context.isFlick = true;
-          this.dispatcher.dispatch('flick', {}); //发布flick事件
-        } else {
-          context.isFlick = false;
-          this.dispatcher.dispatch('panend', {
+          _this.dispatcher.dispatch('press', {
             clientX: point.clientX,
             clientY: point.clientY
-          }); //发布pan-end 事件 
-        }
-      }
+          });
 
-      if (context.isPress) {
-        this.dispatcher.dispatch('panend', {
-          startX: context.startX,
-          startY: context.startY,
-          clientX: point.clientX,
-          clientY: point.clientY,
-          isVertical: context.isVertical,
-          isFlick: context.isFlick
+          context.handler = null; //保护不会在press-start时再次触发
+        }, 500);
+      }
+    }, {
+      key: "move",
+      value: function move(point, context) {
+        var dx = point.clientX - context.startX;
+        var dy = point.clientY - context.startY;
+        var d = Math.pow(dx, 2) + Math.pow(dy, 2); //处理临界状态
+
+        if (!context.isPan && d > 100) {
+          context.isPan = true;
+          context.isTap = false;
+          context.isPress = false;
+          context.isVertical = Math.abs(dx) < Math.abs(dy);
+          this.dispatcher.dispatch('panstart', {
+            startX: context.startX,
+            startY: context.startY,
+            clientX: point.clientX,
+            clientY: point.clientY,
+            dx: dx,
+            dy: dy,
+            isVertical: context.isVertical
+          });
+          clearTimeout(context.handler);
+        } //此时一直在滑动
+
+
+        if (context.isPan) {
+          this.dispatcher.dispatch('pan', {
+            startX: context.startX,
+            startY: context.startY,
+            clientX: point.clientX,
+            clientY: point.clientY,
+            dx: dx,
+            dy: dy,
+            isVertical: context.isVertical
+          });
+        } //筛选前500个取平均数
+
+
+        if (context.points) {
+          context.points = context.points.filter(function (point) {
+            return Date.now() - point.t < 500;
+          });
+        } else {
+          context.points = [];
+        }
+
+        context.points.push({
+          t: Date.now(),
+          x: point.clientX,
+          y: point.clientY
         });
       }
-    }
+    }, {
+      key: "end",
+      value: function end(point, context) {
+        context.isFlick = false; //在pan start 后isFlick代表快速滑动500ms内会触发flick
 
-    cancel(point, context) {
-      clearTimeout(context.handler);
-    }
+        if (context.isTap) {
+          this.dispatcher.dispatch('tap', {}); //发布tap事件
 
-  }
+          clearTimeout(context.handler);
+        }
+
+        if (context.isPan) {
+          context.points = context.points.filter(function (point) {
+            return Date.now() - point.t < 500;
+          });
+          var d, v;
+
+          if (!context.points.length) {
+            v = 0;
+          } else {
+            d = Math.sqrt(Math.pow(point.clientX - context.points[0].x, 2) + Math.pow(point.clientY - context.points[0].y, 2));
+            v = d / (Date.now() - context.points[0].t);
+          }
+
+          if (v > 1.5) {
+            context.isFlick = true;
+            this.dispatcher.dispatch('flick', {}); //发布flick事件
+          } else {
+            context.isFlick = false;
+            this.dispatcher.dispatch('panend', {
+              clientX: point.clientX,
+              clientY: point.clientY
+            }); //发布pan-end 事件 
+          }
+        }
+
+        if (context.isPress) {
+          this.dispatcher.dispatch('panend', {
+            startX: context.startX,
+            startY: context.startY,
+            clientX: point.clientX,
+            clientY: point.clientY,
+            isVertical: context.isVertical,
+            isFlick: context.isFlick
+          });
+        }
+      }
+    }, {
+      key: "cancel",
+      value: function cancel(point, context) {
+        clearTimeout(context.handler);
+      }
+    }]);
+
+    return Recognizer;
+  }();
   /**
    * 分发器
    *
@@ -357,22 +518,28 @@
    * @class dispatcher
    */
 
-  class Dispatcher {
-    constructor(element) {
+  var Dispatcher = /*#__PURE__*/function () {
+    function Dispatcher(element) {
+      _classCallCheck(this, Dispatcher);
+
       this.element = element;
     }
 
-    dispatch(type, properties) {
-      let event = new Event(type);
+    _createClass(Dispatcher, [{
+      key: "dispatch",
+      value: function dispatch(type, properties) {
+        var event = new Event(type);
 
-      for (let name in properties) {
-        event[name] = properties[name];
+        for (var name in properties) {
+          event[name] = properties[name];
+        }
+
+        this.element.dispatchEvent(event);
       }
+    }]);
 
-      this.element.dispatchEvent(event);
-    }
-
-  }
+    return Dispatcher;
+  }();
   /**
    * 手势快速监听
    *
@@ -401,21 +568,21 @@
       h5Tools.startdevTools();
     }
 
-    let envBoxDOM = document.getElementById('envBox');
+    var envBoxDOM = document.getElementById('envBox');
     envBoxDOM.style.display = 'none';
-    let dx = 0,
+    var dx = 0,
         dy = 0,
         startX = 0,
         clientX = 0;
-    let isRight = false,
+    var isRight = false,
         isRight_old_dy = 0;
-    let isLeftBias = false,
+    var isLeftBias = false,
         isLeftBias_old_dx = false;
-    let isRight_two = false;
-    let timer = null;
+    var isRight_two = false;
+    var timer = null;
 
     if (options.endTime) {
-      setTimeout(() => {
+      setTimeout(function () {
         if (timer) {
           clearInterval(timer);
           timer = null;
@@ -424,14 +591,14 @@
     }
 
     if (!document || !document.documentElement) return;
-    document.documentElement.addEventListener('pan', e => {
+    document.documentElement.addEventListener('pan', function (e) {
       dx = e.dx;
       dy = e.dy;
       startX = e.startX;
       clientX = e.clientX;
       if (timer) return; //防止多次執行
 
-      timer = setInterval(() => {
+      timer = setInterval(function () {
         //向右平移
         if (dx > 200 && !isRight) {
           isRight = true;
@@ -465,8 +632,8 @@
 
 
   function startGesture(element) {
-    let thumb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'z';
-    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    var thumb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'z';
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     //开启手势控制
     if (thumb === 'z') {
@@ -475,6 +642,27 @@
   }
 
   var closeIconSrc = "<svg class='env-close' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"closeIconTitle\" stroke=\"#194769\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"closeIconTitle\">Close</title> <path d=\"M6.34314575 6.34314575L17.6568542 17.6568542M6.34314575 17.6568542L17.6568542 6.34314575\"/> </svg>";
+
+  var clipboardIcon = "<svg class='toolbar-svg' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"clipboardIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"clipboardIconTitle\">Clipboard</title> <polyline points=\"15 3 19 3 19 21 5 21 5 3 5 3 9 3\"/> <path d=\"M14,4 L10,4 C9.44771525,4 9,3.55228475 9,3 C9,2.44771525 9.44771525,2 10,2 L14,2 C14.5522847,2 15,2.44771525 15,3 C15,3.55228475 14.5522847,4 14,4 Z\"/> </svg>";
+
+  var binIcon = "<svg class='toolbar-svg' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"binIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"binIconTitle\">Bin</title> <path d=\"M19 6L5 6M14 5L10 5M6 10L6 20C6 20.6666667 6.33333333 21 7 21 7.66666667 21 11 21 17 21 17.6666667 21 18 20.6666667 18 20 18 19.3333333 18 16 18 10\"/> </svg>";
+
+  /**
+   * @description toast component
+   */
+  /**
+   * 创建toolbar
+   */
+
+  const createToolbar = () => {
+    console.log("create toolbar");
+    let dialogDOM = $('#envBox-dialog');
+    let toolbarDOM = document.createElement('div');
+    toolbarDOM.className = 'toolbar-warp';
+    toolbarDOM.innerHTML += clipboardIcon;
+    toolbarDOM.innerHTML += binIcon;
+    dialogDOM.appendChild(toolbarDOM);
+  };
 
   /**
    * @description dialog components
@@ -496,6 +684,7 @@
       dialogDOM.id = 'envBox-dialog';
       dialogDOM.className = 'jello-horizontal';
       document.body.appendChild(dialogDOM);
+      createToolbar();
     } //如果已存在就展示及更新数据
 
 
@@ -1906,39 +2095,48 @@
   /**
    * 改写路由
    */
-  const startNewRoute = () => {
-    class Dep {
+  var startNewRoute = function startNewRoute() {
+    var Dep = /*#__PURE__*/function () {
       //订阅池
-      constructor(name) {
+      function Dep(name) {
+        _classCallCheck(this, Dep);
+
         this.id = new Date(); // 使用时间戳做订阅池的ID
 
         this.subs = []; // 该事件下对象的集合
       }
 
-      defined() {
-        // 添加订阅者
-        Dep.watch.add(this);
-      }
-
-      notify() {
-        // 通知订阅者有变化
-        this.subs.forEach((e, i) => {
-          if (typeof e.update === 'function') {
-            try {
-              e.update.apply(e); // 触发订阅者更新函数
-            } catch (err) {
-              console.warr(err);
+      _createClass(Dep, [{
+        key: "defined",
+        value: function defined() {
+          // 添加订阅者
+          Dep.watch.add(this);
+        }
+      }, {
+        key: "notify",
+        value: function notify() {
+          // 通知订阅者有变化
+          this.subs.forEach(function (e, i) {
+            if (typeof e.update === 'function') {
+              try {
+                e.update.apply(e); // 触发订阅者更新函数
+              } catch (err) {
+                console.warr(err);
+              }
             }
-          }
-        });
-      }
+          });
+        }
+      }]);
 
-    }
+      return Dep;
+    }();
 
     Dep.watch = null;
 
-    class Watch {
-      constructor(name, fn) {
+    var Watch = /*#__PURE__*/function () {
+      function Watch(name, fn) {
+        _classCallCheck(this, Watch);
+
         this.name = name; // 订阅消息的名称
 
         this.id = new Date(); // 使用时间戳做订阅者的ID
@@ -1946,19 +2144,24 @@
         this.callBack = fn; // 订阅消息发送改变时 -> 订阅者执行的回调函数
       }
 
-      add(dep) {
-        // 将订阅者放入dep订阅池
-        dep.subs.push(this);
-      }
+      _createClass(Watch, [{
+        key: "add",
+        value: function add(dep) {
+          // 将订阅者放入dep订阅池
+          dep.subs.push(this);
+        }
+      }, {
+        key: "update",
+        value: function update() {
+          // 将订阅者更新方法
+          var cb = this.callBack; // 赋值为了不改变函数内调用的this
 
-      update() {
-        // 将订阅者更新方法
-        var cb = this.callBack; // 赋值为了不改变函数内调用的this
+          cb(this.name);
+        }
+      }]);
 
-        cb(this.name);
-      }
-
-    }
+      return Watch;
+    }();
 
     var addHistoryMethod = function () {
       var historyDep = new Dep();
@@ -1987,7 +2190,7 @@
   };
 
   startNewRoute();
-  let isMobile = isMobileFn();
+  var isMobile = isMobileFn();
 
   if (!window) {
     createErrorToast('it is must be brower environment');
