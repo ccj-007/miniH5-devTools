@@ -4,6 +4,8 @@
 import { Storage, $ } from "@/utils";
 import closeIconSrc from '@/svg/close.svg'
 import { createToolbar } from './toolbar'
+import clipboardIcon from '@/svg/clipboard.svg'
+import binIcon from '@/svg/bin.svg'
 
 let contentX, contentY
 let isDragDialog = false
@@ -12,8 +14,9 @@ let isDragDialog = false
  * 创建dialog
  *
  * @param {*} contentStr
+ * @param {string} module
  */
-export const createDialog = (contentStr) => {
+export const createDialog = (contentStr, module) => {
   Storage.set('global_forbid', true)
   let dialogDOM = document.querySelector('#envBox-dialog')
   if (!dialogDOM) {
@@ -21,14 +24,14 @@ export const createDialog = (contentStr) => {
     dialogDOM.id = 'envBox-dialog'
     dialogDOM.className = 'jello-horizontal'
     document.body.appendChild(dialogDOM)
-    createToolbar()
   }
 
   //如果已存在就展示及更新数据
   dialogDOM.style.display = 'block'
   if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''  //一次性更新
   dialogDOM.innerHTML = contentStr
-  dialogDOM.innerHTML += closeIconSrc  //close icon
+  dialogDOM.innerHTML += closeIconSrc
+  checkCreateToolbar(dialogDOM, module)
 
   //监听拖拽
   initDialogPosition(dialogDOM)
@@ -39,6 +42,16 @@ export const createDialog = (contentStr) => {
   closeDOM.addEventListener('click', () => {
     clearDialog()
   }, false)
+}
+
+
+/**
+ * 校验并生成toolbar
+ */
+export const checkCreateToolbar = (dialogDOM, module) => {
+  if (module === 'error' || module === 'http' || module === 'log' || module === 'storage') {
+    createToolbar(dialogDOM, module)
+  }
 }
 
 /**
@@ -56,14 +69,16 @@ export const clearDialog = () => {
  *
  * @param {*} contentStr
  */
-export const updateDialog = (contentStr) => {
+export const updateDialog = (contentStr, module) => {
   if (!$('.envBox-error')) return
 
   let dialogDOM = document.querySelector('#envBox-dialog')
   if (!dialogDOM) return
   if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''
   dialogDOM.innerHTML += contentStr
-  dialogDOM.innerHTML += closeIconSrc  //close icon
+  dialogDOM.innerHTML += closeIconSrc
+
+  checkCreateToolbar(dialogDOM, module)
   //监听点击关闭dialog
   let closeDOM = document.querySelector('.env-close')
   closeDOM.addEventListener('click', () => {

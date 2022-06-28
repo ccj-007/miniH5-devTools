@@ -6,13 +6,13 @@ import './style/tools.css'
 import './style/component.css'
 import './style/global.css'
 import { enableGesture } from "./touch.js";
-import { createDialog, updateDialog, dragDialog } from './components/dialog'
+import { createDialog, updateDialog } from './components/dialog'
 import { createToast, createErrorToast, createToastText } from './components/toast'
 import { Storage, checkType, handleCircularJson, $, toDate } from "@/utils";
 import { proxy } from "ajax-hook";
 
-let expandUI = false  //是否已经展示按钮
 const insertDOM = document.querySelector('#app')
+let expandUI = false  //是否已经展示按钮
 
 // 配置项
 const newOptions = {
@@ -243,11 +243,11 @@ const checkOptions = (options) => {
 const preWatchError = () => {
   window.addEventListener('error', (e) => {
     handleError("global error" + e.message)
-    updateDialog(`<div>${errorData.errorSum}</div>`)
+    updateDialog(`<div class='envBox-error'>${errorData.errorSum}</div>`, 'error')
   }, false)
   window.addEventListener('unhandledrejection', (e) => {
     handleError("promise error" + e.reason)
-    updateDialog(`<div>${errorData.errorSum}</div>`)
+    updateDialog(`<div class='envBox-error'>${errorData.errorSum}</div>`, 'error')
   }, false)
 }
 
@@ -336,10 +336,14 @@ const preWatchStorage = () => {
  */
 const preWatchSystem = async () => {
   //通过第三方sdk获取
-  if (returnCitySN) {
-    systemData['IP'] = returnCitySN['cip']
-    systemData['地区代码'] = returnCitySN['cid']
-    systemData['城市'] = returnCitySN['cname']
+  try {
+    if (returnCitySN) {
+      systemData['IP'] = returnCitySN['cip']
+      systemData['地区代码'] = returnCitySN['cid']
+      systemData['城市'] = returnCitySN['cname']
+    }
+  } catch (e) {
+    createErrorToast('SDK请求失败')
   }
 
   //原生设备数据
@@ -528,7 +532,7 @@ const loadEnvModule = (envBox) => {
     })
 
     //创建弹窗
-    createDialog(contentStr)
+    createDialog(contentStr, 'env')
 
     const buttonList = document.querySelectorAll('.env-btn')
     buttonList.forEach(btn => {
@@ -571,7 +575,7 @@ const loadPerformanceModule = (envBox) => {
   let content = `<div>首屏渲染：<span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕： <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成：<span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`
 
   button.onclick = () => {
-    createDialog(content)
+    createDialog(content, 'performance')
   }
 }
 
@@ -590,7 +594,7 @@ const loadErrorModule = (envBox) => {
       createToast('no error')
       return
     }
-    createDialog(`<div class='envBox-error'>${errorSum}</div>`)
+    createDialog(`<div class='envBox-error'>${errorSum}</div>`, 'error')
   }
 }
 
@@ -612,7 +616,7 @@ const loadRoutesModule = (envBox) => {
     }
     routerInfoStr += `<div class='envBox-inlineText envBox-textline router-log router'>routesList: ${routesData.routesList}</div>`
 
-    createDialog(routerInfoStr)
+    createDialog(routerInfoStr, 'route')
 
     $('.router-log').onclick = () => {
       createToastText(JSON.stringify(routesData.routesList))
@@ -654,7 +658,7 @@ const loadStorageModule = (envBox) => {
       let strAll = str.replace('envBox-inlineText', '')
       storageList.push(strAll)
     })
-    createDialog(storageInfoStr)
+    createDialog(`<div class='envBox-storage'>${storageInfoStr}</div>`, 'storage')
     storageInfoStr = ''
 
     //开始监听url点击，展示详情
@@ -685,7 +689,7 @@ const loadSystemModule = (envBox) => {
       for (const [k, v] of Object.entries(systemData)) {
         contents += `<div>${k}: ${v}</div>`
       }
-      createDialog(contents)
+      createDialog(contents, 'system')
     } else {
       createErrorToast('设备数据获取异常')
     }
@@ -718,7 +722,7 @@ const loadConsoleModule = (envBox) => {
       }
     })
 
-    createDialog(`<div>${sumContent}</div>`)
+    createDialog(`<div class='envBox-log'>${sumContent}</div>`, 'console')
 
     //开始监听log点击，展示详情
     let logDOM = document.querySelectorAll('.console')
@@ -750,7 +754,7 @@ const loadHttpModule = (envBox) => {
     httpData.urlList.forEach((content, index) => {
       urlContents += `<div class='http http-${content.type}'>${content.url}</div>`
     })
-    createDialog(urlContents)
+    createDialog(`<div class='envBox-http'>${urlContents}</div>`, 'http')
 
     //开始监听url点击，展示详情
     let urlDOM = document.querySelectorAll('.http')
@@ -790,15 +794,32 @@ const loadClearModule = (envBox) => {
   clearBtn.innerText = 'clear'
 
   clearBtn.onclick = () => {
-    errorData.errorList = []
-    errorData.errorSum = ''
+    clearModule('error')
+    clearModule('storage')
+    clearModule('log')
+    clearModule('http')
     routesData.routesList = []
     routesData.routeInfo.refreshNums = 0
-    storageData.newStorageList = []
-    consoleData.consoleList = []
-    httpData.urlList = []
 
     createToast('cache cleared successfully')
+  }
+}
+
+export const clearModule = (type) => {
+  switch (type) {
+    case 'error':
+      errorData.errorList = []
+      errorData.errorSum = ''
+      break;
+    case 'http':
+      httpData.urlList = []
+      break;
+    case 'storage':
+      storageData.newStorageList = []
+      break;
+    case 'log':
+      consoleData.consoleList = []
+      break;
   }
 }
 

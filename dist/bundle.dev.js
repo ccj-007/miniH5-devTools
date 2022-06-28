@@ -38,7 +38,7 @@
   var css_248z$2 = ":root {\r\n  --primary-deep: #194769;\r\n  --primary-light: #194769;\r\n}\r\n\r\n#envBox {\r\n  position: fixed;\r\n  z-index: 999999999999;\r\n  top: 50%;\r\n  right: 0;\r\n  width: 10px;\r\n  height: 60px;\r\n  background: var(--primary-light);\r\n  transition: top .5s linear;\r\n  border-radius: 5px 0 0 5px;\r\n}\r\n\r\n#envBox-expand {\r\n  position: fixed;\r\n  z-index: 9999999999999;\r\n  height: 60px;\r\n  width: 100vw;\r\n  top: 50%;\r\n  right: 0;\r\n  background: var(--primary-light);\r\n  /* transition: width .5s linear; */\r\n}\r\n\r\n#envBox-expand button {\r\n  width: 20%;\r\n  height: 30px;\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--primary-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 0.5em auto;\r\n  box-sizing: border-box;\r\n}\r\n\r\n#envBox-expand span {\r\n  color: #ffffff;\r\n  font-size: 14px;\r\n}\r\n\r\n\r\n.envBox-textline {\r\n  line-height: 20px;\r\n}";
   styleInject(css_248z$2);
 
-  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-deep: #26699c;\r\n  --main-light: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  max-height: 400px;\r\n  color: var(--common-error);\r\n  word-break: break-all;\r\n  overflow-y: auto;\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}\r\n\r\n.toolbar-warp {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  z-index: 999;\r\n}\r\n\r\n.toolbar-svg {\r\n  width: 20px;\r\n  height: 20px;\r\n}";
+  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-deep: #26699c;\r\n  --main-light: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  box-sizing: border-box;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  max-height: 400px;\r\n  color: var(--common-error);\r\n  word-break: break-all;\r\n  overflow-y: auto;\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}\r\n\r\n.toolbar-warp {\r\n  position: fixed;\r\n  left: 0;\r\n  top: -20px;\r\n}\r\n\r\n.toolbar-clip,\r\n.toolbar-bin {\r\n  width: 20px;\r\n  height: 20px;\r\n}";
   styleInject(css_248z$1);
 
   var css_248z = "html,\r\nbody {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  font-size: 16px;\r\n  margin: 0;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n.envBox-inlineText {\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}";
@@ -643,25 +643,55 @@
 
   var closeIconSrc = "<svg class='env-close' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"closeIconTitle\" stroke=\"#194769\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"closeIconTitle\">Close</title> <path d=\"M6.34314575 6.34314575L17.6568542 17.6568542M6.34314575 17.6568542L17.6568542 6.34314575\"/> </svg>";
 
-  var clipboardIcon = "<svg class='toolbar-svg' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"clipboardIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"clipboardIconTitle\">Clipboard</title> <polyline points=\"15 3 19 3 19 21 5 21 5 3 5 3 9 3\"/> <path d=\"M14,4 L10,4 C9.44771525,4 9,3.55228475 9,3 C9,2.44771525 9.44771525,2 10,2 L14,2 C14.5522847,2 15,2.44771525 15,3 C15,3.55228475 14.5522847,4 14,4 Z\"/> </svg>";
+  var clipboardIcon = "<svg class='toolbar-clip' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"clipboardIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"clipboardIconTitle\">Clipboard</title> <polyline points=\"15 3 19 3 19 21 5 21 5 3 5 3 9 3\"/> <path d=\"M14,4 L10,4 C9.44771525,4 9,3.55228475 9,3 C9,2.44771525 9.44771525,2 10,2 L14,2 C14.5522847,2 15,2.44771525 15,3 C15,3.55228475 14.5522847,4 14,4 Z\"/> </svg>";
 
-  var binIcon = "<svg class='toolbar-svg' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"binIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"binIconTitle\">Bin</title> <path d=\"M19 6L5 6M14 5L10 5M6 10L6 20C6 20.6666667 6.33333333 21 7 21 7.66666667 21 11 21 17 21 17.6666667 21 18 20.6666667 18 20 18 19.3333333 18 16 18 10\"/> </svg>";
+  var binIcon = "<svg class='toolbar-bin' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"binIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"binIconTitle\">Bin</title> <path d=\"M19 6L5 6M14 5L10 5M6 10L6 20C6 20.6666667 6.33333333 21 7 21 7.66666667 21 11 21 17 21 17.6666667 21 18 20.6666667 18 20 18 19.3333333 18 16 18 10\"/> </svg>";
 
   /**
-   * @description toast component
+   * @description toolbar component
    */
+  let curDialogWidth = 0;
   /**
    * 创建toolbar
    */
 
-  const createToolbar = () => {
-    console.log("create toolbar");
-    let dialogDOM = $('#envBox-dialog');
+  const createToolbar = (dialogDOM, module) => {
+    curDialogWidth = dialogDOM.offsetWidth;
+    console.log("dialogDOM", dialogDOM.offsetWidth);
     let toolbarDOM = document.createElement('div');
     toolbarDOM.className = 'toolbar-warp';
     toolbarDOM.innerHTML += clipboardIcon;
     toolbarDOM.innerHTML += binIcon;
-    dialogDOM.appendChild(toolbarDOM);
+    console.log(dialogDOM.innerHTML);
+    setTimeout(() => {
+      dialogDOM.appendChild(toolbarDOM);
+      watchBtn(dialogDOM, module);
+    }, 0);
+  };
+  /**
+   * 监听btn
+   */
+
+  const watchBtn = (dialogDOM, module) => {
+    let clipDOM = $('.toolbar-clip');
+    let clearDOM = $('.toolbar-bin');
+    /**
+     * 清理
+     */
+
+    clearDOM.onclick = () => {
+      dialogDOM.removeChild($(`.envBox-${module}`));
+      dialogDOM.style.width = curDialogWidth + 'px';
+      clearModule(module);
+    };
+    /**
+     * 一键复制
+     */
+
+
+    clipDOM.onclick = () => {
+      createToast('未开放....');
+    };
   };
 
   /**
@@ -673,9 +703,10 @@
    * 创建dialog
    *
    * @param {*} contentStr
+   * @param {string} module
    */
 
-  const createDialog = contentStr => {
+  const createDialog = (contentStr, module) => {
     Storage.set('global_forbid', true);
     let dialogDOM = document.querySelector('#envBox-dialog');
 
@@ -684,7 +715,6 @@
       dialogDOM.id = 'envBox-dialog';
       dialogDOM.className = 'jello-horizontal';
       document.body.appendChild(dialogDOM);
-      createToolbar();
     } //如果已存在就展示及更新数据
 
 
@@ -692,8 +722,8 @@
     if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''; //一次性更新
 
     dialogDOM.innerHTML = contentStr;
-    dialogDOM.innerHTML += closeIconSrc; //close icon
-    //监听拖拽
+    dialogDOM.innerHTML += closeIconSrc;
+    checkCreateToolbar(dialogDOM, module); //监听拖拽
 
     initDialogPosition(dialogDOM);
     watchDragDialog(); //监听点击关闭dialog
@@ -702,6 +732,15 @@
     closeDOM.addEventListener('click', () => {
       clearDialog();
     }, false);
+  };
+  /**
+   * 校验并生成toolbar
+   */
+
+  const checkCreateToolbar = (dialogDOM, module) => {
+    if (module === 'error' || module === 'http' || module === 'log' || module === 'storage') {
+      createToolbar(dialogDOM, module);
+    }
   };
   /**
    * 清除dialog
@@ -719,14 +758,14 @@
    * @param {*} contentStr
    */
 
-  const updateDialog = contentStr => {
+  const updateDialog = (contentStr, module) => {
     if (!$('.envBox-error')) return;
     let dialogDOM = document.querySelector('#envBox-dialog');
     if (!dialogDOM) return;
     if (dialogDOM.innerHTML) dialogDOM.innerHTML = '';
     dialogDOM.innerHTML += contentStr;
-    dialogDOM.innerHTML += closeIconSrc; //close icon
-    //监听点击关闭dialog
+    dialogDOM.innerHTML += closeIconSrc;
+    checkCreateToolbar(dialogDOM, module); //监听点击关闭dialog
 
     let closeDOM = document.querySelector('.env-close');
     closeDOM.addEventListener('click', () => {
@@ -1150,9 +1189,9 @@
   /**
    * @description  用于在非打包后线上环境的环境切换，以及性能、异常、行为监控及上报
    */
+  const insertDOM = document.querySelector('#app');
   let expandUI = false; //是否已经展示按钮
-
-  const insertDOM = document.querySelector('#app'); // 配置项
+  // 配置项
 
   const newOptions = {
     insertDOM: insertDOM,
@@ -1427,11 +1466,11 @@
   const preWatchError = () => {
     window.addEventListener('error', e => {
       handleError("global error" + e.message);
-      updateDialog(`<div>${errorData.errorSum}</div>`);
+      updateDialog(`<div class='envBox-error'>${errorData.errorSum}</div>`, 'error');
     }, false);
     window.addEventListener('unhandledrejection', e => {
       handleError("promise error" + e.reason);
-      updateDialog(`<div>${errorData.errorSum}</div>`);
+      updateDialog(`<div class='envBox-error'>${errorData.errorSum}</div>`, 'error');
     }, false);
   };
   /**
@@ -1534,10 +1573,14 @@
 
   const preWatchSystem = async () => {
     //通过第三方sdk获取
-    if (returnCitySN) {
-      systemData['IP'] = returnCitySN['cip'];
-      systemData['地区代码'] = returnCitySN['cid'];
-      systemData['城市'] = returnCitySN['cname'];
+    try {
+      if (returnCitySN) {
+        systemData['IP'] = returnCitySN['cip'];
+        systemData['地区代码'] = returnCitySN['cid'];
+        systemData['城市'] = returnCitySN['cname'];
+      }
+    } catch (e) {
+      createErrorToast('SDK请求失败');
     } //原生设备数据
 
 
@@ -1747,7 +1790,7 @@
         contentStr += `<button class='env-btn'>${item}</button>`;
       }); //创建弹窗
 
-      createDialog(contentStr);
+      createDialog(contentStr, 'env');
       const buttonList = document.querySelectorAll('.env-btn');
       buttonList.forEach(btn => {
         btn.addEventListener('click', e => {
@@ -1793,7 +1836,7 @@
     let content = `<div>首屏渲染：<span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕： <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成：<span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`;
 
     button.onclick = () => {
-      createDialog(content);
+      createDialog(content, 'performance');
     };
   };
   /**
@@ -1816,7 +1859,7 @@
         return;
       }
 
-      createDialog(`<div class='envBox-error'>${errorSum}</div>`);
+      createDialog(`<div class='envBox-error'>${errorSum}</div>`, 'error');
     };
   };
   /**
@@ -1842,7 +1885,7 @@
       }
 
       routerInfoStr += `<div class='envBox-inlineText envBox-textline router-log router'>routesList: ${routesData.routesList}</div>`;
-      createDialog(routerInfoStr);
+      createDialog(routerInfoStr, 'route');
 
       $('.router-log').onclick = () => {
         createToastText(JSON.stringify(routesData.routesList));
@@ -1891,7 +1934,7 @@
         let strAll = str.replace('envBox-inlineText', '');
         storageList.push(strAll);
       });
-      createDialog(storageInfoStr);
+      createDialog(`<div class='envBox-storage'>${storageInfoStr}</div>`, 'storage');
       storageInfoStr = ''; //开始监听url点击，展示详情
 
       let storageDOM = document.querySelectorAll('.storage-box');
@@ -1925,7 +1968,7 @@
           contents += `<div>${k}: ${v}</div>`;
         }
 
-        createDialog(contents);
+        createDialog(contents, 'system');
       } else {
         createErrorToast('设备数据获取异常');
       }
@@ -1963,7 +2006,7 @@
           sumContent += `<div class='console console-${type}'>${data}</div>`;
         }
       });
-      createDialog(`<div>${sumContent}</div>`); //开始监听log点击，展示详情
+      createDialog(`<div class='envBox-log'>${sumContent}</div>`, 'console'); //开始监听log点击，展示详情
 
       let logDOM = document.querySelectorAll('.console');
       logDOM.forEach((dom, index) => {
@@ -1997,7 +2040,7 @@
       httpData.urlList.forEach((content, index) => {
         urlContents += `<div class='http http-${content.type}'>${content.url}</div>`;
       });
-      createDialog(urlContents); //开始监听url点击，展示详情
+      createDialog(`<div class='envBox-http'>${urlContents}</div>`, 'http'); //开始监听url点击，展示详情
 
       let urlDOM = document.querySelectorAll('.http');
       urlDOM.forEach((dom, index) => {
@@ -2040,15 +2083,35 @@
     clearBtn.innerText = 'clear';
 
     clearBtn.onclick = () => {
-      errorData.errorList = [];
-      errorData.errorSum = '';
+      clearModule('error');
+      clearModule('storage');
+      clearModule('log');
+      clearModule('http');
       routesData.routesList = [];
       routesData.routeInfo.refreshNums = 0;
-      storageData.newStorageList = [];
-      consoleData.consoleList = [];
-      httpData.urlList = [];
       createToast('cache cleared successfully');
     };
+  };
+
+  const clearModule = type => {
+    switch (type) {
+      case 'error':
+        errorData.errorList = [];
+        errorData.errorSum = '';
+        break;
+
+      case 'http':
+        httpData.urlList = [];
+        break;
+
+      case 'storage':
+        storageData.newStorageList = [];
+        break;
+
+      case 'log':
+        consoleData.consoleList = [];
+        break;
+    }
   };
   /**
    * 数据上报
@@ -2056,7 +2119,6 @@
    * @param {'err' | 'pv'} type 上传类型
    * @param {'beacon' | 'gif'} myMethods 自定义方法 
    */
-
 
   const sendMsg = (obj, type, myMethods) => {
     //校验
