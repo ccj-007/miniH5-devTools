@@ -703,7 +703,7 @@ const loadSystemModule = (envBox) => {
 const loadConsoleModule = (envBox) => {
   let consoleBtn = document.createElement('button')
   envBox.appendChild(consoleBtn)
-  consoleBtn.innerText = 'console'
+  consoleBtn.innerText = 'log'
 
   consoleBtn.onclick = () => {
     let sumContent = ''
@@ -722,7 +722,7 @@ const loadConsoleModule = (envBox) => {
       }
     })
 
-    createDialog(`<div class='envBox-log'>${sumContent}</div>`, 'console')
+    createDialog(`<div class='envBox-log'>${sumContent}</div>`, 'log')
 
     //开始监听log点击，展示详情
     let logDOM = document.querySelectorAll('.console')

@@ -39,6 +39,7 @@ export const createDialog = (contentStr, module) => {
 
   //监听点击关闭dialog
   let closeDOM = document.querySelector('.env-close')
+
   closeDOM.addEventListener('click', () => {
     clearDialog()
   }, false)
@@ -59,6 +60,7 @@ export const checkCreateToolbar = (dialogDOM, module) => {
  */
 export const clearDialog = () => {
   let dialogDOM = document.querySelector('#envBox-dialog')
+
   dialogDOM.innerHTML = ''
   dialogDOM.style.display = 'none'
   Storage.set('global_forbid', false)
