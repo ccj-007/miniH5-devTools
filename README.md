@@ -1,8 +1,12 @@
+<br>
+
 <h1 align="center">Welcome to miniH5-devTools 👋</h1>
+
+<br>
 
 # **前提**
 
-English | [简体中文](./zh.md)
+简体中文 | [English](./zh.md)
 
 ## **这是个啥？**  
 
@@ -48,6 +52,7 @@ English | [简体中文](./zh.md)
 3. 通过window.performance.getEntriesByType(‘resource’)监听资源加载详情， 并在performace模块显示
 4. 路由要判断入口来源，如webview、H5、微信小程序、PC
 5. 后续优化模块 1.performance性能评分优化模块（集合之前所有模块的数据展示，并提供建议） , 网速的监听，历史最低、历史最高！
+6. 后续将支持cicd自动化部署
 ---
 
 # **体验一把 ！！！**
