@@ -16,8 +16,12 @@ if (!isMobile) {
   createErrorToast('it is must be mobile H5 environment')
 }
 
-Object.prototype.h5tools = {
+const h5tools = {
   gesture: startGesture,
   start: h5Tools.startdevTools,
   send: h5Tools.sendMsg
 }
+
+window.h5tools = h5tools
+
+export default h5tools

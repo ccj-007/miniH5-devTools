@@ -76,8 +76,17 @@
 
 ```js
   npm i mini-h5-tools  //安装依赖
+
+  //在main.js中引入
+  import h5tools from 'mini-h5-tools'
+  
+  h5tools.start() 
+  //  h5tools.gesture()  手势解锁
 ```
 **方法2**
+```js
+  npm i mini-h5-tools  //安装依赖
+```
 
 直接在项目根目录的dist文件夹内直接复制bundle.build.js文件，在html中引入
 
@@ -153,8 +162,8 @@ let options = {
   insertDOM: insertDOM, //插入的envTools的容器
   wait: 1000, //等待时间
   needSleep: false, //是否要延迟加载 
-  envBoxIdName: 'envBox',  //未展开DOM
-  envBoxExpandIdName: 'envBox-expand', //延展后的DOM
+  envBoxIdName: 'envBox',  //未展开DOM，必须是id选择器
+  envBoxExpandIdName: 'envBox-expand', //延展后的DOM，必须是id选择器
   envList: ['test', 'dev', 'prebrand'],  //环境列表
   watchEnv: true, //是否监听环境
   watchPerformance: true, //是否监听性能
@@ -197,4 +206,10 @@ h5tools.send(obj, type, myMthods)
 1. **环境变量切换后，如果使用？**
 
     默认在切换后会在localStorage存储key为global_env的属性，只需要获取对应的val修改http请求的域名即可
+
+2. **为什么我导入后展示不出，或者ui组件存在遮盖 ？**
+    
+    某些情况下你的插入的容器DOM修改后可能会存在问题，默认最好插入在document.body中。某些框架如uniapp的导航栏部分会遮盖弹窗组件。因为z-index已经调整到最大，请自行降低数值 
+
+
 

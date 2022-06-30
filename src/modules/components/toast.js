@@ -34,7 +34,9 @@ export const addToastDOM = (content, wait, type, dialogStyle) => {
 
   document.body.appendChild(toastDOM)
   setTimeout(() => {
-    toastDOM && document.body.removeChild(toastDOM)
+    if ($('#envBox-toast')) {
+      document.body.removeChild(toastDOM)
+    }
   }, wait);
 }
 

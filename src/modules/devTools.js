@@ -11,7 +11,7 @@ import { createToast, createErrorToast, createToastText } from './components/toa
 import { Storage, checkType, handleCircularJson, $, toDate } from "@/utils";
 import { proxy } from "ajax-hook";
 
-const insertDOM = document.querySelector('#app')
+const insertDOM = document.body
 let expandUI = false  //是否已经展示按钮
 
 // 配置项
@@ -19,8 +19,8 @@ const newOptions = {
   insertDOM: insertDOM, //插入的envTools的容器
   wait: 1000, //等待时间
   needSleep: false, //是否要延迟加载 
-  envBoxIdName: 'envBox',  //未展开DOM
-  envBoxExpandIdName: 'envBox-expand', //延展后的DOM
+  envBoxIdName: 'envBox',  //未展开DOM，必须是id选择器
+  envBoxExpandIdName: 'envBox-expand', //延展后的DOM，必须是id选择器
   envList: ['test', 'dev', 'prebrand'],  //环境列表
   watchEnv: true, //是否监听环境
   watchPerformance: true, //是否监听性能
@@ -174,6 +174,8 @@ const createEnvDevTools = (options) => {
     loadVersionModule(envBox)
     loadClearModule(envBox)
 
+    loadBaseModule(envBox)
+
     //处理通用样式
     const envBoxBtnList = document.querySelectorAll('#envBox-expand button')
     envBoxBtnList.forEach(btn => {
@@ -194,6 +196,22 @@ const createEnvDevTools = (options) => {
       envBox.className = ''
     }
   }, false)
+}
+
+/**
+ * 加载基础模块
+ */
+const loadBaseModule = (envBox) => {
+  let moduleList = ['watchEnv', 'watchPerformance', 'watchError', 'watchRoutes', 'watchStorage', 'watchSystem', 'watchConsole', 'watchHttp']
+
+  moduleList.forEach(module => {
+    if (!newOptions[module]) {
+      console.log("asdasdasdasdasd");
+      let btn = document.createElement('button')
+      envBox.appendChild(btn)
+      btn.innerText = '....'
+    }
+  })
 }
 
 /**
