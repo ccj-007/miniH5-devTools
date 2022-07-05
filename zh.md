@@ -1,8 +1,12 @@
+<br>
+
 <h1 align="center">Welcome to miniH5-devTools 👋</h1>
+
+<br>
 
 # **Premise**
 
-English | [Simplified Chinese](./zh.md)
+Simplified Chinese | [English](./zh.md)
 
 ## **What is this? **
 
@@ -29,7 +33,7 @@ When you are working on the H5 activity page, every time you test the real machi
  - [x] 😈 Exception catch
  - [x] 🍜 Behavior Monitoring
  - [x] 📈 Data report
- - [x] 📜 Cache Monitor
+ - [x] 📜 Cache monitoring (localStorage, sessionStorage, cookies)
  - [x] ✈️ Route monitoring
  - [x] 👆 One touch gesture unlock
  - [x] 🌊 Support arbitrary drag and drop
@@ -39,13 +43,14 @@ When you are working on the H5 activity page, every time you test the real machi
  - [x] 💍 Check if the version is updated
  - [x] 🍏 Added native ui components
  - [x] 🛁 Clear cache with one click
+ - [x] 🛁 Implement toolbar (one-click copy, trash, filter)
 
 **Current issues and future directions**
  
 1. Some business requirements often scan codes to obtain data, so a scan code function module needs to be added to the webview!
-
-2. Implement the one-click copy function of the toolbar
-
+2. Toolbar added 1. Filter corresponding data
+3. Routing needs to determine the source of the entry, such as webview, H5, WeChat applet, PC
+4. Subsequent support for cicd automated deployment
 ---
 
 # **Try it out! ! ! **
@@ -69,8 +74,17 @@ When you are working on the H5 activity page, every time you test the real machi
 
 ````js
   npm i mini-h5-tools //Install dependencies
+
+  //Introduced in main.js
+  import h5tools from 'mini-h5-tools'
+  
+  h5tools.start()
+  // h5tools.gesture() gesture unlock
 ````
 **Method 2**
+````js
+  npm i mini-h5-tools //Install dependencies
+````
 
 Copy the bundle.build.js file directly in the dist folder of the project root directory and import it in html
 
@@ -146,8 +160,8 @@ let options = {
   insertDOM: insertDOM, //The container of the inserted envTools
   wait: 1000, //waiting time
   needSleep: false, //Whether to delay loading
-  envBoxIdName: 'envBox', //The DOM is not expanded
-  envBoxExpandIdName: 'envBox-expand', //Expanded DOM
+  envBoxIdName: 'envBox', //The DOM is not expanded, it must be an id selector
+  envBoxExpandIdName: 'envBox-expand', //The expanded DOM must be an id selector
   envList: ['test', 'dev', 'prebrand'], //environment list
   watchEnv: true, //whether to monitor the environment
   watchPerformance: true, //Whether to monitor performance
@@ -190,3 +204,7 @@ h5tools.send(obj, type, myMthods)
 1. **After the environment variable is switched, if use? **
 
     By default, the property with the key of global_env will be stored in localStorage after the switch. You only need to obtain the corresponding val to modify the domain name of the http request.
+
+2. **Why can't I display it after I import it, or the ui component is covered? **
+    
+    In some cases, there may be problems with the DOM of your inserted container after modification. It is best to insert it in document.body by default. Some frameworks such as uniapp's navigation bar will cover the popup component. Because the z-index has been adjusted to the maximum, please lower the value yourself

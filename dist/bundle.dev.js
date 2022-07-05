@@ -39,7 +39,7 @@
   var css_248z$2 = ":root {\r\n  --primary-deep: #194769;\r\n  --primary-light: #194769;\r\n}\r\n\r\n#envBox {\r\n  position: fixed;\r\n  z-index: 999999999999;\r\n  top: 50%;\r\n  right: 0;\r\n  width: 10px;\r\n  height: 60px;\r\n  background: var(--primary-light);\r\n  transition: top .5s linear;\r\n  border-radius: 5px 0 0 5px;\r\n}\r\n\r\n#envBox-expand {\r\n  position: fixed;\r\n  z-index: 9999999999999;\r\n  height: 60px;\r\n  width: 100vw;\r\n  top: 50%;\r\n  right: 0;\r\n  background: var(--primary-light);\r\n  /* transition: width .5s linear; */\r\n}\r\n\r\n#envBox-expand button {\r\n  width: 20%;\r\n  height: 30px;\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--primary-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 0.5em auto;\r\n  box-sizing: border-box;\r\n}\r\n\r\n#envBox-expand span {\r\n  color: #ffffff;\r\n  font-size: 14px;\r\n}\r\n\r\n\r\n.envBox-textline {\r\n  line-height: 20px;\r\n}";
   styleInject(css_248z$2);
 
-  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-deep: #26699c;\r\n  --main-light: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99999999999999;\r\n  background: var(--main-light);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  box-sizing: border-box;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-deep);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  z-index: 99999999999999;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  max-height: 400px;\r\n  color: var(--common-error);\r\n  word-break: break-all;\r\n  overflow-y: auto;\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-deep);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}\r\n\r\n.toolbar-warp {\r\n  position: fixed;\r\n  left: 0;\r\n  top: -20px;\r\n}\r\n\r\n.toolbar-clip,\r\n.toolbar-bin {\r\n  width: 20px;\r\n  height: 20px;\r\n}";
+  var css_248z$1 = "/* dialog componetnts */\r\n:root {\r\n  --main-moredeep: #194769;\r\n  --main-light: #26699c;\r\n  --main-deep: #194769;\r\n\r\n  --common-info: #194769;\r\n  --common-warn: #d2bc19;\r\n  --common-error: #F2855E;\r\n  --common-success: #6FEF8D;\r\n}\r\n\r\n#envBox-dialog {\r\n  position: fixed;\r\n  font-size: 14px;\r\n  max-width: 80%;\r\n  z-index: 99999999999999;\r\n  background: var(--main-deep);\r\n  padding: 20px;\r\n  border-radius: 5px;\r\n  box-sizing: border-box;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n#envBox-dialog button {\r\n  z-index: 1;\r\n  color: white;\r\n  background: var(--main-light);\r\n  outline: none;\r\n  border: none;\r\n  padding: 5px 10px;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.dialog-detail {\r\n  width: 100%;\r\n  line-height: 32px;\r\n  font-size: 14px;\r\n}\r\n\r\n.env-close {\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n  width: 20px;\r\n  height: 20px;\r\n  background: #fff;\r\n  border-radius: 0 0 0 50%;\r\n}\r\n\r\n/* toast componetnts */\r\n#envBox-toast {\r\n  position: fixed;\r\n  z-index: 99999999999999;\r\n  max-width: 80%;\r\n  word-break: break-all;\r\n  top: 2%;\r\n  z-index: 99;\r\n  padding: 15px;\r\n  border-radius: 30px;\r\n  font-size: 14px;\r\n  color: #fff;\r\n  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n.envBox-toast-info {\r\n  background: var(--common-info);\r\n}\r\n\r\n.envBox-toast-error {\r\n  background: var(--common-error);\r\n}\r\n\r\n.envBox-toast-warn {\r\n  background: var(--common-warn);\r\n}\r\n\r\n.envBox-error {\r\n  border-radius: 5px;\r\n  max-height: 400px;\r\n  color: var(--common-error);\r\n  word-break: break-all;\r\n  overflow-y: auto;\r\n}\r\n\r\n.console,\r\n.http,\r\n.router {\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.router {\r\n  color: #fff;\r\n}\r\n\r\n.console-log {}\r\n\r\n.console-warn {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.console-error {\r\n  color: var(--common-error);\r\n}\r\n\r\n.console-info {\r\n  color: var(--main-light);\r\n}\r\n\r\n\r\n\r\n.http-start {\r\n  color: var(--common-info);\r\n}\r\n\r\n.http-suc {\r\n  color: var(--common-success);\r\n}\r\n\r\n.http-err {\r\n  color: var(--common-error);\r\n}\r\n\r\n.xn {\r\n  color: #fff;\r\n  border-radius: 5px;\r\n}\r\n\r\n.xn-quick {\r\n  color: var(--common-success);\r\n}\r\n\r\n.xn-mid {\r\n  color: var(--common-warn);\r\n}\r\n\r\n.xn-low {\r\n  color: var(--common-error);\r\n}\r\n\r\n.storage-box {\r\n  border-radius: 2px;\r\n  word-break: break-all;\r\n  width: 100%;\r\n  display: flex;\r\n  word-break: break-all;\r\n  display: inline-block;\r\n  border-radius: 5px;\r\n}\r\n\r\n.storage-key {\r\n  color: #fff;\r\n}\r\n\r\n.toolbar-warp {\r\n  position: fixed;\r\n  left: 0;\r\n  top: -20px;\r\n}\r\n\r\n.toolbar-clip,\r\n.toolbar-bin,\r\n.toolbar-filter {\r\n  width: 20px;\r\n  height: 20px;\r\n}\r\n\r\n.toolbar-cookie {\r\n  color: var(--main-deep) !important;\r\n  position: relative;\r\n  bottom: 5px;\r\n}\r\n\r\n.toolbar-session {\r\n  color: var(--main-deep) !important;\r\n  position: relative;\r\n  bottom: 5px;\r\n  margin-left: 5px;\r\n}";
   styleInject(css_248z$1);
 
   var css_248z = "html,\r\nbody {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  font-size: 16px;\r\n  margin: 0;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n.envBox-inlineText {\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}";
@@ -240,7 +240,7 @@
   /**
    * @description toast component
    */
-  const toastType = {
+  var toastType = {
     'info': 'envBox-toast-info',
     'error': 'envBox-toast-error',
     'warn': 'envBox-toast-warn'
@@ -253,15 +253,15 @@
    * @param {style} dialogStyle 
    */
 
-  const addToastDOM = (content, wait, type, dialogStyle) => {
+  var addToastDOM = function addToastDOM(content, wait, type, dialogStyle) {
     //去除全局重复
     if ($('#envBox-toast')) {
       document.body.removeChild($('#envBox-toast'));
     }
 
-    let toastDOM = document.createElement('div');
+    var toastDOM = document.createElement('div');
     toastDOM.id = 'envBox-toast';
-    toastDOM.className = `slide-in-blurred-top ${toastType[type]}`;
+    toastDOM.className = "slide-in-blurred-top ".concat(toastType[type]);
 
     if (dialogStyle === 'textDialog') {
       toastDOM.style.borderRadius = '5px';
@@ -270,22 +270,22 @@
 
     toastDOM.innerHTML = content;
     document.body.appendChild(toastDOM);
-    setTimeout(() => {
+    setTimeout(function () {
       if ($('#envBox-toast')) {
         document.body.removeChild(toastDOM);
       }
     }, wait);
   };
-  const createToastText = function (content) {
-    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  var createToastText = function createToastText(content) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'info', 'textDialog');
   };
-  const createToast = function (content) {
-    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  var createToast = function createToast(content) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'info');
   };
-  const createErrorToast = function (content) {
-    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  var createErrorToast = function createErrorToast(content) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'error');
   };
 
@@ -650,6 +650,8 @@
 
   var binIcon = "<svg class='toolbar-bin' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"binIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"binIconTitle\">Bin</title> <path d=\"M19 6L5 6M14 5L10 5M6 10L6 20C6 20.6666667 6.33333333 21 7 21 7.66666667 21 11 21 17 21 17.6666667 21 18 20.6666667 18 20 18 19.3333333 18 16 18 10\"/> </svg>";
 
+  var filterIcon = "<svg class='toolbar-filter' role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48px\" height=\"48px\" viewBox=\"0 0 24 24\" aria-labelledby=\"filterIconTitle\" stroke=\"#194769\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" fill=\"none\" color=\"#194769\"> <title id=\"filterIconTitle\">Filter</title> <path d=\"M10 12.261L4.028 3.972h16L14 12.329V17l-4 3z\"/> </svg>";
+
   /**
    * @description toolbar component
    */
@@ -658,24 +660,32 @@
    * 创建toolbar
    */
 
-  const createToolbar = (dialogDOM, module) => {
+  const createToolbar = (dialogDOM, module, data) => {
     curDialogWidth = dialogDOM.offsetWidth;
     let toolbarDOM = document.createElement('div');
     toolbarDOM.className = 'toolbar-warp';
     toolbarDOM.innerHTML += clipboardIcon;
     toolbarDOM.innerHTML += binIcon;
+
+    if (module === 'storage') {
+      toolbarDOM.innerHTML += filterIcon;
+      loadCookieTools(toolbarDOM);
+      loadSessionTools(toolbarDOM, data);
+    }
+
     setTimeout(() => {
       dialogDOM.appendChild(toolbarDOM);
-      watchBtn(dialogDOM, module);
+      watchBtn(dialogDOM, module, data);
     }, 0);
   };
   /**
    * 监听btn
    */
 
-  const watchBtn = (dialogDOM, module) => {
+  const watchBtn = (dialogDOM, module, data) => {
     let clipDOM = $('.toolbar-clip');
-    let clearDOM = $('.toolbar-bin'); //清理
+    let clearDOM = $('.toolbar-bin');
+    let filterDOM = $('.toolbar-filter'); //清理
 
     clearDOM.onclick = () => {
       dialogDOM.removeChild($(`.envBox-${module}`));
@@ -699,6 +709,30 @@
         navigator.clipboard.writeText(clipText);
         createToast('复制成功');
       }
+    }; //过滤
+
+
+    filterDOM.onclick = () => {
+      if (module === 'storage') {
+        let name = prompt("输入查询的KEY: ");
+        let needList = ['localStorageList', 'sessionStorageList'];
+        let result = '';
+        needList.forEach(list => {
+          data[list].findIndex(item => {
+            if (item[0] === name) {
+              result = item;
+            }
+          });
+        });
+
+        if (result && checkType(result) === 'array') {
+          createToast(`key: ${result[0]} val: ${result[1]} type: ${checkType(result)}`);
+        } else {
+          createToast('不存在');
+        }
+      } else {
+        createToast('该模块暂不支持过滤');
+      }
     };
   };
   /**
@@ -706,7 +740,7 @@
    * @param {*} dom 
    */
 
-  var getText = function (dom) {
+  const getText = function (dom) {
     let allText = dom.innerHTML;
     allText = allText.replace(/<\/?.+?\/?>/g, ''); //去除标签
 
@@ -714,6 +748,61 @@
 
     if (allText == "") return;
     return allText;
+  };
+  /**
+   * 加载session
+   */
+
+
+  const loadSessionTools = (toolbarDOM, data) => {
+    let sessionDOM = document.createElement('span');
+    sessionDOM.className = 'toolbar-session';
+    sessionDOM.innerText = 'session';
+    toolbarDOM.appendChild(sessionDOM);
+
+    sessionDOM.onclick = () => {
+      let storageInfoStr = '';
+      data.sessionStorageList.forEach((storage, index) => {
+        let k = storage[0];
+        let v = JSON.parse(handleCircularJson(storage[1]));
+        let type = checkType(v);
+        let str = `<div><span class='storage-key'>key： </span><span >${k}</span> <span class='storage-key'>val：</span><span >${v}</span> <span class='storage-key'>type：</span><span >${type}</span> <br></div>`;
+        storageInfoStr += str;
+      });
+      createToastText(storageInfoStr);
+    };
+  };
+  /**
+   * 加载cookie
+   */
+
+
+  const loadCookieTools = toolbarDOM => {
+    let cookieDOM = document.createElement('span');
+    cookieDOM.className = 'toolbar-cookie';
+    cookieDOM.innerText = 'cookie';
+    toolbarDOM.appendChild(cookieDOM);
+
+    cookieDOM.onclick = () => {
+      getCookie();
+    };
+  };
+  /**
+   * 获取cookie
+   */
+
+
+  const getCookie = function () {
+    let strCookie = document.cookie;
+    let arrCookie = strCookie.split("; ");
+    let cookieSum = 'cookie：<br>';
+
+    for (let i = 0; i < arrCookie.length; i++) {
+      let arr = arrCookie[i].split("=");
+      cookieSum += `${arr[0]}-${arr[1]}<br>`;
+    }
+
+    createToastText(cookieSum);
   };
 
   /**
@@ -726,9 +815,10 @@
    *
    * @param {*} contentStr
    * @param {string} module
+   * @param {Object} data 
    */
 
-  const createDialog = (contentStr, module) => {
+  const createDialog = (contentStr, module, data) => {
     Storage.set('global_forbid', true);
     let dialogDOM = document.querySelector('#envBox-dialog');
 
@@ -745,7 +835,7 @@
 
     dialogDOM.innerHTML = contentStr;
     dialogDOM.innerHTML += closeIconSrc;
-    checkCreateToolbar(dialogDOM, module); //监听拖拽
+    checkCreateToolbar(dialogDOM, module, data); //监听拖拽
 
     initDialogPosition(dialogDOM);
     watchDragDialog(); //监听点击关闭dialog
@@ -759,9 +849,9 @@
    * 校验并生成toolbar
    */
 
-  const checkCreateToolbar = (dialogDOM, module) => {
+  const checkCreateToolbar = (dialogDOM, module, data) => {
     if (module === 'error' || module === 'http' || module === 'log' || module === 'storage') {
-      createToolbar(dialogDOM, module);
+      createToolbar(dialogDOM, module, data);
     }
   };
   /**
@@ -780,14 +870,14 @@
    * @param {*} contentStr
    */
 
-  const updateDialog = (contentStr, module) => {
+  const updateDialog = (contentStr, module, data) => {
     if (!$('.envBox-error')) return;
     let dialogDOM = document.querySelector('#envBox-dialog');
     if (!dialogDOM) return;
     if (dialogDOM.innerHTML) dialogDOM.innerHTML = '';
     dialogDOM.innerHTML += contentStr;
     dialogDOM.innerHTML += closeIconSrc;
-    checkCreateToolbar(dialogDOM, module); //监听点击关闭dialog
+    checkCreateToolbar(dialogDOM, module, data); //监听点击关闭dialog
 
     let closeDOM = document.querySelector('.env-close');
     closeDOM.addEventListener('click', () => {
@@ -1313,8 +1403,9 @@
   }; //缓存数据采集
 
   const storageData = {
-    newStorageList: [],
-    maxLen: 5
+    localStorageList: [],
+    maxLen: 5,
+    sessionStorageList: []
   }; //系统数据采集
 
   const systemData = {}; //console采集
@@ -1582,28 +1673,33 @@
 
 
   const preWatchStorage = () => {
-    let originSetItem = localStorage.setItem; //自定义分发事件
+    function initStorage(dataName, eventName) {
+      let origin = eventName.setItem; //自定义分发事件
 
-    localStorage.setItem = function (key, val) {
-      val = handleCircularJson(val);
-      let event = new Event("setItem", {
-        key: val
-      });
-      event.key = key;
-      event.val = val;
-      let index = storageData.newStorageList.findIndex(item => item[0] === key);
+      eventName.setItem = function (key, val) {
+        val = JSON.parse(handleCircularJson(val));
+        let event = new Event("setItem", {
+          key: val
+        });
+        event.key = key;
+        event.val = val;
+        let index = storageData[dataName].findIndex(item => item[0] === key);
 
-      if (index > -1) {
-        //如果已经存在置于顶部
-        storageData.newStorageList.splice(index, 1);
-        storageData.newStorageList.unshift([key, val]);
-      } else {
-        storageData.newStorageList.push([key, val]); //挂载到Storage对象上
-      }
+        if (index > -1) {
+          //如果已经存在置于顶部
+          storageData[dataName].splice(index, 1);
+          storageData[dataName].unshift([key, val]);
+        } else {
+          storageData[dataName].push([key, val]); //挂载到Storage对象上
+        }
 
-      window.dispatchEvent(event);
-      originSetItem.apply(this, arguments);
-    };
+        window.dispatchEvent(event);
+        origin.apply(this, arguments);
+      };
+    }
+
+    initStorage('localStorageList', localStorage);
+    initStorage('sessionStorageList', sessionStorage);
   };
   /**
    * 前置监听系统数据
@@ -1619,7 +1715,9 @@
         systemData['城市'] = returnCitySN['cname'];
       }
     } catch (e) {
-      createErrorToast('SDK请求失败');
+      if (!Storage.get('global_refreshNums')) {
+        createErrorToast('SDK请求失败');
+      }
     } //原生设备数据
 
 
@@ -1865,14 +1963,18 @@
     } = window.performance.timing;
     FP = domLoading - navigationStart;
     DCL = domContentLoadedEventEnd - navigationStart;
-    L = loadEventEnd - navigationStart;
+    L = loadEventEnd - navigationStart; //测试网速
+
+    let netWork = navigator.connection.downlink * 1024 / 8;
+    let netWorkType = navigator.connection.effectiveType;
+    console.log(navigator.connection);
 
     function getPerformaceStyle(type, data) {
       let standard = performaceData[type];
       return data < standard[0] ? 'xn-quick xn' : data > standard[1] ? 'xn-low xn' : 'xn-mid xn';
     }
 
-    let content = `<div>首屏渲染：<span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕： <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成：<span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`;
+    let content = `<div>首屏渲染：<span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕： <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成：<span class=${getPerformaceStyle('L', L)}>${L}ms</span></div><br><div>网速：<span>${netWork}kb/s</span></div><br><div>网络类型：<span>${netWorkType}</span></div>`;
 
     button.onclick = () => {
       createDialog(content, 'performance');
@@ -1943,7 +2045,7 @@
     } = newOptions;
     const {
       maxLen,
-      newStorageList
+      localStorageList
     } = storageData;
     let storageBtn = document.createElement('button');
     envBox.appendChild(storageBtn);
@@ -1953,18 +2055,18 @@
       let storageInfoStr = '';
       let storageList = []; //展示前几
 
-      let len = storageData.newStorageList?.length;
+      let len = storageData.localStorageList?.length;
 
       if (isNewStorage && maxLen < len) {
-        storageData.newStorageList.splice(maxLen, len);
+        storageData.localStorageList.splice(maxLen, len);
       }
 
-      if (!storageData.newStorageList.length) {
+      if (!storageData.localStorageList.length) {
         createToast('no storage');
         return;
       }
 
-      storageData.newStorageList.forEach((storage, index) => {
+      storageData.localStorageList.forEach((storage, index) => {
         let k = storage[0];
         let v = JSON.parse(handleCircularJson(storage[1]));
         let type = checkType(v);
@@ -1973,7 +2075,7 @@
         let strAll = str.replace('envBox-inlineText', '');
         storageList.push(strAll);
       });
-      createDialog(`<div class='envBox-storage'>${storageInfoStr}</div>`, 'storage');
+      createDialog(`<div class='envBox-storage'>${storageInfoStr}</div>`, 'storage', storageData);
       storageInfoStr = ''; //开始监听url点击，展示详情
 
       let storageDOM = document.querySelectorAll('.storage-box');
@@ -2144,7 +2246,7 @@
         break;
 
       case 'storage':
-        storageData.newStorageList = [];
+        storageData.localStorageList = [];
         break;
 
       case 'log':
@@ -2291,7 +2393,7 @@
   };
 
   startNewRoute();
-  let isMobile = isMobileFn();
+  var isMobile = isMobileFn();
 
   if (!window) {
     createErrorToast('it is must be brower environment');
@@ -2301,7 +2403,7 @@
     createErrorToast('it is must be mobile H5 environment');
   }
 
-  const h5tools = {
+  var h5tools = {
     gesture: startGesture,
     start: h5Tools.startdevTools,
     send: h5Tools.sendMsg

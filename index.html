@@ -13,7 +13,7 @@
 <body>
   <div id="app">
   </div>
-  <script src="./dist/bundle.dev.js">
+  <script src="./dist/bundle.build.js">
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -24,7 +24,8 @@
     })
 
     console.warn('22323');
-
+    window.localStorage.setItem('number', 22)
+    window.sessionStorage.setItem('session', 1111111111)
     window.localStorage.setItem('ss', {
       name: '23232',
       a: '232',

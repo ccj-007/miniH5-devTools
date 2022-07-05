@@ -77,8 +77,9 @@ const routesData = {
 }
 //缓存数据采集
 const storageData = {
-  newStorageList: [],
-  maxLen: 5
+  localStorageList: [],
+  maxLen: 5,
+  sessionStorageList: []
 }
 //系统数据采集
 const systemData = {
@@ -327,26 +328,29 @@ const preWatchRoutes = () => {
  * 前置监听Storage事件
  */
 const preWatchStorage = () => {
-  let originSetItem = localStorage.setItem
-  //自定义分发事件
-  localStorage.setItem = function (key, val) {
-    val = (handleCircularJson(val))
+  function initStorage (dataName, eventName) {
+    let origin = eventName.setItem
+    //自定义分发事件
+    eventName.setItem = function (key, val) {
+      val = JSON.parse((handleCircularJson(val)))
+      let event = new Event("setItem", { key: val });
+      event.key = key
+      event.val = val
+      let index = storageData[dataName].findIndex(item => item[0] === key)
+      if (index > -1) {
+        //如果已经存在置于顶部
+        storageData[dataName].splice(index, 1)
+        storageData[dataName].unshift([key, val])
+      } else {
+        storageData[dataName].push([key, val]) //挂载到Storage对象上
+      }
 
-    let event = new Event("setItem", { key: val });
-    event.key = key
-    event.val = val
-    let index = storageData.newStorageList.findIndex(item => item[0] === key)
-    if (index > -1) {
-      //如果已经存在置于顶部
-      storageData.newStorageList.splice(index, 1)
-      storageData.newStorageList.unshift([key, val])
-    } else {
-      storageData.newStorageList.push([key, val]) //挂载到Storage对象上
+      window.dispatchEvent(event);
+      origin.apply(this, arguments);
     }
-
-    window.dispatchEvent(event);
-    originSetItem.apply(this, arguments);
   }
+  initStorage('localStorageList', localStorage)
+  initStorage('sessionStorageList', sessionStorage)
 }
 
 /**
@@ -361,7 +365,9 @@ const preWatchSystem = async () => {
       systemData['城市'] = returnCitySN['cname']
     }
   } catch (e) {
-    createErrorToast('SDK请求失败')
+    if (!Storage.get('global_refreshNums')) {
+      createErrorToast('SDK请求失败')
+    }
   }
 
   //原生设备数据
@@ -583,6 +589,10 @@ const loadPerformanceModule = (envBox) => {
   DCL = domContentLoadedEventEnd - navigationStart
   L = loadEventEnd - navigationStart
 
+  //测试网速
+  let netWork = navigator.connection.downlink * 1024 / 8
+  let netWorkType = navigator.connection.effectiveType
+  console.log(navigator.connection);
   function getPerformaceStyle (type, data) {
     let standard = performaceData[type]
     return data < standard[0] ? 'xn-quick xn' : (
@@ -590,7 +600,8 @@ const loadPerformanceModule = (envBox) => {
     )
   }
 
-  let content = `<div>首屏渲染：<span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕： <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成：<span class=${getPerformaceStyle('L', L)}>${L}ms</span></div>`
+  let content = `<div>首屏渲染：<span class=${getPerformaceStyle('FP', FP)}>${FP}ms</span></div><br><div>DOM加载完毕： <span class=${getPerformaceStyle('DCL', DCL)}>${DCL}ms</span></div><br><div>图片、样式等外链资源加载完成：<span class=${getPerformaceStyle('L', L)}>${L}ms</span></div><br><div>网速：<span>${netWork}kb/s</span></div><br><div>网络类型：<span>${netWorkType}</span></div>`
+
 
   button.onclick = () => {
     createDialog(content, 'performance')
@@ -648,7 +659,7 @@ const loadRoutesModule = (envBox) => {
  */
 const loadStorageModule = (envBox) => {
   const { isNewStorage } = newOptions
-  const { maxLen, newStorageList } = storageData
+  const { maxLen, localStorageList } = storageData
   let storageBtn = document.createElement('button')
   envBox.appendChild(storageBtn)
   storageBtn.innerText = 'storage'
@@ -657,16 +668,16 @@ const loadStorageModule = (envBox) => {
     let storageInfoStr = ''
     let storageList = []
     //展示前几
-    let len = storageData.newStorageList?.length
+    let len = storageData.localStorageList?.length
     if (isNewStorage && maxLen < len) {
-      storageData.newStorageList.splice(maxLen, len)
+      storageData.localStorageList.splice(maxLen, len)
     }
-    if (!storageData.newStorageList.length) {
+    if (!storageData.localStorageList.length) {
       createToast('no storage')
       return
     }
 
-    storageData.newStorageList.forEach((storage, index) => {
+    storageData.localStorageList.forEach((storage, index) => {
       let k = storage[0]
       let v = JSON.parse(handleCircularJson(storage[1]))
       let type = checkType(v)
@@ -676,7 +687,7 @@ const loadStorageModule = (envBox) => {
       let strAll = str.replace('envBox-inlineText', '')
       storageList.push(strAll)
     })
-    createDialog(`<div class='envBox-storage'>${storageInfoStr}</div>`, 'storage')
+    createDialog(`<div class='envBox-storage'>${storageInfoStr}</div>`, 'storage', storageData)
     storageInfoStr = ''
 
     //开始监听url点击，展示详情
@@ -833,7 +844,7 @@ export const clearModule = (type) => {
       httpData.urlList = []
       break;
     case 'storage':
-      storageData.newStorageList = []
+      storageData.localStorageList = []
       break;
     case 'log':
       consoleData.consoleList = []

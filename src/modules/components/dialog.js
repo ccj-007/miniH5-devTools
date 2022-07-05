@@ -15,8 +15,9 @@ let isDragDialog = false
  *
  * @param {*} contentStr
  * @param {string} module
+ * @param {Object} data 
  */
-export const createDialog = (contentStr, module) => {
+export const createDialog = (contentStr, module, data) => {
   Storage.set('global_forbid', true)
   let dialogDOM = document.querySelector('#envBox-dialog')
   if (!dialogDOM) {
@@ -31,7 +32,7 @@ export const createDialog = (contentStr, module) => {
   if (dialogDOM.innerHTML) dialogDOM.innerHTML = ''  //一次性更新
   dialogDOM.innerHTML = contentStr
   dialogDOM.innerHTML += closeIconSrc
-  checkCreateToolbar(dialogDOM, module)
+  checkCreateToolbar(dialogDOM, module, data)
 
   //监听拖拽
   initDialogPosition(dialogDOM)
@@ -49,9 +50,9 @@ export const createDialog = (contentStr, module) => {
 /**
  * 校验并生成toolbar
  */
-export const checkCreateToolbar = (dialogDOM, module) => {
+export const checkCreateToolbar = (dialogDOM, module, data) => {
   if (module === 'error' || module === 'http' || module === 'log' || module === 'storage') {
-    createToolbar(dialogDOM, module)
+    createToolbar(dialogDOM, module, data)
   }
 }
 
@@ -71,7 +72,7 @@ export const clearDialog = () => {
  *
  * @param {*} contentStr
  */
-export const updateDialog = (contentStr, module) => {
+export const updateDialog = (contentStr, module, data) => {
   if (!$('.envBox-error')) return
 
   let dialogDOM = document.querySelector('#envBox-dialog')
@@ -80,7 +81,7 @@ export const updateDialog = (contentStr, module) => {
   dialogDOM.innerHTML += contentStr
   dialogDOM.innerHTML += closeIconSrc
 
-  checkCreateToolbar(dialogDOM, module)
+  checkCreateToolbar(dialogDOM, module, data)
   //监听点击关闭dialog
   let closeDOM = document.querySelector('.env-close')
   closeDOM.addEventListener('click', () => {

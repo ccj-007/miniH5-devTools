@@ -1,8 +1,8 @@
 /* dialog componetnts */
 :root {
   --main-moredeep: #194769;
-  --main-deep: #26699c;
-  --main-light: #194769;
+  --main-light: #26699c;
+  --main-deep: #194769;
 
   --common-info: #194769;
   --common-warn: #d2bc19;
@@ -15,7 +15,7 @@
   font-size: 14px;
   max-width: 80%;
   z-index: 99999999999999;
-  background: var(--main-light);
+  background: var(--main-deep);
   padding: 20px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -26,7 +26,7 @@
 #envBox-dialog button {
   z-index: 1;
   color: white;
-  background: var(--main-deep);
+  background: var(--main-light);
   outline: none;
   border: none;
   padding: 5px 10px;
@@ -113,7 +113,7 @@
 }
 
 .console-info {
-  color: var(--main-deep);
+  color: var(--main-light);
 }
 
 
@@ -168,7 +168,21 @@
 }
 
 .toolbar-clip,
-.toolbar-bin {
+.toolbar-bin,
+.toolbar-filter {
   width: 20px;
   height: 20px;
+}
+
+.toolbar-cookie {
+  color: var(--main-deep) !important;
+  position: relative;
+  bottom: 5px;
+}
+
+.toolbar-session {
+  color: var(--main-deep) !important;
+  position: relative;
+  bottom: 5px;
+  margin-left: 5px;
 }
