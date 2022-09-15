@@ -3,7 +3,7 @@
  */
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from "@rollup/plugin-commonjs";
-import babel from 'rollup-plugin-babel'
+import { babel } from '@rollup/plugin-babel'
 import postcss from "rollup-plugin-postcss";
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
@@ -18,14 +18,16 @@ export default {
   output: {
     file: 'dist/bundle.dev.js',
     format: 'umd',
-    name: 'envTools'
+    name: 'envTools',
+    presets: [['@babel/preset-env', { modules: 'umd' }]] //考虑兼容性做法
   },
   plugins: [
     svg(),
     resolve(),
     commonjs(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      babelHelpers: 'bundled'
     }),
     postcss(),
     alias({

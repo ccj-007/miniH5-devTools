@@ -207,7 +207,6 @@ const loadBaseModule = (envBox) => {
 
   moduleList.forEach(module => {
     if (!newOptions[module]) {
-      console.log("asdasdasdasdasd");
       let btn = document.createElement('button')
       envBox.appendChild(btn)
       btn.innerText = '....'
@@ -465,8 +464,6 @@ const preWatchHttp = () => {
   proxy({
     //请求发起前进入
     onRequest: (config, handler) => {
-      console.log("preWatchHttp----start", config)
-
       let sendObj = {
         method: config.method,
         headers: config['content-type'],
@@ -479,8 +476,6 @@ const preWatchHttp = () => {
     },
     //请求发生错误时进入，比如超时；注意，不包括http状态码错误，如404仍然会认为请求成功
     onError: (err, handler) => {
-      console.log("preWatch----error", err)
-
       let errObj = {
         method: err.config.method,
         headers: err.config['content-type'],
@@ -492,7 +487,6 @@ const preWatchHttp = () => {
     },
     //请求成功后进入
     onResponse: (res, handler) => {
-      console.log("preWatch----success", res)
       let sucObj = {
         method: res.config.method,
         headers: res.headers['content-type'],
@@ -592,7 +586,6 @@ const loadPerformanceModule = (envBox) => {
   //测试网速
   let netWork = navigator.connection.downlink * 1024 / 8
   let netWorkType = navigator.connection.effectiveType
-  console.log(navigator.connection);
   function getPerformaceStyle (type, data) {
     let standard = performaceData[type]
     return data < standard[0] ? 'xn-quick xn' : (

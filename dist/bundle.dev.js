@@ -45,122 +45,13 @@
   var css_248z = "html,\r\nbody {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  font-size: 16px;\r\n  margin: 0;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n.envBox-inlineText {\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}";
   styleInject(css_248z);
 
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
-
-    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-      return typeof obj;
-    } : function (obj) {
-      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    }, _typeof(obj);
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    Object.defineProperty(Constructor, "prototype", {
-      writable: false
-    });
-    return Constructor;
-  }
-
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
-
-  function _createForOfIteratorHelper(o, allowArrayLike) {
-    var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-
-    if (!it) {
-      if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-        if (it) o = it;
-        var i = 0;
-
-        var F = function () {};
-
-        return {
-          s: F,
-          n: function () {
-            if (i >= o.length) return {
-              done: true
-            };
-            return {
-              done: false,
-              value: o[i++]
-            };
-          },
-          e: function (e) {
-            throw e;
-          },
-          f: F
-        };
-      }
-
-      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-
-    var normalCompletion = true,
-        didErr = false,
-        err;
-    return {
-      s: function () {
-        it = it.call(o);
-      },
-      n: function () {
-        var step = it.next();
-        normalCompletion = step.done;
-        return step;
-      },
-      e: function (e) {
-        didErr = true;
-        err = e;
-      },
-      f: function () {
-        try {
-          if (!normalCompletion && it.return != null) it.return();
-        } finally {
-          if (didErr) throw err;
-        }
-      }
-    };
-  }
-
   /**
    *检查是否是移动端
    *
    * @return {boolean} 
    */
-  var isMobileFn = function isMobileFn() {
-    var machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+  const isMobileFn = () => {
+    const machineType = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
 
     if (machineType === 'Mobile') {
       return true;
@@ -174,23 +65,27 @@
    * @return {boolean} 
    */
 
-  var Storage = {
-    get: function get(key) {
+  const Storage = {
+    get(key) {
       try {
         return JSON.parse(localStorage.getItem(key));
       } catch (error) {
         console.log(error);
       }
     },
-    set: function set(key, val) {
+
+    set(key, val) {
       localStorage.setItem(key, JSON.stringify(val));
     },
-    remove: function remove(key) {
+
+    remove(key) {
       localStorage.removeItem(key);
     },
-    clear: function clear() {
+
+    clear() {
       localStorage.clearItem();
     }
+
   };
   /**
    * 检查数据类型工具
@@ -198,7 +93,7 @@
    * @return {string} 数据类型
    */
 
-  var checkType = function checkType(params) {
+  const checkType = params => {
     return Object.prototype.toString.call(params).slice(8, -1).toLowerCase();
   };
   /**
@@ -206,7 +101,7 @@
    * @param {*} params
    */
 
-  var $ = function $(params) {
+  const $ = params => {
     return document.querySelector(params);
   };
   /**
@@ -214,10 +109,10 @@
    * @param {*} data
    */
 
-  var handleCircularJson = function handleCircularJson(data) {
-    var seen = new WeakSet();
-    return JSON.stringify(data, function (key, value) {
-      if (_typeof(value) === "object" && value !== null) {
+  const handleCircularJson = data => {
+    const seen = new WeakSet();
+    return JSON.stringify(data, (key, value) => {
+      if (typeof value === "object" && value !== null) {
         if (seen.has(value)) {
           return;
         }
@@ -232,15 +127,15 @@
    * 转为时间格式
    */
 
-  var toDate = function toDate() {
+  const toDate = () => {
     var nowDay = new Date();
-    return "".concat(nowDay.getFullYear(), "\u5E74").concat(nowDay.getMonth() + 1, "\u6708").concat(nowDay.getDate(), "\u65E5").concat(nowDay.getHours(), "\u65F6").concat(nowDay.getMinutes(), "\u5206").concat(nowDay.getSeconds(), "\u79D2");
+    return `${nowDay.getFullYear()}年${nowDay.getMonth() + 1}月${nowDay.getDate()}日${nowDay.getHours()}时${nowDay.getMinutes()}分${nowDay.getSeconds()}秒`;
   };
 
   /**
    * @description toast component
    */
-  var toastType = {
+  const toastType = {
     'info': 'envBox-toast-info',
     'error': 'envBox-toast-error',
     'warn': 'envBox-toast-warn'
@@ -253,15 +148,15 @@
    * @param {style} dialogStyle 
    */
 
-  var addToastDOM = function addToastDOM(content, wait, type, dialogStyle) {
+  const addToastDOM = (content, wait, type, dialogStyle) => {
     //去除全局重复
     if ($('#envBox-toast')) {
       document.body.removeChild($('#envBox-toast'));
     }
 
-    var toastDOM = document.createElement('div');
+    let toastDOM = document.createElement('div');
     toastDOM.id = 'envBox-toast';
-    toastDOM.className = "slide-in-blurred-top ".concat(toastType[type]);
+    toastDOM.className = `slide-in-blurred-top ${toastType[type]}`;
 
     if (dialogStyle === 'textDialog') {
       toastDOM.style.borderRadius = '5px';
@@ -270,22 +165,22 @@
 
     toastDOM.innerHTML = content;
     document.body.appendChild(toastDOM);
-    setTimeout(function () {
+    setTimeout(() => {
       if ($('#envBox-toast')) {
         document.body.removeChild(toastDOM);
       }
     }, wait);
   };
-  var createToastText = function createToastText(content) {
-    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  const createToastText = function (content) {
+    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'info', 'textDialog');
   };
-  var createToast = function createToast(content) {
-    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  const createToast = function (content) {
+    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'info');
   };
-  var createErrorToast = function createErrorToast(content) {
-    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  const createErrorToast = function (content) {
+    let wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
     addToastDOM(content, wait, 'error');
   };
 
@@ -296,78 +191,39 @@
    * @class Listener
    */
 
-  var Listener = /*#__PURE__*/_createClass(function Listener(element, recognizer) {
-    _classCallCheck(this, Listener);
-
-    var contexts = new Map();
-    element.addEventListener('touchstart', function (event) {
-      var _iterator = _createForOfIteratorHelper(event.changedTouches),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var touch = _step.value;
-          var context = Object.create(null);
+  class Listener {
+    constructor(element, recognizer) {
+      let contexts = new Map();
+      element.addEventListener('touchstart', event => {
+        for (let touch of event.changedTouches) {
+          let context = Object.create(null);
           contexts.set(touch.identifier, context);
           recognizer.start(touch, context);
         }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    });
-    element.addEventListener('touchmove', function (event) {
-      var _iterator2 = _createForOfIteratorHelper(event.changedTouches),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var touch = _step2.value;
-          var context = contexts.get(touch.identifier);
+      });
+      element.addEventListener('touchmove', event => {
+        for (let touch of event.changedTouches) {
+          let context = contexts.get(touch.identifier);
           recognizer.move(touch, context);
         }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-    });
-    element.addEventListener('touchend', function (event) {
-      var _iterator3 = _createForOfIteratorHelper(event.changedTouches),
-          _step3;
-
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var touch = _step3.value;
-          var context = contexts.get(touch.identifier);
+      });
+      element.addEventListener('touchend', event => {
+        for (let touch of event.changedTouches) {
+          let context = contexts.get(touch.identifier);
           recognizer.end(touch, context);
           contexts.delete(touch.identifier);
         }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
-      }
-    });
-    element.addEventListener('cancel', function (event) {
-      var _iterator4 = _createForOfIteratorHelper(event.changedTouches),
-          _step4;
-
-      try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var touch = _step4.value;
-          var context = contexts.get(touch.identifier);
+      });
+      element.addEventListener('cancel', event => {
+        for (let touch of event.changedTouches) {
+          let context = contexts.get(touch.identifier);
           recognizer.cancel(touch, context);
           contexts.delete(touch.identifier);
         }
-      } catch (err) {
-        _iterator4.e(err);
-      } finally {
-        _iterator4.f();
-      }
-    });
-  });
+      });
+    }
+
+  }
   /**
    * 识别手势
    *
@@ -375,145 +231,128 @@
    * @class Recognizer
    */
 
-  var Recognizer = /*#__PURE__*/function () {
-    function Recognizer(dispatcher) {
-      _classCallCheck(this, Recognizer);
-
+  class Recognizer {
+    constructor(dispatcher) {
       this.dispatcher = dispatcher;
     }
 
-    _createClass(Recognizer, [{
-      key: "start",
-      value: function start(point, context) {
-        var _this = this;
+    start(point, context) {
+      context.startX = point.clientX;
+      context.startY = point.clientY; //更新状态
 
-        context.startX = point.clientX;
-        context.startY = point.clientY; //更新状态
-
+      context.isPan = false;
+      context.isTap = true;
+      context.isPress = false;
+      context.handler = setTimeout(() => {
         context.isPan = false;
-        context.isTap = true;
-        context.isPress = false;
-        context.handler = setTimeout(function () {
-          context.isPan = false;
-          context.isTap = false;
-          context.isPress = true;
-
-          _this.dispatcher.dispatch('press', {
-            clientX: point.clientX,
-            clientY: point.clientY
-          });
-
-          context.handler = null; //保护不会在press-start时再次触发
-        }, 500);
-      }
-    }, {
-      key: "move",
-      value: function move(point, context) {
-        var dx = point.clientX - context.startX;
-        var dy = point.clientY - context.startY;
-        var d = Math.pow(dx, 2) + Math.pow(dy, 2); //处理临界状态
-
-        if (!context.isPan && d > 100) {
-          context.isPan = true;
-          context.isTap = false;
-          context.isPress = false;
-          context.isVertical = Math.abs(dx) < Math.abs(dy);
-          this.dispatcher.dispatch('panstart', {
-            startX: context.startX,
-            startY: context.startY,
-            clientX: point.clientX,
-            clientY: point.clientY,
-            dx: dx,
-            dy: dy,
-            isVertical: context.isVertical
-          });
-          clearTimeout(context.handler);
-        } //此时一直在滑动
-
-
-        if (context.isPan) {
-          this.dispatcher.dispatch('pan', {
-            startX: context.startX,
-            startY: context.startY,
-            clientX: point.clientX,
-            clientY: point.clientY,
-            dx: dx,
-            dy: dy,
-            isVertical: context.isVertical
-          });
-        } //筛选前500个取平均数
-
-
-        if (context.points) {
-          context.points = context.points.filter(function (point) {
-            return Date.now() - point.t < 500;
-          });
-        } else {
-          context.points = [];
-        }
-
-        context.points.push({
-          t: Date.now(),
-          x: point.clientX,
-          y: point.clientY
+        context.isTap = false;
+        context.isPress = true;
+        this.dispatcher.dispatch('press', {
+          clientX: point.clientX,
+          clientY: point.clientY
         });
+        context.handler = null; //保护不会在press-start时再次触发
+      }, 500);
+    }
+
+    move(point, context) {
+      let dx = point.clientX - context.startX;
+      let dy = point.clientY - context.startY;
+      let d = dx ** 2 + dy ** 2; //处理临界状态
+
+      if (!context.isPan && d > 100) {
+        context.isPan = true;
+        context.isTap = false;
+        context.isPress = false;
+        context.isVertical = Math.abs(dx) < Math.abs(dy);
+        this.dispatcher.dispatch('panstart', {
+          startX: context.startX,
+          startY: context.startY,
+          clientX: point.clientX,
+          clientY: point.clientY,
+          dx,
+          dy,
+          isVertical: context.isVertical
+        });
+        clearTimeout(context.handler);
+      } //此时一直在滑动
+
+
+      if (context.isPan) {
+        this.dispatcher.dispatch('pan', {
+          startX: context.startX,
+          startY: context.startY,
+          clientX: point.clientX,
+          clientY: point.clientY,
+          dx,
+          dy,
+          isVertical: context.isVertical
+        });
+      } //筛选前500个取平均数
+
+
+      if (context.points) {
+        context.points = context.points.filter(point => Date.now() - point.t < 500);
+      } else {
+        context.points = [];
       }
-    }, {
-      key: "end",
-      value: function end(point, context) {
-        context.isFlick = false; //在pan start 后isFlick代表快速滑动500ms内会触发flick
 
-        if (context.isTap) {
-          this.dispatcher.dispatch('tap', {}); //发布tap事件
+      context.points.push({
+        t: Date.now(),
+        x: point.clientX,
+        y: point.clientY
+      });
+    }
 
-          clearTimeout(context.handler);
-        }
+    end(point, context) {
+      context.isFlick = false; //在pan start 后isFlick代表快速滑动500ms内会触发flick
 
-        if (context.isPan) {
-          context.points = context.points.filter(function (point) {
-            return Date.now() - point.t < 500;
-          });
-          var d, v;
+      if (context.isTap) {
+        this.dispatcher.dispatch('tap', {}); //发布tap事件
 
-          if (!context.points.length) {
-            v = 0;
-          } else {
-            d = Math.sqrt(Math.pow(point.clientX - context.points[0].x, 2) + Math.pow(point.clientY - context.points[0].y, 2));
-            v = d / (Date.now() - context.points[0].t);
-          }
-
-          if (v > 1.5) {
-            context.isFlick = true;
-            this.dispatcher.dispatch('flick', {}); //发布flick事件
-          } else {
-            context.isFlick = false;
-            this.dispatcher.dispatch('panend', {
-              clientX: point.clientX,
-              clientY: point.clientY
-            }); //发布pan-end 事件 
-          }
-        }
-
-        if (context.isPress) {
-          this.dispatcher.dispatch('panend', {
-            startX: context.startX,
-            startY: context.startY,
-            clientX: point.clientX,
-            clientY: point.clientY,
-            isVertical: context.isVertical,
-            isFlick: context.isFlick
-          });
-        }
-      }
-    }, {
-      key: "cancel",
-      value: function cancel(point, context) {
         clearTimeout(context.handler);
       }
-    }]);
 
-    return Recognizer;
-  }();
+      if (context.isPan) {
+        context.points = context.points.filter(point => Date.now() - point.t < 500);
+        let d, v;
+
+        if (!context.points.length) {
+          v = 0;
+        } else {
+          d = Math.sqrt((point.clientX - context.points[0].x) ** 2 + (point.clientY - context.points[0].y) ** 2);
+          v = d / (Date.now() - context.points[0].t);
+        }
+
+        if (v > 1.5) {
+          context.isFlick = true;
+          this.dispatcher.dispatch('flick', {}); //发布flick事件
+        } else {
+          context.isFlick = false;
+          this.dispatcher.dispatch('panend', {
+            clientX: point.clientX,
+            clientY: point.clientY
+          }); //发布pan-end 事件 
+        }
+      }
+
+      if (context.isPress) {
+        this.dispatcher.dispatch('panend', {
+          startX: context.startX,
+          startY: context.startY,
+          clientX: point.clientX,
+          clientY: point.clientY,
+          isVertical: context.isVertical,
+          isFlick: context.isFlick
+        });
+      }
+    }
+
+    cancel(point, context) {
+      clearTimeout(context.handler);
+    }
+
+  }
   /**
    * 分发器
    *
@@ -521,28 +360,22 @@
    * @class dispatcher
    */
 
-  var Dispatcher = /*#__PURE__*/function () {
-    function Dispatcher(element) {
-      _classCallCheck(this, Dispatcher);
-
+  class Dispatcher {
+    constructor(element) {
       this.element = element;
     }
 
-    _createClass(Dispatcher, [{
-      key: "dispatch",
-      value: function dispatch(type, properties) {
-        var event = new Event(type);
+    dispatch(type, properties) {
+      let event = new Event(type);
 
-        for (var name in properties) {
-          event[name] = properties[name];
-        }
-
-        this.element.dispatchEvent(event);
+      for (let name in properties) {
+        event[name] = properties[name];
       }
-    }]);
 
-    return Dispatcher;
-  }();
+      this.element.dispatchEvent(event);
+    }
+
+  }
   /**
    * 手势快速监听
    *
@@ -571,21 +404,21 @@
       h5Tools.startdevTools();
     }
 
-    var envBoxDOM = document.getElementById('envBox');
+    let envBoxDOM = document.getElementById('envBox');
     envBoxDOM.style.display = 'none';
-    var dx = 0,
+    let dx = 0,
         dy = 0,
         startX = 0,
         clientX = 0;
-    var isRight = false,
+    let isRight = false,
         isRight_old_dy = 0;
-    var isLeftBias = false,
+    let isLeftBias = false,
         isLeftBias_old_dx = false;
-    var isRight_two = false;
-    var timer = null;
+    let isRight_two = false;
+    let timer = null;
 
     if (options.endTime) {
-      setTimeout(function () {
+      setTimeout(() => {
         if (timer) {
           clearInterval(timer);
           timer = null;
@@ -594,14 +427,14 @@
     }
 
     if (!document || !document.documentElement) return;
-    document.documentElement.addEventListener('pan', function (e) {
+    document.documentElement.addEventListener('pan', e => {
       dx = e.dx;
       dy = e.dy;
       startX = e.startX;
       clientX = e.clientX;
       if (timer) return; //防止多次執行
 
-      timer = setInterval(function () {
+      timer = setInterval(() => {
         //向右平移
         if (dx > 200 && !isRight) {
           isRight = true;
@@ -635,8 +468,8 @@
 
 
   function startGesture(element) {
-    var thumb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'z';
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    let thumb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'z';
+    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     //开启手势控制
     if (thumb === 'z') {
@@ -1538,7 +1371,6 @@
     let moduleList = ['watchEnv', 'watchPerformance', 'watchError', 'watchRoutes', 'watchStorage', 'watchSystem', 'watchConsole', 'watchHttp'];
     moduleList.forEach(module => {
       if (!newOptions[module]) {
-        console.log("asdasdasdasdasd");
         let btn = document.createElement('button');
         envBox.appendChild(btn);
         btn.innerText = '....';
@@ -1821,7 +1653,6 @@
     proxy({
       //请求发起前进入
       onRequest: (config, handler) => {
-        console.log("preWatchHttp----start", config);
         let sendObj = {
           method: config.method,
           headers: config['content-type'],
@@ -1837,7 +1668,6 @@
       },
       //请求发生错误时进入，比如超时；注意，不包括http状态码错误，如404仍然会认为请求成功
       onError: (err, handler) => {
-        console.log("preWatch----error", err);
         let errObj = {
           method: err.config.method,
           headers: err.config['content-type'],
@@ -1852,7 +1682,6 @@
       },
       //请求成功后进入
       onResponse: (res, handler) => {
-        console.log("preWatch----success", res);
         let sucObj = {
           method: res.config.method,
           headers: res.headers['content-type'],
@@ -1967,7 +1796,6 @@
 
     let netWork = navigator.connection.downlink * 1024 / 8;
     let netWorkType = navigator.connection.effectiveType;
-    console.log(navigator.connection);
 
     function getPerformaceStyle(type, data) {
       let standard = performaceData[type];
@@ -2298,48 +2126,39 @@
   /**
    * 改写路由
    */
-  var startNewRoute = function startNewRoute() {
-    var Dep = /*#__PURE__*/function () {
+  const startNewRoute = () => {
+    class Dep {
       //订阅池
-      function Dep(name) {
-        _classCallCheck(this, Dep);
-
+      constructor(name) {
         this.id = new Date(); // 使用时间戳做订阅池的ID
 
         this.subs = []; // 该事件下对象的集合
       }
 
-      _createClass(Dep, [{
-        key: "defined",
-        value: function defined() {
-          // 添加订阅者
-          Dep.watch.add(this);
-        }
-      }, {
-        key: "notify",
-        value: function notify() {
-          // 通知订阅者有变化
-          this.subs.forEach(function (e, i) {
-            if (typeof e.update === 'function') {
-              try {
-                e.update.apply(e); // 触发订阅者更新函数
-              } catch (err) {
-                console.warr(err);
-              }
-            }
-          });
-        }
-      }]);
+      defined() {
+        // 添加订阅者
+        Dep.watch.add(this);
+      }
 
-      return Dep;
-    }();
+      notify() {
+        // 通知订阅者有变化
+        this.subs.forEach((e, i) => {
+          if (typeof e.update === 'function') {
+            try {
+              e.update.apply(e); // 触发订阅者更新函数
+            } catch (err) {
+              console.warr(err);
+            }
+          }
+        });
+      }
+
+    }
 
     Dep.watch = null;
 
-    var Watch = /*#__PURE__*/function () {
-      function Watch(name, fn) {
-        _classCallCheck(this, Watch);
-
+    class Watch {
+      constructor(name, fn) {
         this.name = name; // 订阅消息的名称
 
         this.id = new Date(); // 使用时间戳做订阅者的ID
@@ -2347,24 +2166,19 @@
         this.callBack = fn; // 订阅消息发送改变时 -> 订阅者执行的回调函数
       }
 
-      _createClass(Watch, [{
-        key: "add",
-        value: function add(dep) {
-          // 将订阅者放入dep订阅池
-          dep.subs.push(this);
-        }
-      }, {
-        key: "update",
-        value: function update() {
-          // 将订阅者更新方法
-          var cb = this.callBack; // 赋值为了不改变函数内调用的this
+      add(dep) {
+        // 将订阅者放入dep订阅池
+        dep.subs.push(this);
+      }
 
-          cb(this.name);
-        }
-      }]);
+      update() {
+        // 将订阅者更新方法
+        var cb = this.callBack; // 赋值为了不改变函数内调用的this
 
-      return Watch;
-    }();
+        cb(this.name);
+      }
+
+    }
 
     var addHistoryMethod = function () {
       var historyDep = new Dep();
@@ -2393,7 +2207,7 @@
   };
 
   startNewRoute();
-  var isMobile = isMobileFn();
+  let isMobile = isMobileFn();
 
   if (!window) {
     createErrorToast('it is must be brower environment');
@@ -2403,7 +2217,7 @@
     createErrorToast('it is must be mobile H5 environment');
   }
 
-  var h5tools = {
+  const h5tools = {
     gesture: startGesture,
     start: h5Tools.startdevTools,
     send: h5Tools.sendMsg

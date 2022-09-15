@@ -1,6 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from "@rollup/plugin-commonjs";
-import babel from 'rollup-plugin-babel'
+import { babel } from '@rollup/plugin-babel'
 import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import alias from '@rollup/plugin-alias'
@@ -14,14 +14,17 @@ export default {
   output: {
     file: 'dist/bundle.build.js',
     format: 'umd',
-    name: 'envTools'
+    name: 'envTools',
+    // presets: [['@babel/preset-env', { modules: 'umd' }]] 考虑兼容性做法
+
   },
   plugins: [
     svg(),
     resolve(),
     commonjs(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      babelHelpers: 'bundled'
     }),
     postcss(),
     alias({
