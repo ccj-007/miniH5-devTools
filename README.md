@@ -55,9 +55,6 @@
 
 ![img](https://chen-1305792286.cos.ap-shanghai.myqcloud.com/%E4%B8%8B%E8%BD%BD.png)
 
-**线上链接**
-[http://run.www.cclibs.cn:7000]
-
 **github地址**
 [https://github.com/ccj-007/miniH5-devTools]
 
